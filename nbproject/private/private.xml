@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/xampp/htdocs/project/.env</file>
+            <file>file:/D:/xampp/htdocs/project/resources/views/admin/pages/register.blade.php</file>
+            <file>file:/D:/xampp/htdocs/project/resources/views/admin/pages/login.blade.php</file>
+            <file>file:/D:/xampp/htdocs/project/routes/web.php</file>
+            <file>file:/D:/xampp/htdocs/project/app/Http/Kernel.php</file>
+            <file>file:/D:/xampp/htdocs/project/app/Http/Controllers/Admin/LoginController.php</file>
+            <file>file:/D:/xampp/htdocs/project/resources/views/admin/pages/dashboard.blade.php</file>
+            <file>file:/D:/xampp/htdocs/project/config/auth.php</file>
+            <file>file:/D:/xampp/htdocs/project/app/Http/Middleware/Admin.php</file>
+        </group>
+    </open-files>
+</project-private>
