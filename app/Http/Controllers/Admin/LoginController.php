@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use \Validator;
+use App\Model\Users;
 use DB;
 
 class LoginController extends Controller {
@@ -27,7 +28,6 @@ class LoginController extends Controller {
                         'username' => 'required|min:5',
                         'password' => 'required',
                         'mobile' => 'required|min:10',
-                
             ]);
             if ($validator->fails()) {
                 return redirect('register')
@@ -49,7 +49,7 @@ class LoginController extends Controller {
                 'username' => $username,
                 'password' => $password,
                 'mobile' => $mobile,
-                'role'=>'user',
+                'role' => 'user',
             ]);
             return redirect('login');
         }
@@ -74,16 +74,113 @@ class LoginController extends Controller {
             $username = $request['username'];
             $password = $request['password'];
 
-            if (Auth::guard('admin')->attempt(['username' => $username, 'password' => $password])) {
-                return redirect('dashboard');
-            } else if (Auth::guard('user')->attempt(['username' => $username, 'password' => $password])) {
-                return redirect('home');
+            if (Auth::guard('admin')->attempt(['username' => $username, 'password' => $password,'role'=>'admin'])) {
+                return view('admin.pages.dashboard');
+            } else if (Auth::guard('users')->attempt(['username' => $username, 'password' => $password, 'role'=>'user'])) {
+                return view('frontend.pages.home');
             } else {
                 return redirect()->back()->with('message', 'Unauthorized user');
             }
         }
 
         return view('admin.pages.login');
+    }
+    
+    public function dashboard(){
+        view('admin.pages.dashboard');
+    }
+
+    public function userlist() {
+        $perPage = 1;
+        $userlist = new Users;
+        $getUserlistdata = $userlist->getUserList($perPage);
+        $data['getUserlistdata'] = $getUserlistdata;
+//        print_r($getUserlistdata);exit;
+        return view('admin.pages.userlist',$data);
+    }
+    
+    public function delete(Request $request){
+        
+        $id = $request['id'];
+        
+        DB::table('users')->where('id',$id)->delete();
+        return redirect()->back()->with('message','User Deleted successfully');
+        
+    }
+    
+    public function edituser(Request $request){
+        
+         if ($request->isMethod('post')) {
+
+            $validator = validator::make($request->all(), [
+                        'firstname' => 'required',
+                        'lastname' => 'required',
+                        'email' => 'required|email',
+                        'username' => 'required|min:5',
+                        'password' => 'required',
+                        'mobile' => 'required|min:10',
+            ]);
+            if ($validator->fails()) {
+                return redirect('edit')
+                                ->withErrors($validator)
+                                ->withInput();
+            }
+            
+            $id = $request['id'];
+            $firstname = $request['firstname'];
+            $lastname = $request['lastname'];
+            $email = $request['email'];
+            $username = $request['username'];
+            $password = Hash::make($request['password']);
+            $mobile = $request['mobile'];
+            
+            $updateUsers = new Users;
+            
+            $updateUsersdata = $updateUsers->getupdateData($request);
+            
+            $data['getupdateData'] = $getupdateData;
+
+            
+            return redirect()->back()->withErrors('message','Data Updated successfully');
+        }
+    }
+    
+    public function userform(){
+        
+        if ($request->isMethod('post')) {
+
+            $validator = validator::make($request->all(), [
+                        'firstname' => 'required',
+                        'lastname' => 'required',
+                        'email' => 'required|email',
+                        'username' => 'required|min:5',
+                        'password' => 'required',
+                        'mobile' => 'required|min:10',
+            ]);
+            if ($validator->fails()) {
+                return redirect('register')
+                                ->withErrors($validator)
+                                ->withInput();
+            }
+
+            $firstname = $request['firstname'];
+            $lastname = $request['lastname'];
+            $email = $request['email'];
+            $username = $request['username'];
+            $mobile = $request['mobile'];
+
+            DB::table('users')->Insert([
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'email' => $email,
+                'username' => $username,
+                'mobile' => $mobile,
+                'role' => 'user',
+            ]);
+            return redirect('login');
+        }
+        
+        return view('admin.pages.userform');
     }
 
 }
