@@ -3,10 +3,10 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
-use Config;
 
 class Users extends Model{
+    
+    public $timestamps = false;
     
     protected $table = 'users';
 
@@ -18,9 +18,29 @@ class Users extends Model{
         
     }
     
-    public function getUpateData(){
-        $upd_result = Users::update();
+    public function getupdate($id){
+        
+        $result = Users::select('*')->where('id',$id)->first();
+        return $result;
+        
     }
+    
+    public function updateData($request, $id){
+        
+        
+       
+        $update_res = Users::where('id',$id)->update([
+            'firstname' => $request['firstname'],
+            'lastname' => $request['lastname'],
+            'email' => $request['email'],
+            'username' => $request['username'],
+            'mobile' => $request['mobile'],
+        ]);
+        return $update_res;
+                
+       
+    }
+    
     
 }
 

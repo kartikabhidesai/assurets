@@ -74,9 +74,9 @@ class LoginController extends Controller {
             $username = $request['username'];
             $password = $request['password'];
 
-            if (Auth::guard('admin')->attempt(['username' => $username, 'password' => $password,'role'=>'admin'])) {
+            if (Auth::guard('admin')->attempt(['username' => $username, 'password' => $password, 'role' => 'admin'])) {
                 return view('admin.pages.dashboard');
-            } else if (Auth::guard('users')->attempt(['username' => $username, 'password' => $password, 'role'=>'user'])) {
+            } else if (Auth::guard('users')->attempt(['username' => $username, 'password' => $password, 'role' => 'user'])) {
                 return view('frontend.pages.home');
             } else {
                 return redirect()->back()->with('message', 'Unauthorized user');
@@ -85,8 +85,8 @@ class LoginController extends Controller {
 
         return view('admin.pages.login');
     }
-    
-    public function dashboard(){
+
+    public function dashboard() {
         view('admin.pages.dashboard');
     }
 
@@ -96,57 +96,61 @@ class LoginController extends Controller {
         $getUserlistdata = $userlist->getUserList($perPage);
         $data['getUserlistdata'] = $getUserlistdata;
 //        print_r($getUserlistdata);exit;
-        return view('admin.pages.userlist',$data);
+        return view('admin.pages.userlist', $data);
     }
-    
-    public function delete(Request $request){
-        
-        $id = $request['id'];
-        
-        DB::table('users')->where('id',$id)->delete();
-        return redirect()->back()->with('message','User Deleted successfully');
-        
-    }
-    
-    public function edituser(Request $request){
-        
-         if ($request->isMethod('post')) {
 
+    public function delete(Request $request) {
+
+        $id = $request['id'];
+
+        DB::table('users')->where('id', $id)->delete();
+        return redirect()->back()->with('message', 'User Deleted successfully');
+    }
+
+    public function edituser(Request $request, $id) {
+
+        if ($request->isMethod('post')) {
+              
             $validator = validator::make($request->all(), [
                         'firstname' => 'required',
                         'lastname' => 'required',
                         'email' => 'required|email',
                         'username' => 'required|min:5',
-                        'password' => 'required',
                         'mobile' => 'required|min:10',
             ]);
             if ($validator->fails()) {
-                return redirect('edit')
+                return redirect('edituserform/'.$id)
                                 ->withErrors($validator)
                                 ->withInput();
             }
-            
+
             $id = $request['id'];
             $firstname = $request['firstname'];
             $lastname = $request['lastname'];
             $email = $request['email'];
             $username = $request['username'];
-            $password = Hash::make($request['password']);
             $mobile = $request['mobile'];
-            
-            $updateUsers = new Users;
-            
-            $updateUsersdata = $updateUsers->getupdateData($request);
-            
-            $data['getupdateData'] = $getupdateData;
 
+            $updateInputs = new Users;
+
+            $getUpadateData = $updateInputs->updateData($request,$id);
             
-            return redirect()->back()->withErrors('message','Data Updated successfully');
+            $data['getUpdateData'] = $getUpadateData;
+           
+            return redirect()->back()->with('message', 'Data Updated successfully');
         }
-    }
-    
-    public function userform(){
+
+        $updateUsers = new Users;
+
+        $getupdateData = $updateUsers->getupdate($id);
+
+        $data['getupdateData'] = $getupdateData;
         
+        return view('admin.pages.edituserform', $data);
+    }
+
+    public function userform(Request $request) {
+
         if ($request->isMethod('post')) {
 
             $validator = validator::make($request->all(), [
@@ -179,7 +183,7 @@ class LoginController extends Controller {
             ]);
             return redirect('login');
         }
-        
+
         return view('admin.pages.userform');
     }
 
