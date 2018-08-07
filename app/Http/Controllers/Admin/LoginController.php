@@ -91,7 +91,7 @@ class LoginController extends Controller {
     }
 
     public function userlist() {
-        $perPage = 1;
+        $perPage = 2;
         $userlist = new Users;
         $getUserlistdata = $userlist->getUserList($perPage);
         $data['getUserlistdata'] = $getUserlistdata;
@@ -162,7 +162,7 @@ class LoginController extends Controller {
                         'mobile' => 'required|min:10',
             ]);
             if ($validator->fails()) {
-                return redirect('register')
+                return redirect('userform')
                                 ->withErrors($validator)
                                 ->withInput();
             }
@@ -171,6 +171,7 @@ class LoginController extends Controller {
             $lastname = $request['lastname'];
             $email = $request['email'];
             $username = $request['username'];
+            $password = Hash::make($request['password']);
             $mobile = $request['mobile'];
 
             DB::table('users')->Insert([
@@ -178,10 +179,11 @@ class LoginController extends Controller {
                 'lastname' => $lastname,
                 'email' => $email,
                 'username' => $username,
+                'password' => $password,
                 'mobile' => $mobile,
                 'role' => 'user',
             ]);
-            return redirect('login');
+            return redirect()->back()->with('message','User Inserted Successfully');
         }
 
         return view('admin.pages.userform');
