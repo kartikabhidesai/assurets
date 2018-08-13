@@ -20,3 +20,11 @@ Route::match(['get','post'],'/userlist',(['as'=>'userlist','uses'=>'admin\LoginC
 Route::match(['get'],'/delete/{id}',(['as'=>'delete','uses'=>'admin\LoginController@delete']));
 Route::match(['get','post'],'/userform',(['as'=>'userform','uses'=>'admin\LoginController@userform']));
 Route::match(['get','post'],'/edituserform/{id}',(['as'=>'edituser','uses'=>'admin\LoginController@edituser']));
+
+
+
+Route::match(['get','post'],'/service',(['as'=>'service','uses'=>'front\MainController@service']));
+Route::match(['get','post'],'/work',(['as'=>'work','uses'=>'front\MainController@work']));
+Route::match(['get','post'],'/about',(['as'=>'about','uses'=>'front\MainController@about']));
+Route::match(['get','post'],'/blog',(['as'=>'blog','uses'=>'front\MainController@blog']));
+Route::match(['get','post'],'/contact',(['as'=>'contact','uses'=>'front\MainController@contact']));
