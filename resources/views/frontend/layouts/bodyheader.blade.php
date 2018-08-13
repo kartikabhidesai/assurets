@@ -6,7 +6,7 @@
 				</div>
 				<div class="col-xs-12 text-center menu-1">
 					<ul>
-						<li class="active"><a href="index.html">Home</a></li>
+						<li class="active"><a href="{{ url('/') }}">Home</a></li>
 						<li class="has-dropdown">
 							<a href="{{ url('service') }}">Services</a>
 							<ul class="dropdown">

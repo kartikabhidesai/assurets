@@ -23,6 +23,7 @@ Route::match(['get','post'],'/edituserform/{id}',(['as'=>'edituser','uses'=>'adm
 
 
 
+Route::match(['get','post'],'/',(['as'=>'index','uses'=>'front\MainController@index']));
 Route::match(['get','post'],'/service',(['as'=>'service','uses'=>'front\MainController@service']));
 Route::match(['get','post'],'/work',(['as'=>'work','uses'=>'front\MainController@work']));
 Route::match(['get','post'],'/about',(['as'=>'about','uses'=>'front\MainController@about']));

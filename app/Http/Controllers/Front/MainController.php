@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Request;
 
 class MainController extends Controller {
     
-    public function service(){
+    public function index(){
+        
+        return view('frontend.pages.home');
+    }
+
+        public function service(){
         
         return view('frontend.pages.service');
         
