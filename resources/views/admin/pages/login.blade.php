@@ -5,7 +5,7 @@
             <div>
                
             </div>
-            <h3>Welcome to Colsafe</h3>
+            <h3>Login Here</h3>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>

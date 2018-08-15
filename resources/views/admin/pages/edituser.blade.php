@@ -1,15 +1,6 @@
 @extends('admin.mainlayouts.index')      
 @section('content')
 <div class="wrapper wrapper-content animated fadeInRight">
-    @if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -38,38 +29,34 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group"><label class="col-sm-2 control-label">First name</label>
 
-                            <div class="col-sm-10"><input type="text" name="firstname" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" name="firstname" value="{{ $getupdateData['firstname'] }}" class="form-control"></div>
                         </div>
 
                         <div class="hr-line-dashed"></div>
                         <div class="form-group"><label class="col-sm-2 control-label">Last name</label>
 
-                            <div class="col-sm-10"><input type="text" name="lastname" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" name="lastname" value="{{ $getupdateData['lastname'] }}" class="form-control"></div>
                         </div>
 
                         <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Email</label>
 
-                            <div class="col-sm-10"><input type="email" name="email" class="form-control"></div>
+                            <div class="col-sm-10"><input type="email" name="email" value="{{ $getupdateData['email'] }}" class="form-control"></div>
                         </div>
 
                         <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Username</label>
 
-                            <div class="col-sm-10"><input type="text" name="username" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" name="username" value="{{ $getupdateData['username'] }}" class="form-control"></div>
                         </div>
 
-                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Password</label>
-
-                            <div class="col-sm-10"><input type="password" name="password" class="form-control"></div>
-                        </div>
 
                         <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Mobile</label>
 
-                            <div class="col-sm-10"><input type="text" name="mobile" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" name="mobile" value="{{ $getupdateData['mobile'] }}" class="form-control"></div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-primary" name="submit" type="submit">Add Details</button>
+                                <button class="btn btn-primary" name="submit" type="submit">Update</button>
                             </div>
                         </div>
                     </form>

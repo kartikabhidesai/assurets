@@ -21,7 +21,10 @@
                     </li>
                      <li>
                         <a href="{{ url('userlist') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Users</span></a>
-                    </li> 
+                    </li>
+                    <li>
+                        <a href="{{ url('services') }}"><i class="fa fa-diamond"></i> <span class="nav-label">services</span></a>
+                    </li>
                 </ul>
             </div>
         </nav>
