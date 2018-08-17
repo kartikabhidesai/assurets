@@ -6,16 +6,16 @@
 
     <title>INSPINIA | @yield('title')</title>
 
-    <link href="admin/css/bootstrap.min.css" rel="stylesheet">
-    <link href="admin/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="{{ url('admin/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url('admin/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 
     <!-- Toastr style -->
-    <link href="admin/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link href="{{ url('admin/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
 
     <!-- Gritter -->
-    <link href="admin/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    <link href="{{ url('admin/js/plugins/gritter/jquery.gritter.css') }}" rel="stylesheet">
 
-    <link href="admin/css/animate.css" rel="stylesheet">
-    <link href="admin/css/style.css" rel="stylesheet">
+    <link href="{{ url('admin/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ url('admin/css/style.css') }}" rel="stylesheet">
 
 </head>

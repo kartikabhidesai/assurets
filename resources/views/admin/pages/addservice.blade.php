@@ -10,16 +10,11 @@
     </ul>
 </div>
 @endif
-@if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-    @endif
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>User Detail Form</h5>
+                    <h5>Service Form</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -41,36 +36,34 @@
                 <div class="ibox-content">
                     <form method="post" class="form-horizontal" action="">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="form-group"><label class="col-sm-2 control-label">First name</label>
+                        <div class="form-group"><label class="col-sm-2 control-label">Service No</label>
 
-                            <div class="col-sm-10"><input type="text" name="firstname" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" name="service_no" class="form-control"></div>
                         </div>
 
                         <div class="hr-line-dashed"></div>
-                        <div class="form-group"><label class="col-sm-2 control-label">Last name</label>
+                        <div class="form-group"><label class="col-sm-2 control-label">User ID</label>
 
-                            <div class="col-sm-10"><input type="text" name="lastname" class="form-control"></div>
+                            <div class="col-sm-10">
+                            <select class="form-control m-b" id="user" name="user_id">
+                                    <option>User Id</option> 
+                                    @foreach($getUserId as $value)
+                                    <option value="{{ $value['id'] }}">{{ $value['firstname'] }} {{ $value['lastname'] }}</option>
+                                    @endforeach
+                                </select>         
+                            </div>
                         </div>
 
-                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Email</label>
+                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Vehicle No</label>
 
-                            <div class="col-sm-10"><input type="email" name="email" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" name="vehicle_no" class="form-control"></div>
                         </div>
 
-                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Username</label>
+                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Address</label>
 
-                            <div class="col-sm-10"><input type="text" name="username" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" name="address" class="form-control"></div>
                         </div>
-
-                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Password</label>
-
-                            <div class="col-sm-10"><input type="password" name="password" class="form-control"></div>
-                        </div>
-
-                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Mobile</label>
-
-                            <div class="col-sm-10"><input type="text" name="mobile" class="form-control"></div>
-                        </div>
+                        
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">

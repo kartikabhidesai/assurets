@@ -26,8 +26,6 @@ class Users extends Model{
     }
     
     public function updateData($request, $id){
-        
-        
        
         $update_res = Users::where('id',$id)->update([
             'firstname' => $request['firstname'],
@@ -39,6 +37,11 @@ class Users extends Model{
         return $update_res;
                 
        
+    }
+    
+    public function getUserId(){
+        $result = Users::get();
+        return $result;
     }
     
     
