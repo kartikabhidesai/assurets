@@ -48,7 +48,7 @@
                                         <td>{{ $value['user_id'] }}</td>
                                         <td>{{ $value['vehicle_no'] }}</td>
                                         <td>{{ $value['address'] }}</td>
-                                        <td><a href="{{ route('deleteservice',['id'=>$value['id']]) }}">Delete</a></td>
+                                        <td><a class="delete" href="{{ route('deleteservice',['id'=>$value['id']]) }}">Delete</a></td>
                                         <td><a href="{{ route('editservice',['id'=>$value['id']]) }}">Edit</a></td>
                                     </tr>
                                     @endforeach
@@ -58,7 +58,7 @@
                             </table>
                         </div>
                         <div class="text-center">
-                           
+                          {{ $getUserServices->links() }} 
                         </div>
                     </div>
                 </div>

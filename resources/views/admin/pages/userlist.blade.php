@@ -50,7 +50,7 @@
                                         <td>{{ $value['email'] }}</td>
                                         <td>{{ $value['username'] }}</td>
                                         <td>{{ $value['mobile'] }}</td>
-                                        <td><a href="{{ route('delete',['id'=>$value['id']]) }}">Delete</a></td>
+                                        <td><a class="delete" href="{{ route('delete',['id'=>$value['id']]) }}">Delete</a></td>
                                         <td><a href="{{ route('edituser',['id'=>$value['id']]) }}">Edit</a></td>
                                     </tr>
                                     @endforeach

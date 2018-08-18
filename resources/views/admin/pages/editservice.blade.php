@@ -39,18 +39,13 @@
                         <input type="hidden" name="id" value="{{ $getServiceData['id'] }}">
                         <div class="form-group"><label class="col-sm-2 control-label">Service No</label>
 
-                            <div class="col-sm-10"><input type="text" value="{{ $getServiceData['service_no'] }}" name="service_no" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" disabled="disabled" value="{{ $getServiceData['service_no'] }}" name="service_no" class="form-control"></div>
                         </div>
 
                         <div class="hr-line-dashed"></div>
-                        <div class="form-group"><label class="col-sm-2 control-label">User ID</label>
+                       <div class="form-group"><label class="col-sm-2 control-label">User Id</label>
 
-                            <div class="col-sm-10">
-                            <select class="form-control m-b" id="user" name="user_id">
-                                    <option>{{ $getServiceData['user_id'] }}</option>
-
-                                </select>         
-                            </div>
+                            <div class="col-sm-10"><input type="text" disabled="disabled" value="{{ $getServiceData['user_id'] }}" name="user_id" class="form-control"></div>
                         </div>
 
                         <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Vehicle No</label>

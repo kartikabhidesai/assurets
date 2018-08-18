@@ -39,6 +39,11 @@
 
     <script>
         $(document).ready(function() {
+          $(".delete").click(function(){
+           if (!confirm("Are you sure want to delete")){
+           return false;
+            }
+          });
             setTimeout(function() {
                 toastr.options = {
                     closeButton: true,

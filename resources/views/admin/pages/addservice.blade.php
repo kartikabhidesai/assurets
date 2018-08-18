@@ -10,6 +10,11 @@
     </ul>
 </div>
 @endif
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -38,7 +43,7 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group"><label class="col-sm-2 control-label">Service No</label>
 
-                            <div class="col-sm-10"><input type="text" name="service_no" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" value="{{ uniqid() }}" name="service_no" class="form-control"></div>
                         </div>
 
                         <div class="hr-line-dashed"></div>
@@ -46,7 +51,6 @@
 
                             <div class="col-sm-10">
                             <select class="form-control m-b" id="user" name="user_id">
-                                    <option>User Id</option> 
                                     @foreach($getUserId as $value)
                                     <option value="{{ $value['id'] }}">{{ $value['firstname'] }} {{ $value['lastname'] }}</option>
                                     @endforeach

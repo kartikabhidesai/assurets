@@ -23,7 +23,7 @@ class Service extends Model {
 
     public function getServices($perPage) {
 
-        $result = Service::select('*')->paginate($perPage);
+        $result = Service::paginate($perPage);
         return $result;
     }
 

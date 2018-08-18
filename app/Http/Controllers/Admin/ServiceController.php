@@ -19,7 +19,6 @@ class ServiceController extends Controller {
         if ($request->isMethod('post')) {
 
             $validator = validator::make($request->all(), [
-                        'service_no' => 'required',
                         'user_id' => 'required',
                         'vehicle_no' => 'required',
                         'address' => 'required',
@@ -36,7 +35,7 @@ class ServiceController extends Controller {
 
             $data['insertService'] = $insertService;
 
-            return redirect('services');
+            return redirect()->back()->with('message','Service inserted');
         }
 
         $userid = new Users;
