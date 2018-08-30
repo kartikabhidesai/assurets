@@ -33,9 +33,13 @@
                                     <tr>
                                         <th>NO</th>
                                         <th>Service No</th>
-                                        <th>User Id</th>
                                         <th>Vehicle No</th>
+                                        <th>Owner name</th>
+                                        <th>Mobile</th>
+                                        <th>Location</th>
+                                        <th>Insurer</th>
                                         <th>Address</th>
+                                        <th>Executive</th>
                                         <th>Delete</th>
                                         <th>Edit</th>
                                     </tr>
@@ -45,9 +49,13 @@
                                     <tr>
                                         <td>{{ $value['id'] }}</td>
                                         <td>{{ $value['service_no'] }}</td>
-                                        <td>{{ $value['user_id'] }}</td>
-                                        <td>{{ $value['vehicle_no'] }}</td>
-                                        <td>{{ $value['address'] }}</td>
+                                         <td>{{ $value['vehicle_no'] }}</td>
+                                         <td>{{ $value['owner_name'] }}</td>
+                                         <td>{{ $value['owner_mobile'] }}</td>
+                                         <td>{{ $value['location'] }}</td>
+                                         <td>{{ $value['insurer'] }}</td>
+                                         <td>{{ $value['address'] }}</td>
+                                        <td>{{ $value['firstname'] }} {{ $value['lastname'] }}</td>
                                         <td><a class="delete" href="{{ route('deleteservice',['id'=>$value['id']]) }}">Delete</a></td>
                                         <td><a href="{{ route('editservice',['id'=>$value['id']]) }}">Edit</a></td>
                                     </tr>

@@ -13,7 +13,7 @@ class Users extends Model{
 
     public function getUserList($perPage){
         
-        $result = Users::select('*')->where('role','user')->paginate($perPage);
+        $result = Users::select('*')->where('role_type','user')->paginate($perPage);
         return $result;
         
     }

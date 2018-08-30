@@ -35,10 +35,14 @@
 
     <!-- Toastr -->
     <!--<script src="admin/js/plugins/toastr/toastr.min.js"></script>-->
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
     <script>
         $(document).ready(function() {
+          $('[data-toggle="tooltip"]').tooltip(); 
           $(".delete").click(function(){
            if (!confirm("Are you sure want to delete")){
            return false;

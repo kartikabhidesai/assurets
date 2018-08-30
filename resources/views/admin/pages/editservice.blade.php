@@ -43,9 +43,22 @@
                         </div>
 
                         <div class="hr-line-dashed"></div>
-                       <div class="form-group"><label class="col-sm-2 control-label">User Id</label>
+                        
+                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Owner Name</label>
 
-                            <div class="col-sm-10"><input type="text" disabled="disabled" value="{{ $getServiceData['user_id'] }}" name="user_id" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" name="owner_name" value="{{ $getServiceData['owner_name'] }}" class="form-control"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Owner Mobile</label>
+
+                            <div class="col-sm-10"><input type="text" name="owner_mobile" value="{{ $getServiceData['owner_mobile'] }}" class="form-control"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Location</label>
+
+                            <div class="col-sm-10"><input type="text" name="location" value="{{ $getServiceData['location'] }}" class="form-control"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Insurer</label>
+
+                            <div class="col-sm-10"><input type="text" name="insurer" value="{{ $getServiceData['insurer'] }}" class="form-control"></div>
                         </div>
 
                         <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Vehicle No</label>
@@ -56,6 +69,11 @@
                         <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Address</label>
 
                             <div class="col-sm-10"><input type="text" value="{{ $getServiceData['address'] }}" name="address" class="form-control"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                         <div class="form-group"><label class="col-sm-2 control-label">Executive</label>
+
+                            <div class="col-sm-10"><input type="text" disabled="disabled" value="{{ $getServiceData['user_id'] }}" name="user_id" class="form-control"></div>
                         </div>
                         
                         <div class="hr-line-dashed"></div>

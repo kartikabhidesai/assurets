@@ -19,12 +19,16 @@ class ServiceController extends Controller {
         if ($request->isMethod('post')) {
 
             $validator = validator::make($request->all(), [
-                        'user_id' => 'required',
                         'vehicle_no' => 'required',
+                        'owner_name' => 'required',
+                        'owner_mobile' => 'required|numeric|min:10',
+                        'location' => 'required',
+                        'insurer' => 'required',
                         'address' => 'required',
+                        'user_id' => 'required',
             ]);
             if ($validator->fails()) {
-                return redirect('register')
+                return redirect('addservice')
                                 ->withErrors($validator)
                                 ->withInput();
             }
@@ -49,11 +53,11 @@ class ServiceController extends Controller {
 
     public function services() {
 
-        $perPage = 2;
+        $perPage = 15;
 
         $services = new service;
 
-        $getUserServices = $services->getServices($perPage);
+        $getUserServices = $services->getServices();
 
         $data['getUserServices'] = $getUserServices;
 
@@ -77,14 +81,12 @@ class ServiceController extends Controller {
         if ($request->isMethod('post')) {
 
             $validator = validator::make($request->all(), [
-                        'service_no' => 'required',
-                        'user_id' => 'required',
                         'vehicle_no' => 'required',
                         'address' => 'required'
             ]);
 
             if ($validator->fails()) {
-                return redirect('editservice')->withErrors($validator)->withInput();
+                return redirect('editservice'.'/'.$id)->withErrors($validator)->withInput();
             }
 
             $serviceObj = new Service;
@@ -92,6 +94,8 @@ class ServiceController extends Controller {
             $editService = $serviceObj->editService($request, $id);
 
             $data['editService'] = $editService;
+            
+//            print_r($editService);exit;
 
             return redirect('services');
         }

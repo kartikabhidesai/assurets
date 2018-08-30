@@ -50,7 +50,7 @@ class LoginController extends Controller {
                 'username' => $username,
                 'password' => $password,
                 'mobile' => $mobile,
-                'role' => 'user',
+                'role_type' => 'user',
             ]);
             return redirect('login');
         }
@@ -92,7 +92,7 @@ class LoginController extends Controller {
     }
 
     public function userlist() {
-        $perPage = 2;
+        $perPage = 15;
         $userlist = new Users;
         $getUserlistdata = $userlist->getUserList($perPage);
         $data['getUserlistdata'] = $getUserlistdata;
@@ -131,6 +131,7 @@ class LoginController extends Controller {
             $email = $request['email'];
             $username = $request['username'];
             $mobile = $request['mobile'];
+            $role_type = $request['role_type'];
 
             $updateInputs = new Users;
 
@@ -174,6 +175,7 @@ class LoginController extends Controller {
             $username = $request['username'];
             $password = Hash::make($request['password']);
             $mobile = $request['mobile'];
+            $role_type = $request['role_type'];
 
             DB::table('users')->Insert([
                 'firstname' => $firstname,
@@ -182,7 +184,7 @@ class LoginController extends Controller {
                 'username' => $username,
                 'password' => $password,
                 'mobile' => $mobile,
-                'role' => 'user',
+                'role_type' => $role_type,
             ]);
             return redirect()->back()->with('message', 'User Inserted Successfully');
         }

@@ -45,9 +45,34 @@
 
                             <div class="col-sm-10"><input type="text" value="{{ uniqid() }}" name="service_no" class="form-control"></div>
                         </div>
+                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Vehicle No</label>
 
+                            <div class="col-sm-10"><input type="text" name="vehicle_no" class="form-control"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Owner Name</label>
+
+                            <div class="col-sm-10"><input type="text" name="owner_name" class="form-control"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Owner Mobile</label>
+
+                            <div class="col-sm-10"><input type="text" name="owner_mobile" class="form-control"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Location</label>
+
+                            <div class="col-sm-10"><input type="text" name="location" class="form-control"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Insurer</label>
+
+                            <div class="col-sm-10"><input type="text" name="insurer" class="form-control"></div>
+                        </div>
+                        
+                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Address</label>
+
+                            <div class="col-sm-10"><input type="text" name="address" class="form-control"></div>
+                        </div>
                         <div class="hr-line-dashed"></div>
-                        <div class="form-group"><label class="col-sm-2 control-label">User ID</label>
+
+                        <div class="form-group"><label class="col-sm-2 control-label">Executive</label>
 
                             <div class="col-sm-10">
                             <select class="form-control m-b" id="user" name="user_id">
@@ -57,18 +82,8 @@
                                 </select>         
                             </div>
                         </div>
-
-                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Vehicle No</label>
-
-                            <div class="col-sm-10"><input type="text" name="vehicle_no" class="form-control"></div>
-                        </div>
-
-                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Address</label>
-
-                            <div class="col-sm-10"><input type="text" name="address" class="form-control"></div>
-                        </div>
-                        
                         <div class="hr-line-dashed"></div>
+
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <button class="btn btn-primary" name="submit" type="submit">Add Details</button>

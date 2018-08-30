@@ -72,6 +72,16 @@
                             <div class="col-sm-10"><input type="text" name="mobile" class="form-control"></div>
                         </div>
                         <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">Role Type</label>
+
+                            <div class="col-sm-10">
+                            <select class="form-control m-b" name="role_type">
+                                    <option>Company</option>
+                                    <option>User</option>
+                                </select>         
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <button class="btn btn-primary" name="submit" type="submit">Add Details</button>
