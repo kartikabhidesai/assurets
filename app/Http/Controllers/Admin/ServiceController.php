@@ -57,7 +57,7 @@ class ServiceController extends Controller {
 
         $services = new service;
 
-        $getUserServices = $services->getServices();
+        $getUserServices = $services->getServices($perPage);
 
         $data['getUserServices'] = $getUserServices;
 

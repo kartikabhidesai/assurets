@@ -54,6 +54,17 @@
                             <div class="col-sm-10"><input type="text" name="mobile" value="{{ $getupdateData['mobile'] }}" class="form-control"></div>
                         </div>
                         <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">Role Type</label>
+
+                            <div class="col-sm-10">
+                            <select class="form-control m-b" name="role_type">
+                                @foreach($getupdateData as $value)
+                                <option value="{{ $value['id'] }}">{{ $value['role_type'] }}</option>
+                                @endforeach
+                                </select>         
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <button class="btn btn-primary" name="submit" type="submit">Update</button>
