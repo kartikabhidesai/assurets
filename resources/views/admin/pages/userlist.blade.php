@@ -26,6 +26,7 @@
                                         <th>Email</th>
                                         <th>Username</th>
                                         <th>Mobile</th>
+                                        <th>Role type</th>
                                         <th>Delete</th>
                                         <th>Edit</th>
                                     </tr>
@@ -39,6 +40,7 @@
                                         <td>{{ $value['email'] }}</td>
                                         <td>{{ $value['username'] }}</td>
                                         <td>{{ $value['mobile'] }}</td>
+                                        <td>{{ $value['role_type'] }}</td>
                                         <td><a class="delete" href="{{ route('delete',['id'=>$value['id']]) }}">Delete</a></td>
                                         <td><a href="{{ route('edituser',['id'=>$value['id']]) }}">Edit</a></td>
                                     </tr>

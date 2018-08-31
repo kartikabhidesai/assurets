@@ -12,8 +12,8 @@ class Users extends Model{
 
 
     public function getUserList($perPage){
-        
-        $result = Users::select('*')->where('role_type','user')->orderBy('id','DESC')->paginate($perPage);
+                  
+        $result = Users::select('*')->orderBy('id','DESC')->paginate($perPage);
         return $result;
         
     }
