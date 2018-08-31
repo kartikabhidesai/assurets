@@ -1,4 +1,7 @@
-        <nav class="navbar-default navbar-static-side" role="navigation">
+@php
+$currRoute = Route::current()->getName();
+@endphp
+<nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
@@ -19,10 +22,10 @@
                             IN+
                         </div>
                     </li>
-                     <li>
+                    <li class="{{ ($currRoute == 'userlist') || ($currRoute == 'userform') || ($currRoute == 'edituser')   ? 'active' : '' }} ">
                         <a href="{{ url('userlist') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Users</span></a>
                     </li>
-                    <li>
+                    <li  class="{{ ($currRoute == 'services') || ($currRoute == 'addservice') || ($currRoute == 'editservice')   ? 'active' : '' }} ">
                         <a href="{{ url('services') }}"><i class="fa fa-diamond"></i> <span class="nav-label">services</span></a>
                     </li>
                 </ul>

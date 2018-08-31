@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>INSPINIA | @yield('title')</title>
+    <title>ASSURETS | @yield('title')</title>
 
     <link href="{{ url('admin/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url('admin/font-awesome/css/font-awesome.css') }}" rel="stylesheet">

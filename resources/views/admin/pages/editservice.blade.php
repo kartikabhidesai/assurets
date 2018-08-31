@@ -1,4 +1,5 @@
-@extends('admin.mainlayouts.index')      
+@extends('admin.mainlayouts.index')
+@section('title','Edit-service-form')
 @section('content')
 <div class="wrapper wrapper-content animated fadeInRight">
     @if ($errors->any())

@@ -53,6 +53,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'company' => [
+            'driver' => 'session',
+            'provider' => 'company',
+        ],
     ],
 
     /*
@@ -78,6 +82,10 @@ return [
             'model' => App\User::class,
         ],
         'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
+        'company' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],

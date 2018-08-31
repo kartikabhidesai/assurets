@@ -75,9 +75,13 @@ class LoginController extends Controller {
             $username = $request['username'];
             $password = $request['password'];
 
-            if (Auth::guard('admin')->attempt(['username' => $username, 'password' => $password, 'role' => 'admin'])) {
-                return view('admin.pages.dashboard');
-            } else if (Auth::guard('users')->attempt(['username' => $username, 'password' => $password, 'role' => 'user'])) {
+            if (Auth::guard('admin')->attempt(['username' => $username, 'password' => $password, 'role_type' => 'admin'])) {
+                return redirect()->intended('dashboard');
+            }
+            else if(Auth::guard('company')->attempt(['username'=>$username,'password'=>$password,'role_type'=>'company'])){
+                return redirect()->intended('dashboard');
+            }
+            else if (Auth::guard('users')->attempt(['username' => $username, 'password' => $password, 'role_type' => 'user'])) {
                 return redirect('/');
             } else {
                 return redirect()->back()->with('message', 'Unauthorized user');
@@ -88,7 +92,7 @@ class LoginController extends Controller {
     }
 
     public function dashboard() {
-        view('admin.pages.dashboard');
+        return view('admin.pages.dashboard');
     }
 
     public function userlist() {
