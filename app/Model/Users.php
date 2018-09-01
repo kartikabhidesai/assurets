@@ -40,7 +40,7 @@ class Users extends Model{
     }
     
     public function getUserId(){
-        $result = Users::get();
+        $result = Users::where('role_type','user')->get();
         return $result;
     }
     

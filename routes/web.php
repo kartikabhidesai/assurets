@@ -28,6 +28,8 @@ Route::match(['get','post'],'/deleteservice/{id}',(['as'=>'deleteservice','uses'
 Route::match(['get','post'],'/editservice/{id}',(['as'=>'editservice','uses'=>'admin\ServiceController@editservice']));
 
 
+Route::match(['get','post'],'/company-dashboard',(['as'=>'dashboard','uses'=>'admin\LoginController@companydashboard']));
+Route::match(['get','post'],'/company-list',(['as'=>'company-list','uses'=>'company\CompanyController@companylist']));
 
 Route::match(['get','post'],'/',(['as'=>'index','uses'=>'front\MainController@index']));
 Route::match(['get','post'],'/service',(['as'=>'service','uses'=>'front\MainController@service']));

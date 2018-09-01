@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Model;
+
+use Illuminate\Database\Eloquent\Model;
+use DB;
+
+class Company extends Model{
+    
+    public $timestamps = false;
+    
+    protected $table = 'services';
+    
+    public function getCompanyList($perPage){
+        
+        $result = Company::join('users','users.id','=','services.id')
+                           -> select('services.*','users.firstname','users.lastname')
+                           ->orderBy('id','DESC')
+                           ->paginate($perPage);
+        return $result;
+        
+    }
+}

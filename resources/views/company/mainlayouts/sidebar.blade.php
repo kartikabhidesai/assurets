@@ -22,12 +22,10 @@ $currRoute = Route::current()->getName();
                             IN+
                         </div>
                     </li>
-                    <li class="{{ ($currRoute == 'userlist') || ($currRoute == 'userform') || ($currRoute == 'edituser')   ? 'active' : '' }} ">
-                        <a href="{{ url('userlist') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Users</span></a>
+                    <li class="{{ ($currRoute == 'company-list')  ? 'active' : '' }} ">
+                        <a href="{{ url('company-list') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Services</span></a>
                     </li>
-                    <li  class="{{ ($currRoute == 'services') || ($currRoute == 'addservice') || ($currRoute == 'editservice')   ? 'active' : '' }} ">
-                        <a href="{{ url('services') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Services</span></a>
-                    </li>
+                    
                 </ul>
             </div>
         </nav>

@@ -79,7 +79,7 @@ class LoginController extends Controller {
                 return redirect()->intended('dashboard');
             }
             else if(Auth::guard('company')->attempt(['username'=>$username,'password'=>$password,'role_type'=>'company'])){
-                return redirect()->intended('dashboard');
+                return redirect()->intended('company-dashboard');
             }
             else if (Auth::guard('users')->attempt(['username' => $username, 'password' => $password, 'role_type' => 'user'])) {
                 return redirect('/');
@@ -93,6 +93,10 @@ class LoginController extends Controller {
 
     public function dashboard() {
         return view('admin.pages.dashboard');
+    }
+    
+    public function companydashboard(){
+        return view('company.pages.company-dashboard');
     }
 
     public function userlist() {
