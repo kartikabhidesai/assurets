@@ -27,7 +27,7 @@ class Service extends Model {
 
     public function getServices($perPage) {
 
-        $result = Service::join('users','users.id','=','services.id')
+        $result = Service::join('users','users.id','=','services.user_id')
                            -> select('services.*','users.firstname','users.lastname')
                            ->orderBy('id','DESC')
                            ->paginate($perPage);

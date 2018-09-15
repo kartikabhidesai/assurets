@@ -105,5 +105,12 @@ class ServiceController extends Controller {
         $data['getServiceData'] = $getServiceData;
         return view('admin.pages.editservice', $data);
     }
+    public function detailservice(Request $request, $id) {
+
+        $serviceData = new Service;
+        $getServiceData = $serviceData->getServiceData($id);
+        $data['getServiceData'] = $getServiceData;
+        return view('admin.pages.detailservice', $data);
+    }
 
 }

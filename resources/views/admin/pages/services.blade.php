@@ -31,6 +31,7 @@
                                         <th>Executive</th>
                                         <th>Delete</th>
                                         <th>Edit</th>
+                                        <th>Detail</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,6 +48,7 @@
                                         <td>{{ $value['firstname'] }} {{ $value['lastname'] }}</td>
                                         <td><a class="delete" href="{{ route('deleteservice',['id'=>$value['id']]) }}">Delete</a></td>
                                         <td><a href="{{ route('editservice',['id'=>$value['id']]) }}">Edit</a></td>
+                                        <td><a href="{{ route('detailservice',['id'=>$value['id']]) }}">Detail</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
