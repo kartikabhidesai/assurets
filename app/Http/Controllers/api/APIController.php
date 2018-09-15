@@ -42,7 +42,7 @@ class APIController extends Controller {
             if (Auth::guard('users')->attempt(['username' => $username, 'password' => $password, 'role_type' => 'user'])) {
                 $result['status'] = 'success';
                 $result['message'] = 'Login Successfully.';
-                $result['data'] = array();
+                $result['data'] = Auth()->guard('users')->user();
                 echo json_encode($result);
                 exit;
             } else {
