@@ -57,8 +57,34 @@ class APIController extends Controller {
        
     }
 
-    public function dashboard() {
-        return view('admin.pages.dashboard');
+    public function getUserService(Request $request) {
+        
+        $validator = validator::make($request->all(), [
+                        'userid' => 'required',
+            ]);
+            if ($validator->fails()) {
+                $result['status'] = 'fail';
+                $result['message'] = 'Userid is required.';
+                $result['data'] = array();
+                echo json_encode($result);
+                exit;
+            }
+        $userId = $request['userid'];   
+        $serviceObj = new Service;
+        $insertService = $serviceObj->getUserService($userId);
+       
+        if(!empty($insertService)){
+            $result['status'] = 'success';
+            $result['message'] = 'Data found successfully.';
+            $result['data'] = $insertService;
+        }else{
+            $result['status'] = 'success';
+            $result['message'] = 'Data not found.';
+            $result['data'] = array();
+        }
+        
+        echo json_encode($result);
+        exit;
     }
     
     public function companydashboard(){

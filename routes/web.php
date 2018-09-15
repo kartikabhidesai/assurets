@@ -39,3 +39,4 @@ Route::match(['get','post'],'/blog',(['as'=>'blog','uses'=>'front\MainController
 Route::match(['get','post'],'/contact',(['as'=>'contact','uses'=>'front\MainController@contact']));
 
 Route::match(['get','post'],'/api/login',(['as'=>'api-login','uses'=>'api\APIController@login']));
+Route::match(['get','post'],'/api/getUserService',(['as'=>'api-getuserservice','uses'=>'api\APIController@getUserService']));

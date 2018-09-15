@@ -56,5 +56,8 @@ class Service extends Model {
     public function getServiceData($id){
         return Service::where('id',$id)->first();
     }
+    public function getUserService($id){
+        return Service::where('user_id',$id)->where('status','inprocess')->get()->toArray();
+    }
 
 }
