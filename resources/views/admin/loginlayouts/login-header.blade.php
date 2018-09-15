@@ -5,10 +5,10 @@
 
     <title>INSPINIA | @yield('title')</title>
 
-    <link href="admin/css/bootstrap.min.css" rel="stylesheet">
-    <link href="admin/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="public/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/admin/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <link href="admin/css/animate.css" rel="stylesheet">
-    <link href="admin/css/style.css" rel="stylesheet">
+    <link href="public/admin/css/animate.css" rel="stylesheet">
+    <link href="public/admin/css/style.css" rel="stylesheet">
 
 </head>

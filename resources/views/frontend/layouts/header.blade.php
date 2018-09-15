@@ -35,20 +35,20 @@
 	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
 	
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="{{ url('frontend/css/animate.css') }}">
+	<link rel="stylesheet" href="{{ url('public/frontend/css/animate.css') }}">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="{{ url('frontend/css/icomoon.css') }}">
+	<link rel="stylesheet" href="{{ url('public/frontend/css/icomoon.css') }}">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="{{ url('frontend/css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ url('public/frontend/css/bootstrap.css') }}">
 
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="{{ url('frontend/css/magnific-popup.css') }}">
+	<link rel="stylesheet" href="{{ url('public/frontend/css/magnific-popup.css') }}">
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="{{ url('frontend/css/style.css') }}">
+	<link rel="stylesheet" href="{{ url('public/frontend/css/style.css') }}">
 
 	<!-- Modernizr JS -->
-	<script src="{{ url('frontend/js/modernizr-2.6.2.min.js') }}"></script>
+	<script src="{{ url('public/frontend/js/modernizr-2.6.2.min.js') }}"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>

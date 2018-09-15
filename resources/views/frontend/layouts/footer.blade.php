@@ -3,17 +3,17 @@
 	</div>
 	
 	<!-- jQuery -->
-	<script src="{{ url('frontend/js/jquery.min.js') }}"></script>
+	<script src="{{ url('public/frontend/js/jquery.min.js') }}"></script>
 	<!-- jQuery Easing -->
-	<script src="{{ url('frontend/js/jquery.easing.1.3.js') }}"></script>
+	<script src="{{ url('public/frontend/js/jquery.easing.1.3.js') }}"></script>
 	<!-- Bootstrap -->
-	<script src="{{ url('frontend/js/bootstrap.min.js') }}"></script>
+	<script src="{{ url('public/frontend/js/bootstrap.min.js') }}"></script>
 	<!-- Waypoints -->
-	<script src="{{ url('frontend/js/jquery.waypoints.min.js') }}"></script>
+	<script src="{{ url('public/frontend/js/jquery.waypoints.min.js') }}"></script>
 	<!-- countTo -->
-	<script src="{{ url('frontend/js/jquery.countTo.js') }}"></script>
+	<script src="{{ url('public/frontend/js/jquery.countTo.js') }}"></script>
 	<!-- Magnific Popup -->
-	<script src="{{ url('frontend/js/jquery.magnific-popup.min.js') }}"></script>
-	<script src="{{ url('frontend/js/magnific-popup-options.js') }}"></script>
+	<script src="{{ url('public/frontend/js/jquery.magnific-popup.min.js') }}"></script>
+	<script src="{{ url('public/frontend/js/magnific-popup-options.js') }}"></script>
 	<!-- Main -->
-	<script src="{{ url('frontend/js/main.js') }}"></script>
+	<script src="{{ url('public/frontend/js/main.js') }}"></script>
