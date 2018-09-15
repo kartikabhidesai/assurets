@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use \Validator;
 use App\Model\Users;
 use App\Model\Service;
+use App\Model\ServicePhoto;
 use DB;
 
 class ServiceController extends Controller {
@@ -105,11 +106,16 @@ class ServiceController extends Controller {
         $data['getServiceData'] = $getServiceData;
         return view('admin.pages.editservice', $data);
     }
+    
     public function detailservice(Request $request, $id) {
 
         $serviceData = new Service;
         $getServiceData = $serviceData->getServiceData($id);
         $data['getServiceData'] = $getServiceData;
+        
+        $objServicePhotoData = new ServicePhoto;
+        $arrServicePhotoData = $objServicePhotoData->getServicePhotoData($id);
+        $data['getServicePhotoDatas'] = $arrServicePhotoData;
         return view('admin.pages.detailservice', $data);
     }
 

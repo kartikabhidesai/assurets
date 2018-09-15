@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model;
+use App\Model\ServicePhoto;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
@@ -60,4 +61,24 @@ class Service extends Model {
         return Service::where('user_id',$id)->where('status','inprocess')->get()->toArray();
     }
 
+    public function uploadServicePic($request)
+    {
+        $destinationPath = public_path() . '/servicephoto/';
+
+        $file1 = $request->file('servicephoto');
+       
+        $file_name1 = '';
+        $file_name2 = '';
+        if (!empty($file1)) {
+            $time = time();
+            $file_name1 = $time .'-'. $file1->getClientOriginalName();
+            $file1->move($destinationPath, $file_name1);
+        }
+        $serviceId = $request->input('service_id');
+        $objUser = new ServicePhoto;
+        $objUser->service_id  = $serviceId;
+        $objUser->name = $file_name1;
+        $objUser->save();
+        return TRUE;
+    }
 }

@@ -91,32 +91,11 @@
                 </div>
                 <div class="ibox-content">
                     <div class="row">
+                        @foreach($getServicePhotoDatas as $getServicePhotoData)
                         <div class="form-group col-md-3">
-                            <img style="width: 150px;" src="{{ url('/public/servicephoto/work-2.jpg') }}">
+                            <img style="width: 150px;" src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}">
                         </div>
-                        
-                        <div class="form-group col-md-3">
-                            <img style="width: 150px;" src="{{ url('/public/servicephoto/work-3.jpg') }}">
-                        </div>
-                        
-                        <div class="form-group col-md-3">
-                            <img style="width: 150px;" src="{{ url('/public/servicephoto/work-4.jpg') }}">
-                        </div>
-                        
-                        <div class="form-group col-md-3">
-                            <img style="width: 150px;" src="{{ url('/public/servicephoto/work-5.jpg') }}">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <img style="width: 150px;" src="{{ url('/public/servicephoto/work-6.jpg') }}">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <img style="width: 150px;" src="{{ url('/public/servicephoto/work-3.jpg') }}">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <img style="width: 150px;" src="{{ url('/public/servicephoto/work-2.jpg') }}">
-                        </div>
-                      
-                        
+                        @endforeach
                         
                     </div>
                 </div>
