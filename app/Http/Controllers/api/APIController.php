@@ -94,7 +94,7 @@ class APIController extends Controller {
               if($usersaved)
                 {
                     $return['status'] = 'success';
-                    $return['message'] = 'Your profile pic change successfully.';
+                    $return['message'] = 'Service photo successfully.';
                    // $return['redirect'] = 'login';
                     echo json_encode($return);
                     exit;
@@ -102,6 +102,20 @@ class APIController extends Controller {
           }
     }
 
+    public function saveService(Request $request){
+        if ($request->isMethod('post')) {
+              $serviceObj = new Service;
+              $usersaved = $serviceObj->saveService($request);
+              if($usersaved)
+                {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Service successfully.';
+                   // $return['redirect'] = 'login';
+                    echo json_encode($return);
+                    exit;
+                }
+          }
+    }
     
 
 }

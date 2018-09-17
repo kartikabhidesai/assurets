@@ -41,4 +41,5 @@ Route::match(['get','post'],'/contact',(['as'=>'contact','uses'=>'front\MainCont
 
 Route::match(['get','post'],'/api/login',(['as'=>'api-login','uses'=>'api\APIController@login']));
 Route::match(['get','post'],'/api/getUserService',(['as'=>'api-getuserservice','uses'=>'api\APIController@getUserService']));
+Route::match(['get','post'],'/api/saveService',(['as'=>'api-save-service','uses'=>'api\APIController@saveService']));
 Route::match(['get','post'],'/api/postServicePhoto',(['as'=>'api-postservicephoto','uses'=>'api\APIController@postServicePhoto']));
