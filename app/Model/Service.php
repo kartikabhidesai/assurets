@@ -30,9 +30,10 @@ class Service extends Model {
         $id = $request->input('service_id');
                 
         $result = Service::where('id',$id)->update([
-            'licence_no'=>$request['licence_no'],
-            'car_number'=>$request['car_number'],
-            'rc_book_no'=>$request['rc_book_no'],
+//            'licence_no'=>$request['licence_no'],
+            'engine_no'=>$request['engine_no'],
+            'chession_no'=>$request['chession_no'],
+//            'rc_book_no'=>$request['rc_book_no'],
        ]);
         return $request;
     }
