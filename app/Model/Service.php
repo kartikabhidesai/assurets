@@ -37,6 +37,15 @@ class Service extends Model {
        ]);
         return $request;
     }
+    public function inreportService($request) {
+
+        $id = $request->input('service_id');
+                
+        $result = Service::where('id',$id)->update([
+            'status'=>'inreport',
+       ]);
+        return $request;
+    }
 
     public function getServices($perPage) {
 

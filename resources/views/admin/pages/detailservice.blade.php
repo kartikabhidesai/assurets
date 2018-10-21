@@ -92,9 +92,26 @@
                 <div class="ibox-content">
                     <div class="row">
                         @foreach($getServicePhotoDatas as $getServicePhotoData)
+                        
+                        @php
+                            $data = explode(".",$getServicePhotoData['name']);
+                            $lastdata = end($data);
+                        @endphp
+                        @if($lastdata == 'mp4')
+                        <div class="form-group col-md-3">
+                            <video width="150" controls>
+                                <source src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}" type="video/mp4">
+                                <source src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}" type="video/ogg">
+                                Your browser does not support HTML5 video.
+                              </video>
+                        </div>
+                        
+                        
+                        @else
                         <div class="form-group col-md-3">
                             <img style="width: 150px;" src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}">
                         </div>
+                        @endif
                         @endforeach
                         
                     </div>

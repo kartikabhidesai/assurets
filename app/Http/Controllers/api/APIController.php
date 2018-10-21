@@ -117,5 +117,20 @@ class APIController extends Controller {
           }
     }
     
+    public function inreportService(Request $request){
+        if ($request->isMethod('post')) {
+              $serviceObj = new Service;
+              $usersaved = $serviceObj->inreportService($request);
+              if($usersaved)
+                {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Service update successfully.';
+                   // $return['redirect'] = 'login';
+                    echo json_encode($return);
+                    exit;
+                }
+          }
+    }
+    
 
 }
