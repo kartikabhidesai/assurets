@@ -43,3 +43,4 @@ Route::match(['get','post'],'/api/login',(['as'=>'api-login','uses'=>'api\APICon
 Route::match(['get','post'],'/api/getUserService',(['as'=>'api-getuserservice','uses'=>'api\APIController@getUserService']));
 Route::match(['get','post'],'/api/saveService',(['as'=>'api-save-service','uses'=>'api\APIController@saveService']));
 Route::match(['get','post'],'/api/postServicePhoto',(['as'=>'api-postservicephoto','uses'=>'api\APIController@postServicePhoto']));
+Route::match(['get','post'],'/api/inreportService',(['as'=>'api-inreportservice','uses'=>'api\APIController@inreportService']));
