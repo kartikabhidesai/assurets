@@ -126,22 +126,21 @@ class ServiceController extends Controller {
     }
     
     public function ajaxAction(Request $request){
-
          $action = $request->input('action');
-       // echo $action;exit;
+            
             switch ($action)
             {
-                 case 'datatableServices':
-                      $serviceObj = new Service;
-                      $serviceLists = $serviceObj->getDatatable($request);
-                      echo json_encode($serviceLists);
-                      break;
-                  case 'datatableUser':
-                      
-                      $usersObj = new Users;
-                      $serviceLists = $usersObj->getDatatable($request);
-                      echo json_encode($serviceLists);
-                      break;
+                case 'datatableServices':
+                    $serviceObj = new Service;
+                    $serviceLists = $serviceObj->getDatatable($request);
+                    echo json_encode($serviceLists);
+                    break;
+                  
+                case 'datatableUser':                      
+                    $usersObj = new Users;
+                    $serviceLists = $usersObj->getDatatable($request);
+                    echo json_encode($serviceLists);
+                    break;
             }
     }
 }

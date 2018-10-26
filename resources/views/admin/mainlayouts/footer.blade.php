@@ -1,5 +1,5 @@
     
-    <script src="{{ url('public/js/main.min.js') }}"></script>
+    
     <script src="{{ url('public/admin/js/jquery-3.1.1.min.js') }}"></script>
     <script src="{{ url('public/admin/js/bootstrap.min.js') }}"></script>
     <script src="{{ url('public/admin/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
@@ -50,7 +50,7 @@
         
         <script>
             jQuery(document).ready(function() {
-
+                
                 @if (!empty($funinit))
                     @foreach ($funinit as $value)
                         {{ $value }}

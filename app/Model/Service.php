@@ -119,8 +119,8 @@ class Service extends Model {
             8 => 'users.firstname',
         );
         
-         $query =Service::leftjoin('users', 'services.user_id', '=', 'users.id')           
-                ->groupBy('services.id');
+         $query =Service::leftjoin('users', 'services.user_id', '=', 'users.id');
+                //->groupBy('services.id');
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
             $searchVal = $requestData['search']['value'];
             $query->where(function($query) use ($columns, $searchVal, $requestData) {
