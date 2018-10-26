@@ -15,9 +15,9 @@
                 </div>
                 <div class="ibox-content">
                     <div id="rickshaw_scatterplot" class="rickshaw_graph">
-
+                       <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover dataTables-example" >
+                            <table class="table table-striped table-bordered table-hover dataTables-example" id="datatableUser">
                                 <thead>
                                     <tr>
                                         <th>NO</th>
@@ -25,34 +25,13 @@
                                         <th>Last name</th>
                                         <th>Email</th>
                                         <th>Username</th>
-                                        <th>Mobile</th>
+                                        <th>Mobile Number</th>
                                         <th>Role type</th>
-                                        <th>Delete</th>
-                                        <th>Edit</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach($getUserlistdata as $value)
-                                    <tr>
-                                        <td>{{ $value['id'] }} </td>
-                                        <td>{{ $value['firstname'] }} </td>
-                                        <td>{{ $value['lastname'] }}</td>
-                                        <td>{{ $value['email'] }}</td>
-                                        <td>{{ $value['username'] }}</td>
-                                        <td>{{ $value['mobile'] }}</td>
-                                        <td>{{ $value['role_type'] }}</td>
-                                        <td><a class="delete" href="{{ route('delete',['id'=>$value['id']]) }}">Delete</a></td>
-                                        <td><a href="{{ route('edituser',['id'=>$value['id']]) }}">Edit</a></td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                                <tfoot>
-                                </tfoot>
                             </table>
-                        </div>
-                        <div class="text-center">
-                            {{ $getUserlistdata->links() }}
-                        </div>
+                        </div>                        
                     </div>
                 </div>
             </div>

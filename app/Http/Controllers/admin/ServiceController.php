@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use \Validator;
+//use Validator;
 use App\Model\Users;
 use App\Model\Service;
 use App\Model\ServicePhoto;
 use DB;
+
+
 
 class ServiceController extends Controller {
 
@@ -55,14 +57,18 @@ class ServiceController extends Controller {
     public function services() {
 
         $perPage = 15;
-
         $services = new service;
-
         $getUserServices = $services->getServices($perPage);
-
         $data['getUserServices'] = $getUserServices;
-
-
+        $data['css'] = array('plugins/dataTables/datatables.min.css');
+        
+        $data['js'] = array(
+            'plugins/dataTables/datatables.min.js',
+            'services/services.js'
+        );
+        $data['funinit'] = array(
+            'Services.init()',
+        );
         return view('admin.pages.services', $data);
     }
 
@@ -118,5 +124,24 @@ class ServiceController extends Controller {
         $data['getServicePhotoDatas'] = $arrServicePhotoData;
         return view('admin.pages.detailservice', $data);
     }
+    
+    public function ajaxAction(Request $request){
 
+         $action = $request->input('action');
+       // echo $action;exit;
+            switch ($action)
+            {
+                 case 'datatableServices':
+                      $serviceObj = new Service;
+                      $serviceLists = $serviceObj->getDatatable($request);
+                      echo json_encode($serviceLists);
+                      break;
+                  case 'datatableUser':
+                      
+                      $usersObj = new Users;
+                      $serviceLists = $usersObj->getDatatable($request);
+                      echo json_encode($serviceLists);
+                      break;
+            }
+    }
 }

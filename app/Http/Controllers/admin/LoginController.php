@@ -104,7 +104,15 @@ class LoginController extends Controller {
         $userlist = new Users;
         $getUserlistdata = $userlist->getUserList($perPage);
         $data['getUserlistdata'] = $getUserlistdata;
-//        print_r($getUserlistdata);exit;
+        $data['css'] = array('plugins/dataTables/datatables.min.css');
+        
+         $data['js'] = array(
+            'plugins/dataTables/datatables.min.js',
+            'users/user.js'
+         );
+        $data['funinit'] = array(
+            'User.init()',
+        );
         return view('admin.pages.userlist', $data);
     }
 

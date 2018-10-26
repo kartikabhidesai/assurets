@@ -17,5 +17,13 @@
 
     <link href="{{ url('public/admin/css/animate.css') }}" rel="stylesheet">
     <link href="{{ url('public/admin/css/style.css') }}" rel="stylesheet">
-
+@if (!empty($css)) 
+        @foreach ($css as $value) 
+        <link rel="stylesheet" href="{{ url('public/css/'.$value) }}">
+        @endforeach
+    @endif
+    
+    <script>
+        var baseurl = "{{ asset('/') }}";
+    </script>
 </head>
