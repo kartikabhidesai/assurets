@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Users extends Model{
     
@@ -99,7 +100,12 @@ class Users extends Model{
                             
         $data = array();
          foreach ($resultArr as $row) {
-            $actionHtml = '<a href="'. route("editservice",["id"=>$row["id"]]).'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> <a class="delete" href="'.route("deleteservice",["id"=>$row["id"]]) .'"><i class="fa fa-trash-o" aria-hidden="true"></i></a> ';
+            $actionHtml = '<a href="'. route("edituser",["id"=>$row["id"]]).'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> <a class="delete" data_value="'.$row["id"].'" ><i class="fa fa-trash-o" aria-hidden="true"></i></a> ';
+            if($row['role_type']=='admin'){
+                $roletypeHtml='<span class="label label-success">Admin</span>';
+            }else{
+                $roletypeHtml='<span class="label label-danger">User</span>';
+            }
             $nestedData = array();
             $nestedData[] = $row['id'];
             $nestedData[] = $row['firstname'];
@@ -107,7 +113,7 @@ class Users extends Model{
             $nestedData[] = $row['email'];
             $nestedData[] = $row['username'];
             $nestedData[] = $row['mobile'];
-            $nestedData[] = $row['role_type'];   
+            $nestedData[] = $roletypeHtml;   
             $nestedData[] = $actionHtml;   
             $data[] = $nestedData;
         }
@@ -123,6 +129,65 @@ class Users extends Model{
         return $json_data;
     }
     
+    public function getprofiledetails($id){
+        $result=Users::select('id','firstname','lastname','email','username','mobile','profile_image')
+                ->where('id',$id)
+                ->get()->toArray();
+        return $result;
+        
+    }
     
+    public function updateprofiledetails($request){
+        
+        $update_res = Users::where('id',$request['id'])
+                ->update([
+                        'firstname' => $request['firstname'],
+                        'lastname' => $request['lastname'],
+                        'email' => $request['email'],
+                        'username' => $request['username'],
+                        'mobile' => $request['phonenumber'],
+                    ]);
+         return $update_res;
+    }
+    
+    public function updatepassword($request){
+       
+        $update_res = Users::where('id',$request['id'])
+                ->update([
+                        'password' => $request['newpassword'],
+                    ]);
+         return $update_res;
+    }
+    
+    public function changeprofieimage($request){
+        $id=$request['id'];
+        $result=Users::select('profile_image')
+                ->where('id',$id)
+                ->get()->toArray();
+        $oldimage=$result[0]['profile_image'];
+        
+        
+        $destinationPath = public_path() . '/uploads/userprofile/';
+        $file1 = $request->file('profileimage');
+        
+        $file_name1 = '';
+        
+        if (!empty($file1)) {
+            $time = time();
+            $file_name1 = $time .'-'. $file1->getClientOriginalName();
+            $file1->move($destinationPath, $file_name1);
+            
+            
+            $update_res = Users::where('id',$request['id'])
+                ->update([
+                        'profile_image' => $file_name1                        
+                    ]);
+        }
+        return TRUE;
+        
+        
+     
+        
+    }
 }
 

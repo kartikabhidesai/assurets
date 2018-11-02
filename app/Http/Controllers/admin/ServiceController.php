@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-//use Validator;
+use Validator;
 use App\Model\Users;
 use App\Model\Service;
 use App\Model\ServicePhoto;
@@ -20,7 +20,7 @@ class ServiceController extends Controller {
     public function addservice(Request $request) {
 
         if ($request->isMethod('post')) {
-
+           
             $validator = validator::make($request->all(), [
                         'vehicle_no' => 'required',
                         'owner_name' => 'required',
@@ -60,11 +60,17 @@ class ServiceController extends Controller {
         $services = new service;
         $getUserServices = $services->getServices($perPage);
         $data['getUserServices'] = $getUserServices;
-        $data['css'] = array('plugins/dataTables/datatables.min.css');
+        $data['css'] = array(
+        
+            'plugins/dataTables/datatables.min.css',
+            'plugins/sweetalert/sweetalert.css',
+        );
         
         $data['js'] = array(
-            'plugins/dataTables/datatables.min.js',
+            'plugins/dataTables/datatables.min.js',            
+            'plugins/sweetalert/sweetalert.min.js',
             'services/services.js'
+            
         );
         $data['funinit'] = array(
             'Services.init()',
@@ -122,6 +128,18 @@ class ServiceController extends Controller {
         $objServicePhotoData = new ServicePhoto;
         $arrServicePhotoData = $objServicePhotoData->getServicePhotoData($id);
         $data['getServicePhotoDatas'] = $arrServicePhotoData;
+        $data['css'] = array(
+        
+            'plugins/blueimp/css/blueimp-gallery.min.css',
+            
+        );
+         $data['js'] = array(
+                 
+            'inspinia.js',
+            'plugins/pace/pace.min.js',
+            'plugins/blueimp/jquery.blueimp-gallery.min.js'
+        );
+        
         return view('admin.pages.detailservice', $data);
     }
     

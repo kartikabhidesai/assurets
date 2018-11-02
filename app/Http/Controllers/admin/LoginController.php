@@ -82,7 +82,7 @@ class LoginController extends Controller {
                 return redirect()->intended('company-dashboard');
             }
             else if (Auth::guard('users')->attempt(['username' => $username, 'password' => $password, 'role_type' => 'user'])) {
-                return redirect('/');
+                return redirect()->intended('/');
             } else {
                 return redirect()->back()->with('message', 'Unauthorized user');
             }
@@ -95,6 +95,8 @@ class LoginController extends Controller {
         return view('admin.pages.dashboard');
     }
     
+    
+    
     public function companydashboard(){
         return view('company.pages.company-dashboard');
     }
@@ -104,10 +106,14 @@ class LoginController extends Controller {
         $userlist = new Users;
         $getUserlistdata = $userlist->getUserList($perPage);
         $data['getUserlistdata'] = $getUserlistdata;
-        $data['css'] = array('plugins/dataTables/datatables.min.css');
+        $data['css'] = array(
+            'plugins/dataTables/datatables.min.css',
+            'plugins/sweetalert/sweetalert.css'
+            );
         
          $data['js'] = array(
             'plugins/dataTables/datatables.min.js',
+            'plugins/sweetalert/sweetalert.min.js',
             'users/user.js'
          );
         $data['funinit'] = array(
@@ -207,5 +213,8 @@ class LoginController extends Controller {
 
         return view('admin.pages.userform');
     }
-
+    
+    public function forgotpassword(Request $request){
+        return view('admin.pages.forgotpassword');
+    }
 }

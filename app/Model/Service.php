@@ -87,7 +87,7 @@ class Service extends Model {
         $destinationPath = public_path() . '/servicephoto/';
 
         $file1 = $request->file('servicephoto');
-       
+    
         $file_name1 = '';
         $file_name2 = '';
         if (!empty($file1)) {
@@ -165,7 +165,7 @@ class Service extends Model {
         $data = array();
 //        print_r($resultArr);exit;
         foreach ($resultArr as $row) {
-            $actionHtml = '<a href="'. route("editservice",["id"=>$row["id"]]).'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> <a class="delete" href="'. route("deleteservice",["id"=>$row["id"]]).'"><i class="fa fa-trash-o" aria-hidden="true"></i></a> <a href="'. route("detailservice",["id"=>$row["id"]]) .'"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+            $actionHtml = '<a href="'. route("editservice",["id"=>$row["id"]]).'"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a><a class="delete" data_value="'.$row["id"].'"> <i  class=" fa fa-trash-o" aria-hidden="true"></i></a><a href="'. route("detailservice",["id"=>$row["id"]]) .'"> <i class="fa fa-eye" aria-hidden="true"></i></a>';
 //            print_r($row);exit;
             $nestedData = array();
             $nestedData[] = $row['id'];

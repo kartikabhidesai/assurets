@@ -109,7 +109,9 @@
                         
                         @else
                         <div class="form-group col-md-3">
-                            <img style="width: 150px;" src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}">
+                            <div class="lightBoxGallery">                             
+                              <a href="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}" title="Image from Unsplash" data-gallery=""><img style="width: 150px;" src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}"></a>
+                            </div>
                         </div>
                         @endif
                         @endforeach
@@ -119,5 +121,15 @@
             </div>
         </div>
     </div>
+
+</div>
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
 </div>
 @endsection
