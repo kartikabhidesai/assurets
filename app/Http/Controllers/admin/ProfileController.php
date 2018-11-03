@@ -72,6 +72,7 @@ class ProfileController extends Controller {
     
     public function changepassword(Request $request){
         
+        
         $data['id']=Auth::guard('admin')->user()->id;
         if ($request->isMethod('post')) {
             
@@ -87,15 +88,25 @@ class ProfileController extends Controller {
                                 ->withErrors($validator)
                                 ->withInput();
             }
-            
-            $oldpassword = Hash::make($request['oldpassword']);
-            $request['oldpassword']=$oldpassword;
+            $oldpassword = $request['oldpassword'];
+            $loginUserpassword=Auth::guard('admin')->user()['password'];
             
             $newpassword = Hash::make($request['newpassword']);
             $request['newpassword']=$newpassword;
             
-            $updatepassword=new Users;
-            $updatepass=$updatepassword->updatepassword($request->all());
+            if (!Hash::check($oldpassword,$loginUserpassword)) {
+                return redirect()->back()->with('message','Old password Does Not Match !!.');
+                
+                
+            }else{
+                $updatepassword=new Users;
+                $updatepass=$updatepassword->updatepassword($request->all());
+            }
+            
+            
+            
+            
+            
             
             $data['updatepass'] = $updatepass;
             return redirect()->back()->with('message','Your password successfully updated ');

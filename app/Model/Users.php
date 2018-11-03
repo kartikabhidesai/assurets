@@ -103,7 +103,12 @@ class Users extends Model{
             $actionHtml = '<a href="'. route("edituser",["id"=>$row["id"]]).'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> <a class="delete" data_value="'.$row["id"].'" ><i class="fa fa-trash-o" aria-hidden="true"></i></a> ';
             if($row['role_type']=='admin'){
                 $roletypeHtml='<span class="label label-success">Admin</span>';
-            }else{
+            }
+            if($row['role_type']=='company'){
+                $roletypeHtml='<span class="label label-info">Company</span>';
+            }
+            
+            if($row['role_type']=='user'){
                 $roletypeHtml='<span class="label label-danger">User</span>';
             }
             $nestedData = array();

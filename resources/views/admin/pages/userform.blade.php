@@ -76,6 +76,7 @@
                         <div class="form-group"><label class="col-sm-2 control-label">Role Type</label>
                             <div class="col-sm-10">
                             <select class="form-control m-b" name="role_type">
+                                <option value="">Select Role</option>
                                 <option value="company">Company</option>
                                 <option value="user">User</option>
                             </select>         

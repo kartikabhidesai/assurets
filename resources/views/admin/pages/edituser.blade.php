@@ -1,6 +1,8 @@
 @extends('admin.mainlayouts.index')   
 @section('title','Edit-user-form')
 @section('content')
+
+
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
@@ -56,12 +58,17 @@
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group"><label class="col-sm-2 control-label">Role Type</label>
+<?php
+$role_type=$getupdateData['role_type'];
 
+?>
                             <div class="col-sm-10">
                             <select class="form-control m-b" name="role_type">
-                                @foreach($getupdateData as $value)
-                                <option value="{{ $value['id'] }}">{{ $value['role_type'] }}</option>
-                                @endforeach
+                                <option value="">Select Role</option>
+                                <option value="company" <?php if($role_type=='company'){ echo("selected='selected'");}?>>Company</option>
+                                <option value="user" <?php if($role_type=='user'){ echo("selected='selected'");}?>>User</option>
+                                <option value="admin" <?php if($role_type=='admin'){ echo("selected='selected'");}?>>Admin</option>
+                               
                                 </select>         
                             </div>
                         </div>
