@@ -32,6 +32,7 @@ Route::match(['get','post'],'/addservice',(['as'=>'addservice','uses'=>'admin\Se
 Route::match(['get','post'],'/deleteservice/{id}',(['as'=>'deleteservice','uses'=>'admin\ServiceController@deleteservice']));
 Route::match(['get','post'],'/editservice/{id}',(['as'=>'editservice','uses'=>'admin\ServiceController@editservice']));
 Route::match(['get','post'],'/detailservice/{id}',(['as'=>'detailservice','uses'=>'admin\ServiceController@detailservice']));
+Route::match(['get','post'],'/downloadzip/{id}',(['as'=>'detailservice','uses'=>'admin\ServiceController@downloadzip']));
 Route::match(['get','post'],'/callsajaxAction',(['as'=>'callsajaxAction','uses'=>'admin\ServiceController@ajaxAction']));
 
 

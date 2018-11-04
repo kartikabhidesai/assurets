@@ -12,8 +12,8 @@ use App\Model\Users;
 use App\Model\Service;
 use App\Model\ServicePhoto;
 use DB;
-
-
+use Chumper\Zipper\Zipper;
+use Illuminate\Support\Facades\Response;
 
 class ServiceController extends Controller {
 
@@ -143,6 +143,12 @@ class ServiceController extends Controller {
         return view('admin.pages.detailservice', $data);
     }
     
+    public function downloadzip(Request $request,$serviceId){
+        $zipper = new Zipper();
+        $files = array('public/servicephoto/1541337110-1540801038-1540801028789.jpg','public/servicephoto/1541337110-1540801038-1540801028789_1.jpg');
+        $zipper->make('public/servicephoto/test.zip')->add($files)->close();
+        return Response::download('public/servicephoto/test.zip');
+    }
     public function ajaxAction(Request $request){
          $action = $request->input('action');
             

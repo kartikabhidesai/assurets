@@ -87,7 +87,8 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Service Photo</h5>
+                    <h5>Service Photo</h5> 
+                    <a target="_blank" href="{{ url('/downloadzip/'.$getServiceData['id']) }}" title="Image from Unsplash">DownloadZip</a>
                 </div>
                 <div class="ibox-content">
                     <div class="row">
