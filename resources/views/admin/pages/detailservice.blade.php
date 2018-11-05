@@ -88,7 +88,9 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Service Photo</h5> 
-                    <a target="_blank" href="{{ url('/downloadzip/'.$getServiceData['id']) }}" title="Image from Unsplash">DownloadZip</a>
+                    <a class="pull-right" href="{{ url('/downloadzip/'.$getServiceData['id']) }}" title="Image zip download">
+                        <i class="fa fa-cloud-download fa-2x" aria-hidden="true"></i>
+                    </a>
                 </div>
                 <div class="ibox-content">
                     <div class="row">
