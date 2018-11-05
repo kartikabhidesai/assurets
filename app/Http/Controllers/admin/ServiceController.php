@@ -129,12 +129,9 @@ class ServiceController extends Controller {
         $arrServicePhotoData = $objServicePhotoData->getServicePhotoData($id);
         $data['getServicePhotoDatas'] = $arrServicePhotoData;
         $data['css'] = array(
-        
-            'plugins/blueimp/css/blueimp-gallery.min.css',
-            
+            'plugins/blueimp/css/blueimp-gallery.min.css',            
         );
-         $data['js'] = array(
-                 
+         $data['js'] = array(                 
             'inspinia.js',
             'plugins/pace/pace.min.js',
             'plugins/blueimp/jquery.blueimp-gallery.min.js'
@@ -144,10 +141,27 @@ class ServiceController extends Controller {
     }
     
     public function downloadzip(Request $request,$serviceId){
+        
+        $objServicePhotoData = new ServicePhoto;
+       $serviceData = new Service;
+        $arrServicePhotoData = $objServicePhotoData->getServicePhotoData($serviceId);
+        $vehicle_no = $serviceData->getVihicleNo($serviceId);
+        $servicearry=[];
+        $vehicleNo=$vehicle_no[0]->vehicle_no;
+        
+        for($i=0;$i<count($arrServicePhotoData);$i++){
+            array_push($servicearry, 'public/servicephoto/'.$arrServicePhotoData[$i]['name']);
+        }
+        if(count($arrServicePhotoData)!='0'){
         $zipper = new Zipper();
-        $files = array('public/servicephoto/1541337110-1540801038-1540801028789.jpg','public/servicephoto/1541337110-1540801038-1540801028789_1.jpg');
-        $zipper->make('public/servicephoto/test.zip')->add($files)->close();
-        return Response::download('public/servicephoto/test.zip');
+        $files = $servicearry;
+       // print_r($files);exit;
+        $zipper->make('public/servicephoto/'.$vehicleNo.'.zip')->add($files)->close();
+        return Response::download('public/servicephoto/'.$vehicleNo.'.zip');        
+        }else{
+            
+            return redirect('detailservice/'.$serviceId);
+        }
     }
     public function ajaxAction(Request $request){
          $action = $request->input('action');

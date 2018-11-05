@@ -79,7 +79,12 @@ class Service extends Model {
     public function getServiceData($id) {
         return Service::where('id', $id)->first();
     }
-
+    
+    public function getVihicleNo($id) {
+        return Service::select('vehicle_no')
+                ->where('id', $id)->get();
+    }
+    
     public function getUserService($id) {
         return Service::where('user_id', $id)->where('status', 'inprocess')->get()->toArray();
     }
@@ -205,7 +210,7 @@ class Service extends Model {
         $data = array();
 //        print_r($resultArr);exit;
         foreach ($resultArr as $row) {
-            $actionHtml = '<a href="' . route("editservice", ["id" => $row["id"]]) . '"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a><a class="delete" data_value="' . $row["id"] . '"> <i  class=" fa fa-trash-o" aria-hidden="true"></i></a><a href="' . route("detailservice", ["id" => $row["id"]]) . '"> <i class="fa fa-eye" aria-hidden="true"></i></a>';
+            $actionHtml = '<a href="' . route("editservice", ["id" => $row["id"]]) . '"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a><a class="delete" data_value="' . $row["id"] . '"> <i  class=" fa fa-trash-o" aria-hidden="true"></i></a><a href="'. route("detailservice", ["id" => $row["id"]]) . '"> <i class="fa fa-eye" aria-hidden="true"></i></a>';
 //            print_r($row);exit;
             $nestedData = array();
             $nestedData[] = $row['id'];
