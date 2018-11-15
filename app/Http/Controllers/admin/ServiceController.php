@@ -165,7 +165,7 @@ class ServiceController extends Controller {
     }
     public function ajaxAction(Request $request){
          $action = $request->input('action');
-            
+         
             switch ($action)
             {
                 case 'datatableServices':
@@ -177,6 +177,12 @@ class ServiceController extends Controller {
                 case 'datatableUser':                      
                     $usersObj = new Users;
                     $serviceLists = $usersObj->getDatatable($request);
+                    echo json_encode($serviceLists);
+                    break;
+                
+                case 'datatableCompanyServices':                      
+                    $serviceObj = new Service;
+                    $serviceLists = $serviceObj->getDataCompanyServicestable($request);
                     echo json_encode($serviceLists);
                     break;
             }

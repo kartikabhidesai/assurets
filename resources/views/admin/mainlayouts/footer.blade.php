@@ -35,11 +35,7 @@
     <!-- ChartJS-->
     <script src="{{ url('public/admin/js/plugins/chartJs/Chart.min.js') }}"></script>
 
-    <!-- Toastr -->
-    <!--<script src="admin/js/plugins/toastr/toastr.min.js"></script>-->
-    
- 
-  
+   
         @if (!empty($js)) 
             @foreach ($js as $value) 
                 <script src="{{ asset('public/js/'.$value) }}" type="text/javascript">
