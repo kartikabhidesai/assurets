@@ -215,6 +215,25 @@ class LoginController extends Controller {
     }
     
     public function forgotpassword(Request $request){
+         if ($request->isMethod('post')) {
+            $username = $request['username'];
+             
+            $validator = validator::make($request->all(), [
+                        'username' => 'required',
+                        
+            ]); 
+             if ($validator->fails()) {
+                return redirect('forgotpassword')
+                                ->withErrors($validator)
+                                ->withInput();
+            }
+            
+            
+         }
         return view('admin.pages.forgotpassword');
+    }
+    
+    public function createpassword(){
+       echo $password = Hash::make('admin123');
     }
 }

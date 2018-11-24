@@ -56,7 +56,8 @@ class Users extends Model{
             5 => 'users.mobile',
             6 => 'users.role_type',
         );
-        $query =Users::select('id','firstname','lastname','email','username','mobile','role_type');                
+        $query =Users::select('id','firstname','lastname','email','username','mobile','role_type')
+                ->where('role_type','!=','admin');
                 
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
             $searchVal = $requestData['search']['value'];

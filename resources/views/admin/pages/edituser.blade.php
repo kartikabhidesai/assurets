@@ -67,7 +67,7 @@ $role_type=$getupdateData['role_type'];
                                 <option value="">Select Role</option>
                                 <option value="company" <?php if($role_type=='company'){ echo("selected='selected'");}?>>Company</option>
                                 <option value="user" <?php if($role_type=='user'){ echo("selected='selected'");}?>>User</option>
-                                <option value="admin" <?php if($role_type=='admin'){ echo("selected='selected'");}?>>Admin</option>
+                                
                                
                                 </select>         
                             </div>

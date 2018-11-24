@@ -750,14 +750,24 @@ function dateFormate(field) {
 /* START FOR LANGUAGE SET USING COOKIE */
         
     //console.log(getCookie('language'));
-
-    $("body").on("click", ".language",function(){
-        var lang = ($(this).attr('data-lang') !== '') ? $(this).attr('data-lang') : 'en';
-        if(lang){
+    $("body").on("change", "#languageSelection",function(){
+        var lang = $(this).val();
+        if(lang !=''){
+            setCookie('language', lang, 365);
+            window.location.reload();
+        }else{
+            lang='en';
             setCookie('language', lang, 365);
             window.location.reload();
         }
     });
+//    $("body").on("click", ".language",function(){
+//        var lang = ($(this).attr('data-lang') !== '') ? $(this).attr('data-lang') : 'en';
+//        if(lang){
+//            setCookie('language', lang, 365);
+//            window.location.reload();
+//        }
+//    });
     
     $("body").on("change", ".language",function(){
         var lang = ($(this).val() !== '') ? $(this).val() : 'en';
@@ -797,14 +807,14 @@ function dateFormate(field) {
 /* Start manage datatable with Ajax & hide/show column dynamic */
 
 function getDataTable(arr) {
-    
+   
     var dataTable = $(arr.tableID).DataTable({
-        
+        "scrollX": true,        
         "processing": true,
         "serverSide": true,
         "bAutoWidth": false,
         "bLengthChange": false,
-        "bInfo": false,
+        "bInfo": true,
         "language": {
             "search": "_INPUT_",
             "searchPlaceholder": "Search..."
@@ -825,7 +835,7 @@ function getDataTable(arr) {
             },
             (arr.setColumnWidth) ? arr.setColumnWidth : ''
         ],
-        "ajax":{
+        "ajax": {
             url: arr.ajaxURL,
             method: "POST",
             headers: {
@@ -867,6 +877,26 @@ function hideShowDatatableColumn(dataTable) {
         // Toggle the visibility
         column.visible(!column.visible());
     });
+}
+
+setInterval(get_order, 5000);
+function get_order(){
+    var currentCount =  $('#totalOrderNotification').val();
+    // console.log(currentCount)
+    var token = $('.orderCountToken').val();
+    var data = { currentCount : currentCount ,_token :token};
+    var url = baseurl + 'get-order-count';
+        ajaxcall(url,data,function(output){
+             var data = JSON.parse(output);
+//             console.log(data.totalOrder);
+             
+//             console.log(currentCount);
+             if(data.totalOrder != parseInt(currentCount)){
+//                 console.log('in');
+                handleAjaxResponse(output); 
+                $('.totalOrderCount').text(data.orderCount);
+             }
+        });
 }
 
 /* End manage datatable with Ajax & hide/show column dynamic */
