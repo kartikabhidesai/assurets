@@ -146,6 +146,8 @@ class LoginController extends Controller {
                                 ->withErrors($validator)
                                 ->withInput();
             }
+            
+            
 
             $id = $request['id'];
             $firstname = $request['firstname'];
@@ -156,20 +158,21 @@ class LoginController extends Controller {
             $role_type = $request['role_type'];
 
             $updateInputs = new Users;
-
             $getUpadateData = $updateInputs->updateData($request, $id);
-
-            $data['getUpdateData'] = $getUpadateData;
-
-            return redirect()->back()->with('message', 'Data Updated successfully');
+            
+            if($getUpadateData==0){
+                return redirect()->back()->with('message', 'Data Updated successfully');
+            }
+            if($getUpadateData==1){
+                return redirect()->back()->with('message', 'User Name alreay exist');
+            }
+            if($getUpadateData==2){
+                return redirect()->back()->with('message', 'Emial alreay exist');
+            }
         }
-
         $updateUsers = new Users;
-
         $getupdateData = $updateUsers->getupdate($id);
-
         $data['getupdateData'] = $getupdateData;
-
         return view('admin.pages.edituser', $data);
     }
 
@@ -190,25 +193,23 @@ class LoginController extends Controller {
                                 ->withErrors($validator)
                                 ->withInput();
             }
-
-            $firstname = $request['firstname'];
-            $lastname = $request['lastname'];
-            $email = $request['email'];
-            $username = $request['username'];
             $password = Hash::make($request['password']);
-            $mobile = $request['mobile'];
-            $role_type = $request['role_type'];
-
-            DB::table('users')->Insert([
-                'firstname' => $firstname,
-                'lastname' => $lastname,
-                'email' => $email,
-                'username' => $username,
-                'password' => $password,
-                'mobile' => $mobile,
-                'role_type' => $role_type,
-            ]);
-            return redirect()->back()->with('message', 'User Inserted Successfully');
+            $request['password']=$password;
+            
+            $newuser = new Users;
+            $getUpadateData = $newuser->newuser($request);
+            if($getUpadateData==0){
+                return redirect()->back()->with('message', 'User Inserted Successfully');
+            }
+            if($getUpadateData==1){
+                return redirect()->back()->with('message', 'User Name alreay exist');
+            }
+            if($getUpadateData==2){
+                return redirect()->back()->with('message', 'Emial alreay exist');
+            }
+            
+            
+            
         }
 
         return view('admin.pages.userform');

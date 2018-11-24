@@ -11,6 +11,45 @@ class Users extends Model{
     
     protected $table = 'users';
 
+    public function newuser($request){
+    
+            $firstname = $request['firstname'];
+            $lastname = $request['lastname'];
+            $email = $request['email'];
+            $username = $request['username'];
+            $password = $request['password'];
+            $mobile = $request['mobile'];
+            $role_type = $request['role_type'];
+            
+            $count_username=Users::where('username','=',$request['username'])                   
+               ->get()->count();
+            if($count_username==0){
+                $count_email=Users::where('email','=',$request['email'])               
+                     ->get()->count();
+                
+                 if($count_email==0){
+                    $objsavedetails=new Users();
+                    $objsavedetails->firstname = $firstname;
+                    $objsavedetails->lastname = $lastname;
+                    $objsavedetails->email = $email;
+                    $objsavedetails->username = $username;
+                    $objsavedetails->password = $password;
+                    $objsavedetails->mobile = $mobile;
+                    $objsavedetails->role_type = $role_type;
+                    if ($objsavedetails->save()) {
+                        return '0';
+                    }else{
+                        return '3';
+                    }
+                    
+                 }else{
+                     return '2';
+                 }  
+             }else{
+                 return '1';
+             }
+       
+    }
 
     public function getUserList($perPage){
                   
@@ -27,15 +66,30 @@ class Users extends Model{
     }
     
     public function updateData($request, $id){
-       
-        $update_res = Users::where('id',$id)->update([
-            'firstname' => $request['firstname'],
-            'lastname' => $request['lastname'],
-            'email' => $request['email'],
-            'username' => $request['username'],
-            'mobile' => $request['mobile'],
-        ]);
-        return $update_res;
+        
+       $count_username=Users::where('id','!=',$id)
+               ->where('username','=',$request['username'])               
+               ->get()->count();
+       if($count_username==0){
+          $count_email=Users::where('id','!=',$id)
+               ->where('email','=',$request['email'])               
+               ->get()->count();
+           if($count_email==0){
+            $update_res = Users::where('id',$id)->update([
+                'firstname' => $request['firstname'],
+                'lastname' => $request['lastname'],
+                'email' => $request['email'],
+                'username' => $request['username'],
+                'mobile' => $request['mobile'],
+            ]);
+           return '0';
+           }else{
+               return '2';
+           }  
+       }else{
+           return '1';
+       }
+        
                 
        
     }
