@@ -4,6 +4,8 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use App\Model\Sendmail;
 
 class Users extends Model{
     
@@ -247,6 +249,34 @@ class Users extends Model{
         
         
      
+        
+    }
+    
+    public function forgotpaasword($request){
+         $finduser=Users::where('username','=',$request) 
+               ->orWhere('email', '=',$request)
+               ->get()->count();
+        if($finduser==0){
+            return 0;
+        }else{
+             $result=Users::select('email')
+                            ->where('username','=',$request) 
+                            ->orWhere('email', '=',$request)
+                            ->get()->toArray();
+            
+           $email=$result['0']['email'];
+           $password=Str::random(8); 
+           
+           $mailData['subject'] = 'Reset new password';
+           $mailData['template'] = 'emails.forgotpassword';
+           $mailData['mailto'] = 'parthkhunt12@gmail.com';//$email;
+           $mailData['data']['interUser'] = $password;
+           $sendMail = new Sendmail;
+           $send=$sendMail->sendSMTPMail($mailData);
+           print_r($send);
+           die();
+           
+        }
         
     }
 }

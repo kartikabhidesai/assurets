@@ -187,6 +187,7 @@ class LoginController extends Controller {
                         'username' => 'required|min:5',
                         'password' => 'required',
                         'mobile' => 'required|min:10',
+                        'role_type'=>'required',
             ]);
             if ($validator->fails()) {
                 return redirect('userform')
@@ -227,11 +228,22 @@ class LoginController extends Controller {
                 return redirect('forgotpassword')
                                 ->withErrors($validator)
                                 ->withInput();
+            }else{
+                $objsendpassword = new Users;
+                $sendpassword=$objsendpassword->forgotpaasword($username);
             }
             
             
          }
-        return view('admin.pages.forgotpassword');
+         $data['css'] = array(
+            );
+        
+         $data['js'] = array(
+             'comman_function.js',
+         );
+        $data['funinit'] = array(  
+        );
+        return view('admin.pages.forgotpassword',$data);
     }
     
     public function createpassword(){
