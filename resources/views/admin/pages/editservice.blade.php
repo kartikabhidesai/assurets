@@ -58,10 +58,15 @@
                             <div class="col-sm-10"><input type="text" name="location" value="{{ $getServiceData['location'] }}" class="form-control"></div>
                         </div>
                         <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Insurer</label>
-
-                            <div class="col-sm-10"><input type="text" name="insurer" value="{{ $getServiceData['insurer'] }}" class="form-control"></div>
+                                <div class="col-sm-10">
+                                    <select class="form-control m-b" id="user" name="insurer">
+                                        @foreach($getUserId as $value)
+                                        <option value="{{ $value['id'] }}" {{ ($value['id'] == $getServiceData['insurer'] ? 'selected="selected"' : '') }} >{{ $value['firstname'] }} {{ $value['lastname'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                         </div>
-
+                            
                         <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Vehicle No</label>
 
                             <div class="col-sm-10"><input type="text" value="{{ $getServiceData['vehicle_no'] }}" name="vehicle_no" class="form-control"></div>

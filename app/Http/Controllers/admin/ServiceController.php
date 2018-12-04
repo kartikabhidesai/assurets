@@ -47,7 +47,11 @@ class ServiceController extends Controller {
 
         $userid = new Users;
 
-        $getUserId = $userid->getUserId();
+        $getCompany = $userid->getCompany();
+
+        $data['getCompany'] = $getCompany;
+        
+        $getUserId = $userid->getUser();
 
         $data['getUserId'] = $getUserId;
 
@@ -109,13 +113,15 @@ class ServiceController extends Controller {
             $data['editService'] = $editService;
             
 //            print_r($editService);exit;
-
+            
             return redirect('services');
         }
-
+        $userid = new Users;
         $serviceData = new Service;
         $getServiceData = $serviceData->getServiceData($id);
         $data['getServiceData'] = $getServiceData;
+        $getUserId = $userid->getUser();
+        $data['getUserId'] = $getUserId;
         return view('admin.pages.editservice', $data);
     }
     

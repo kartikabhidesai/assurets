@@ -62,11 +62,18 @@
 
                             <div class="col-sm-10"><input type="text" name="location" class="form-control"></div>
                         </div>
-                        <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Insurer</label>
 
-                            <div class="col-sm-10"><input type="text" name="insurer" class="form-control"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Insurer</label>
+
+                            <div class="col-sm-10">
+                                <select class="form-control m-b" id="user" name="insurer">
+                                    @foreach($getUserId as $value)
+                                    <option value="{{ $value['id'] }}">{{ $value['firstname'] }} {{ $value['lastname'] }}</option>
+                                    @endforeach
+                                </select>         
+                            </div>
                         </div>
-                        
                         <div class="hr-line-dashed"></div><div class="form-group"><label class="col-sm-2 control-label">Address</label>
 
                             <div class="col-sm-10"><input type="text" name="address" class="form-control"></div>
@@ -77,7 +84,7 @@
 
                             <div class="col-sm-10">
                             <select class="form-control m-b" id="user" name="user_id">
-                                    @foreach($getUserId as $value)
+                                    @foreach($getCompany as $value)
                                     <option value="{{ $value['id'] }}">{{ $value['firstname'] }} {{ $value['lastname'] }}</option>
                                     @endforeach
                                 </select>         

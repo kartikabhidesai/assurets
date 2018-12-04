@@ -96,7 +96,12 @@ class Users extends Model{
        
     }
     
-    public function getUserId(){
+    public function getCompany(){
+        $result = Users::where('role_type','company')->get();
+        return $result;
+    }
+    
+    public function getUser(){
         $result = Users::where('role_type','user')->get();
         return $result;
     }
