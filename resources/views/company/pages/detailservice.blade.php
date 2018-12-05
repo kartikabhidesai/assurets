@@ -1,6 +1,8 @@
-@extends('admin.mainlayouts.index')
-@section('title','Edit-service-form')
+@extends('company.mainlayouts.index')
+
+@section('title', 'Dashboard')
 @section('content')
+
 <div class="wrapper wrapper-content animated fadeInRight">
     @if ($errors->any())
 <div class="alert alert-danger">

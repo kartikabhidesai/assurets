@@ -29,6 +29,7 @@
                                         <th>Insurer</th>
                                         <th>Address</th>
                                         <th>Executive</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

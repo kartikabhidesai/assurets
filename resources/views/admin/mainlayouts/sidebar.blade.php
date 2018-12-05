@@ -28,7 +28,7 @@ $details=Auth::guard('admin')->user();
                     <li class="{{ ($currRoute == 'userlist') || ($currRoute == 'userform') || ($currRoute == 'edituser')   ? 'active' : '' }} ">
                         <a href="{{ url('userlist') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Users</span></a>
                     </li>
-                    <li  class="{{ ($currRoute == 'services') || ($currRoute == 'addservice') || ($currRoute == 'editservice')   ? 'active' : '' }} ">
+                    <li  class="{{ ($currRoute == 'detailservice') || ($currRoute == 'services') || ($currRoute == 'addservice') || ($currRoute == 'editservice')   ? 'active' : '' }} ">
                         <a href="{{ url('services') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Services</span></a>
                     </li>
                     

@@ -1,4 +1,4 @@
-var Comapanyservices=function(){
+var Myservices=function(){
    
     var serviceInfo=function(){
         
@@ -10,7 +10,7 @@ var Comapanyservices=function(){
                 var arrList = {
                     'tableID': '#datatableServices',
                     'ajaxURL': baseurl + "callsajaxAction",
-                    'ajaxAction': 'datatableCompanyServices',
+                    'ajaxAction': 'datatableMyCompanyServices',
                     'postData': dataArr,
                     'hideColumnList': [],
                     'noSearchApply': [0],

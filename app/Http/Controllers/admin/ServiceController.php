@@ -129,7 +129,7 @@ class ServiceController extends Controller {
 
         $serviceData = new Service;
         $getServiceData = $serviceData->getServiceData($id);
-        $data['getServiceData'] = $getServiceData;
+        $data['getServiceData'] = $getServiceData[0];
         
         $objServicePhotoData = new ServicePhoto;
         $arrServicePhotoData = $objServicePhotoData->getServicePhotoData($id);
@@ -189,6 +189,12 @@ class ServiceController extends Controller {
                 case 'datatableCompanyServices':                      
                     $serviceObj = new Service;
                     $serviceLists = $serviceObj->getDataCompanyServicestable($request);
+                    echo json_encode($serviceLists);
+                    break;
+                
+                case 'datatableMyCompanyServices':
+                    $serviceObj = new Service;
+                    $serviceLists = $serviceObj->getDataMyCompanyServicestable($request);
                     echo json_encode($serviceLists);
                     break;
             }

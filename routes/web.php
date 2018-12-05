@@ -40,6 +40,9 @@ Route::match(['get','post'],'/callsajaxAction',(['as'=>'callsajaxAction','uses'=
 
 Route::match(['get','post'],'/company-dashboard',(['as'=>'dashboard','uses'=>'admin\LoginController@companydashboard']));
 Route::match(['get','post'],'/company-list',(['as'=>'company-list','uses'=>'company\CompanyController@companylist']));
+Route::match(['get','post'],'/company-serivces',(['as'=>'company-serivces','uses'=>'company\CompanyController@companyserivces']));
+Route::match(['get','post'],'/customermydetailservice/{id}',(['as'=>'customermydetailservice','uses'=>'company\CompanyController@customermydetailservice']));
+Route::match(['get','post'],'/customerdetailservice/{id}',(['as'=>'customerdetailservice','uses'=>'company\CompanyController@customerdetailservice']));
 Route::match(['get','post'],'/user-dashboard',(['as'=>'userdashboard','uses'=>'admin\LoginController@userdashboard']));
 
 Route::match(['get','post'],'/',(['as'=>'index','uses'=>'front\MainController@index']));

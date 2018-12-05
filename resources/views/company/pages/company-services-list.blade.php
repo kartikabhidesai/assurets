@@ -34,9 +34,10 @@ $details=Auth::guard('company')->user();
                                         <th>Insurer</th>
                                         <th>Address</th>
                                         <th>Executive</th>
-                                        <th>Status</th>
+                                         <th>Status</th>
                                         <th>Action</th>
-                                    </tr>        </thead>
+                                    </tr>
+                                </thead>
                             </table>
                         </div>
                     </div>
