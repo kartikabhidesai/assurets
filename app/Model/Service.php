@@ -77,8 +77,9 @@ class Service extends Model {
     }
 
     public function getServiceData($id) {
-       return Service::select('services.*','users.firstname','users.lastname')
-                        ->leftjoin('users', 'users.id', '=', 'services.insurer')
+       return Service::select('services.*','u1.firstname','u1.lastname','u2.firstname as executivefirstname','u2.lastname as executivelastname')
+                        ->leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
+                        ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
                         ->where('services.id',$id)
                         ->get()->toArray();
        
@@ -165,18 +166,19 @@ class Service extends Model {
 
         $columns = array(
             // datatable column index  => database column name
-            0 => 'services.id',
+             0 => 'services.id',
             1 => 'services.service_no',
             2 => 'services.vehicle_no',
             3 => 'services.owner_name',
             4 => 'services.owner_mobile',
             5 => 'services.location',
-            6 => 'services.insurer',
+            6 => 'u2.firstname',
             7 => 'services.address',
-            8 => 'users.firstname',
+            8 => 'u1.firstname',
         );
 
-        $query = Service::leftjoin('users', 'services.user_id', '=', 'users.id');
+         $query = Service::leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
+                            ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id');
         //->groupBy('services.id');
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
             $searchVal = $requestData['search']['value'];
@@ -209,7 +211,7 @@ class Service extends Model {
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
                         ->select(
-                                'services.status','services.id', 'services.service_no', 'services.vehicle_no', 'services.owner_name', 'services.owner_mobile', 'services.location', 'services.insurer', 'services.address', 'users.firstname'
+                                 'services.id', 'services.service_no', 'services.vehicle_no', 'services.owner_name', 'services.owner_mobile', 'services.location', 'services.insurer', 'services.address', 'u1.firstname as executivename', 'u2.firstname as insurername','services.status'
                         )->get()->toArray();
         $data = array();
 //        print_r($resultArr);exit;
@@ -232,9 +234,9 @@ class Service extends Model {
             $nestedData[] = $row['owner_name'];
             $nestedData[] = $row['owner_mobile'];
             $nestedData[] = $row['location'];
-            $nestedData[] = $row['insurer'];
+            $nestedData[] = $row['insurername'];
             $nestedData[] = $row['address'];
-            $nestedData[] = $row['firstname'];
+            $nestedData[] = $row['executivename'];
             $nestedData[] = $label;
             $nestedData[] = $actionHtml;
             $data[] = $nestedData;
@@ -262,13 +264,14 @@ class Service extends Model {
             3 => 'services.owner_name',
             4 => 'services.owner_mobile',
             5 => 'services.location',
-            6 => 'services.insurer',
+            6 => 'u2.firstname',
             7 => 'services.address',
-            8 => 'users.firstname',
+            8 => 'u1.firstname',
         );
 
-        $query = Service::leftjoin('users', 'services.user_id', '=', 'users.id')
-                            ->where('user_id','!=',$userid);
+        $query = Service::leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
+                            ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
+                            ->where('services.user_id','!=',$userid);
         //->groupBy('services.id');
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
             $searchVal = $requestData['search']['value'];
@@ -301,7 +304,7 @@ class Service extends Model {
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
                         ->select(
-                                'services.id', 'services.service_no', 'services.vehicle_no', 'services.owner_name', 'services.owner_mobile', 'services.location', 'services.insurer', 'services.address', 'users.firstname','services.status'
+                                'services.id', 'services.service_no', 'services.vehicle_no', 'services.owner_name', 'services.owner_mobile', 'services.location', 'services.insurer', 'services.address', 'u1.firstname as executivename', 'u2.firstname as insurername','services.status'
                         )
                         
                         ->get()->toArray();
@@ -326,9 +329,9 @@ class Service extends Model {
             $nestedData[] = $row['owner_name'];
             $nestedData[] = $row['owner_mobile'];
             $nestedData[] = $row['location'];
-            $nestedData[] = $row['insurer'];
+            $nestedData[] = $row['insurername'];
             $nestedData[] = $row['address'];
-            $nestedData[] = $row['firstname'];
+            $nestedData[] = $row['executivename'];
             $nestedData[] = $label;
             $nestedData[] = $actionHtml;
             $data[] = $nestedData;
@@ -356,13 +359,14 @@ class Service extends Model {
             3 => 'services.owner_name',
             4 => 'services.owner_mobile',
             5 => 'services.location',
-            6 => 'services.insurer',
+            6 => 'u2.firstname',
             7 => 'services.address',
-            8 => 'users.firstname',
+            8 => 'u1.firstname',
         );
 
-        $query = Service::leftjoin('users', 'services.user_id', '=', 'users.id')
-                   ->where('user_id','=',$userid);;
+        $query = Service::leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
+                   ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
+                   ->where('services.user_id','=',$userid);;
         //->groupBy('services.id');
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
             $searchVal = $requestData['search']['value'];
@@ -395,7 +399,7 @@ class Service extends Model {
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
                         ->select(
-                                'services.id', 'services.service_no', 'services.vehicle_no', 'services.owner_name', 'services.owner_mobile', 'services.location', 'services.insurer', 'services.address', 'users.firstname','services.status'
+                                   'services.id', 'services.service_no', 'services.vehicle_no', 'services.owner_name', 'services.owner_mobile', 'services.location', 'services.insurer', 'services.address', 'u1.firstname as executivename', 'u2.firstname as insurername','services.status'
                         )
                         ->get()->toArray();
         $data = array();
@@ -419,9 +423,9 @@ class Service extends Model {
             $nestedData[] = $row['owner_name'];
             $nestedData[] = $row['owner_mobile'];
             $nestedData[] = $row['location'];
-            $nestedData[] = $row['insurer'];
+            $nestedData[] = $row['insurername'];
             $nestedData[] = $row['address'];
-            $nestedData[] = $row['firstname'];
+            $nestedData[] = $row['executivename'];
             $nestedData[] = $label;
             $nestedData[] = $actionHtml;
             $data[] = $nestedData;

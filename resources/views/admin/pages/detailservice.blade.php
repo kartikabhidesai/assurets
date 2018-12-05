@@ -69,14 +69,13 @@
                                 {{ $getServiceData['address'] }}
                             </div>
                         </div>
+                        
                         <div class="form-group col-md-6">
                              <label class="col-md-6 control-label">Executive</label>
                             <div class="col-md-6">
-                                {{ $getServiceData['user_id'] }}
+                                {{ $getServiceData['executivefirstname'].' '.$getServiceData['executivelastname'] }}
                             </div>
                         </div>
-                        
-                        <!--<div class="hr-line-dashed"></div>-->
                         
                     </div>
                 </div>
