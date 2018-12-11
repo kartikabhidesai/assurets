@@ -18,11 +18,31 @@ var Services=function(){
                 };
         getDataTable(arrList);
         
+        $(document).on('click','.complete',function(){
+            var id=$(this).attr('data_value');
+            swal({
+                  title: "Are you sure you want to complete service ?",                
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: "Yes, complete it!",
+                  cancelButtonText: "No, cancel it!",
+                  closeOnConfirm: false,
+                   },
+                  function (isConfirm) {
+                      if (isConfirm) {
+                         
+                           window.location=baseurl+"completeservices/"+id;
+
+                      } 
+                  });
+        });
+        
         $(document).on('click','.delete',function(){
             var id=$(this).attr('data_value');
 
             swal({
-                  title: "are you sure you want to delete service ?",                
+                  title: "Are you sure you want to delete service ?",                
                   type: "warning",
                   showCancelButton: true,
                   confirmButtonColor: "#DD6B55",
@@ -32,6 +52,7 @@ var Services=function(){
                    },
                   function (isConfirm) {
                       if (isConfirm) {
+                          
                            window.location=baseurl+"deleteservice/"+id;
 
                       } 

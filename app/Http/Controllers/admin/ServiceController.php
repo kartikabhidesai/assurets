@@ -92,6 +92,16 @@ class ServiceController extends Controller {
 
         return redirect()->back()->with('message', 'Service Deleted Successfully');
     }
+    
+    public function completeservices(Request $request, $id) {
+       $serviceObj = new service;
+
+        $deleteService = $serviceObj->completeservices($id);
+
+        $data['deleteService'] = $deleteService;
+
+        return redirect()->back()->with('message', 'Service completed ');
+    }
 
     public function editservice(Request $request, $id) {
 

@@ -62,6 +62,12 @@ class Service extends Model {
 
         return Service::where('id', $id)->delete();
     }
+    
+    public function completeservices($id) {
+
+         return Service::where('id', $id)->update([
+             'status'=>'compelete']);
+    }
 
     public function editService($request, $id) {
 
@@ -178,7 +184,8 @@ class Service extends Model {
         );
 
          $query = Service::leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
-                            ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id');
+                            ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
+                            ->where('services.status','!=','compelete');
         //->groupBy('services.id');
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
             $searchVal = $requestData['search']['value'];
@@ -216,7 +223,7 @@ class Service extends Model {
         $data = array();
 //        print_r($resultArr);exit;
         foreach ($resultArr as $row) {
-            $actionHtml = '<a href="' . route("editservice", ["id" => $row["id"]]) . '"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a><a class="delete" data_value="' . $row["id"] . '"> <i  class=" fa fa-trash-o" aria-hidden="true"></i></a><a href="'. route("detailservice", ["id" => $row["id"]]) . '"> <i class="fa fa-eye" aria-hidden="true"></i></a>';
+            $actionHtml = '<a href="' . route("editservice", ["id" => $row["id"]]) . '"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a><a class="delete" data_value="' . $row["id"] . '"> <i  class=" fa fa-trash-o" aria-hidden="true"></i></a><a href="'. route("detailservice", ["id" => $row["id"]]) . '"> <i class="fa fa-eye" aria-hidden="true"></i></a><a class="complete" data_value="' . $row["id"] . '"> <i class="fa fa-check-square" aria-hidden="true"></i></a>';
             if($row['status']=='inprocess'){
                 $label='<span class="label label-info">Inprocess</span>';
             }
