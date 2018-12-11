@@ -32,6 +32,7 @@ Route::match(['get','post'],'/forgotpassword',(['as'=>'forgotpassword','uses'=>'
 Route::match(['get','post'],'/services',(['as'=>'services','uses'=>'admin\ServiceController@services']));
 Route::match(['get','post'],'/addservice',(['as'=>'addservice','uses'=>'admin\ServiceController@addservice']));
 Route::match(['get','post'],'/deleteservice/{id}',(['as'=>'deleteservice','uses'=>'admin\ServiceController@deleteservice']));
+Route::match(['get','post'],'/completeservices/{id}',(['as'=>'completeservices','uses'=>'admin\ServiceController@completeservices']));
 Route::match(['get','post'],'/editservice/{id}',(['as'=>'editservice','uses'=>'admin\ServiceController@editservice']));
 Route::match(['get','post'],'/detailservice/{id}',(['as'=>'detailservice','uses'=>'admin\ServiceController@detailservice']));
 Route::match(['get','post'],'/downloadzip/{id}',(['as'=>'downloadzip','uses'=>'admin\ServiceController@downloadzip']));
