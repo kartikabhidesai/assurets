@@ -14,10 +14,10 @@ $details=Auth::guard('company')->user();
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ $details->firstname}} {{ $details->lastname}}</strong>
                              </span> <span class="text-muted text-xs block">{{ $details->role_type}} <b class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="{{ url('viewprofile') }}">View Profile</a></li>
-                                <li><a href="{{ url('updateprofile') }}">Update Profile</a></li>
-                                <li><a href="{{ url('changepassword') }}">Change Password</a></li>
-                                <li><a href="{{ url('changeprofilepicture') }}">Change Profile Picture</a></li>
+                                <li><a href="{{ url('viewprofile-company') }}">View Profile</a></li>
+                                <li><a href="{{ url('updateprofile-company') }}">Update Profile</a></li>
+                                <li><a href="{{ url('changepassword-company') }}">Change Password</a></li>
+                                <li><a href="{{ url('changeprofilepicture-company') }}">Change Profile Picture</a></li>
                             </ul>
                         </div>
                         <div class="logo-element">
@@ -25,7 +25,7 @@ $details=Auth::guard('company')->user();
                         </div>
                     </li>
                     
-                    <li class="{{ ($currRoute == 'customermydetailservice' || $currRoute == 'company-serivces')  ? 'active' : '' }} ">
+                    <li class="{{ ($currRoute == 'addservice-company' || $currRoute == 'customermydetailservice' || $currRoute == 'company-serivces')  ? 'active' : '' }} ">
                         <a href="{{ url('company-serivces') }}"><i class="fa fa-diamond"></i> <span class="nav-label">My Services</span></a>
                     </li>
                     

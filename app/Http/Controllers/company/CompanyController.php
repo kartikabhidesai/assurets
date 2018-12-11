@@ -1,16 +1,28 @@
 <?php
 
 namespace App\Http\Controllers\company;
-use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Validator;
 use App\Model\Company;
+use App\Model\Users;
 use App\Model\Service;
 use App\Model\ServicePhoto;
+use DB;
+use Chumper\Zipper\Zipper;
+use Illuminate\Support\Facades\Response;
 
 class CompanyController extends Controller {
         
+//    $data['detail'] =  $data['id']=Auth::guard('company')->user();
+//         print_r($data['detail']);
+//         die();
+    
     public function companylist() {
-
+         
         $perPage = 15;
 
         $CompanyList = new Company;
@@ -39,9 +51,9 @@ class CompanyController extends Controller {
     }
     
     public function companyserivces(){
-           $perPage = 15;
-           $logindata='17';
-           
+        
+        $logindata =  $data['id']=Auth::guard('company')->user()->id;
+        $perPage = 15;
         $CompanyList = new Company;
         $getCompanyList = $CompanyList->getMyCompanyList($perPage,$logindata);
         $data['getCompanyList'] = $getCompanyList;
@@ -102,6 +114,47 @@ class CompanyController extends Controller {
         );
         
         return view('company.pages.detailservice', $data);
+    }
+    
+    public function addservicecompany(Request $request){
+        
+
+        if ($request->isMethod('post')) {
+            $validator = validator::make($request->all(), [
+                        'vehicle_no' => 'required',
+                        'owner_name' => 'required',
+                        'owner_mobile' => 'required|numeric|min:10',
+                        'location' => 'required',
+                        'insurer' => 'required',
+                        'address' => 'required',
+                        'user_id' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return redirect('addservice-company')
+                                ->withErrors($validator)
+                                ->withInput();
+            }
+
+            $serviceObj = new Service;
+
+            $insertService = $serviceObj->insertService($request);
+
+            $data['insertService'] = $insertService;
+
+            return redirect()->back()->with('message','Service inserted');
+        }
+
+        $userid = new Users;
+
+        $getCompany = $userid->getCompany();
+
+        $data['getCompany'] = $getCompany;
+        
+        $getUserId = $userid->getUser();
+
+        $data['getUserId'] = $getUserId;
+
+        return view('company.pages.addservice-company', $data);
     }
 
 }

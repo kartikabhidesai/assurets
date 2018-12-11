@@ -119,7 +119,7 @@ class ServiceController extends Controller {
         $userid = new Users;
         $serviceData = new Service;
         $getServiceData = $serviceData->getServiceData($id);
-        $data['getServiceData'] = $getServiceData;
+        $data['getServiceData'] = $getServiceData['0'];
         $getUserId = $userid->getUser();
         $data['getUserId'] = $getUserId;
         return view('admin.pages.editservice', $data);

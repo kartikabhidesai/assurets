@@ -271,7 +271,7 @@ class Service extends Model {
 
         $query = Service::leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
                             ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
-                            ->where('services.user_id','!=',$userid);
+                            ->where('services.insurer','!=',$userid);
         //->groupBy('services.id');
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
             $searchVal = $requestData['search']['value'];
@@ -347,6 +347,7 @@ class Service extends Model {
     }
     
     public function getDataMyCompanyServicestable($request) {
+        
         $userid=$request->input('data')['userId'];
          
         $requestData = $_REQUEST;
@@ -366,7 +367,7 @@ class Service extends Model {
 
         $query = Service::leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
                    ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
-                   ->where('services.user_id','=',$userid);;
+                   ->where('services.insurer','=',$userid);;
         //->groupBy('services.id');
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
             $searchVal = $requestData['search']['value'];

@@ -12,7 +12,7 @@ $details=Auth::guard('company')->user();
                 <div class="ibox-title">
                     <h5>Service List</h5>
                     <div class="ibox-tools">
-                       <a class="close-link" title="Add Service" data-toggle="tooltip" data-placement="left" href="{{ url('addservice') }}">
+                       <a class="close-link" title="Add Service" data-toggle="tooltip" data-placement="left" href="{{ url('addservice-company') }}">
                             <i class="fa fa-plus"></i>
                         </a>
                     </div>

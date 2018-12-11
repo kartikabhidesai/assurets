@@ -41,9 +41,15 @@ Route::match(['get','post'],'/callsajaxAction',(['as'=>'callsajaxAction','uses'=
 Route::match(['get','post'],'/company-dashboard',(['as'=>'dashboard','uses'=>'admin\LoginController@companydashboard']));
 Route::match(['get','post'],'/company-list',(['as'=>'company-list','uses'=>'company\CompanyController@companylist']));
 Route::match(['get','post'],'/company-serivces',(['as'=>'company-serivces','uses'=>'company\CompanyController@companyserivces']));
+Route::match(['get','post'],'/addservice-company',(['as'=>'addservice-company','uses'=>'company\CompanyController@addservicecompany']));
 Route::match(['get','post'],'/customermydetailservice/{id}',(['as'=>'customermydetailservice','uses'=>'company\CompanyController@customermydetailservice']));
 Route::match(['get','post'],'/customerdetailservice/{id}',(['as'=>'customerdetailservice','uses'=>'company\CompanyController@customerdetailservice']));
 Route::match(['get','post'],'/user-dashboard',(['as'=>'userdashboard','uses'=>'admin\LoginController@userdashboard']));
+
+Route::match(['get','post'],'/viewprofile-company',(['as'=>'viewprofile-company','uses'=>'company\ProfileController@viewprofile']));
+Route::match(['get','post'],'/updateprofile-company',(['as'=>'updateprofile-company','uses'=>'company\ProfileController@updateprofile']));
+Route::match(['get','post'],'/changepassword-company',(['as'=>'changepassword-company','uses'=>'company\ProfileController@changepassword']));
+Route::match(['get','post'],'/changeprofilepicture-company',(['as'=>'changeprofilepicture-company','uses'=>'company\ProfileController@changeprofilepicture']));
 
 Route::match(['get','post'],'/',(['as'=>'index','uses'=>'front\MainController@index']));
 Route::match(['get','post'],'/service',(['as'=>'service','uses'=>'front\MainController@service']));

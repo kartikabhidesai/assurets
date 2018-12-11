@@ -22,11 +22,13 @@ class Company extends Model{
     }
     
     public function getMyCompanyList($perPage,$logindata){
-       
+        
         $result = Company::join('users','users.id','=','services.id')
                            ->select('services.*','users.firstname','users.lastname')
+                           ->where('services.insurer',$logindata)
                            ->orderBy('id','DESC')
                            ->paginate($perPage);
+                   
         return $result;
     }
 }

@@ -1,6 +1,12 @@
-@extends('admin.mainlayouts.index') 
-@section('title','Service form')
+@php
+$details=Auth::guard('company')->user();
+
+@endphp
+@extends('company.mainlayouts.index')
+@section('title', 'Company-list')
+
 @section('content')
+
 <div class="wrapper wrapper-content animated fadeInRight">
     @if ($errors->any())
 <div class="alert alert-danger">
@@ -67,12 +73,10 @@
                             <label class="col-sm-2 control-label">Insurer</label>
 
                             <div class="col-sm-10">
-                                  <select class="form-control m-b" id="user" name="insurer">
                                 
-                                
-                                    @foreach($getCompany as $value)
-                                    <option value="{{ $value['id'] }}">{{ $value['firstname'] }} {{ $value['lastname'] }}</option>
-                                    @endforeach
+                                <select class="form-control m-b" id="insurer" name="insurer" >
+                                    <option value="">Select Company</option>
+                                    <option value="{{ $details['id'] }}" selected="selected">{{ $details['firstname'] }} {{ $details['lastname'] }}</option>
                                 </select>               
                             </div>
                         </div>
@@ -85,7 +89,7 @@
                         <div class="form-group"><label class="col-sm-2 control-label">Executive</label>
 
                             <div class="col-sm-10">
-                                <select class="form-control m-b" id="user" name="user_id">
+                                <select class="form-control m-b" id="user_id" name="user_id">
                                     @foreach($getUserId as $value)
                                     <option value="{{ $value['id'] }}">{{ $value['firstname'] }} {{ $value['lastname'] }}</option>
                                     @endforeach
