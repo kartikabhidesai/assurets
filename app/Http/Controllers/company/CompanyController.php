@@ -118,7 +118,7 @@ class CompanyController extends Controller {
     
     public function addservicecompany(Request $request){
         
-
+        $id=Auth::guard('company')->user()->id;
         if ($request->isMethod('post')) {
             $validator = validator::make($request->all(), [
                         'vehicle_no' => 'required',
@@ -137,7 +137,7 @@ class CompanyController extends Controller {
 
             $serviceObj = new Service;
 
-            $insertService = $serviceObj->insertService($request);
+            $insertService = $serviceObj->insertService($request,$id);
 
             $data['insertService'] = $insertService;
 
@@ -156,5 +156,33 @@ class CompanyController extends Controller {
 
         return view('company.pages.addservice-company', $data);
     }
+    
+    public function customerhistory() {
+         
+        $perPage = 15;
 
+        $CompanyList = new Company;
+
+        $getCompanyList = $CompanyList->getCompanyList($perPage);
+
+        $data['getCompanyList'] = $getCompanyList;
+        
+          $data['css'] = array(
+        
+            'plugins/dataTables/datatables.min.css',
+            'plugins/sweetalert/sweetalert.css',
+        );
+        
+        $data['js'] = array(
+            'plugins/dataTables/datatables.min.js',            
+            'plugins/sweetalert/sweetalert.min.js',
+            'company/services/customerhistory.js'
+            
+        );
+        $data['funinit'] = array(
+            'Customerhistory.init()',
+        );
+
+        return view('company.pages.company-list', $data);
+    }
 }

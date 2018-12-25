@@ -26,11 +26,15 @@ $details=Auth::guard('company')->user();
                     </li>
                     
                     <li class="{{ ($currRoute == 'addservice-company' || $currRoute == 'customermydetailservice' || $currRoute == 'company-serivces')  ? 'active' : '' }} ">
-                        <a href="{{ url('company-serivces') }}"><i class="fa fa-diamond"></i> <span class="nav-label">My Services</span></a>
+                        <a href="{{ url('company-serivces') }}"><i class="fa fa-users"></i> <span class="nav-label">My Services</span></a>
                     </li>
                     
                     <li class="{{ ($currRoute == 'customerdetailservice' || $currRoute == 'company-list')  ? 'active' : '' }} ">
                         <a href="{{ url('company-list') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Services</span></a>
+                    </li>
+                    
+                     <li  class="{{ ($currRoute == 'customerhistory')    ? 'active' : '' }} ">
+                        <a href="{{ url('customerhistory') }}"><i class="fa fa-history"></i> <span class="nav-label">History</span></a>
                     </li>
                     
                 </ul>

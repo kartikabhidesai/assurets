@@ -19,8 +19,8 @@
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="id" value="{{ $getServiceData['id'] }}">
+                        <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" id="id" name="id" value="{{ $getServiceData['id'] }}">
                         <div class="form-group col-md-6">
                             <label class="col-md-6 control-label">Service No</label>
                             <div class="col-md-6 control-label">
@@ -87,10 +87,20 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Service Photo</h5> 
-                    <a class="pull-right" href="{{ url('/downloadzip/'.$getServiceData['id']) }}" title="Image zip download">
+                    <a style="margin-left:10px;" class="pull-right" href="{{ url('/downloadzip/'.$getServiceData['id']) }}" title="Image zip download">
                         <i class="fa fa-cloud-download fa-2x" aria-hidden="true"></i>
                     </a>
+                    <a style="margin-left:10px;"  class="pull-right" title="Delete Images">
+                        <i class="fa fa-trash-o fa-2x deleteimages" aria-hidden="true"></i>
+                    </a>
+                     
+                    <a class="pull-right" title="Add Images">
+                        <span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                        <i class="fa fa-plus fa-2x Addimages" aria-hidden="true"></i>
+                         </span>
+                    </a>
                 </div>
+                
                 <div class="ibox-content">
                     <div class="row">
                         @foreach($getServicePhotoDatas as $getServicePhotoData)
@@ -112,9 +122,13 @@
                         @else
                         <div class="form-group col-md-3">
                             <div class="lightBoxGallery">                             
-                              <a href="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}" title="Image from Unsplash" data-gallery=""><img style="width: 150px;" src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}"></a>
+                                <a href="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}" title="Image from Unsplash" data-gallery=""><img style="width: 150px;" src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}"></a>                              
+                                <input type="checkbox" class="form-check image" name="image" value="{{ $getServicePhotoData['id']}}" >
                             </div>
+                            
+                            
                         </div>
+                        
                         @endif
                         @endforeach
                         
@@ -134,4 +148,43 @@
     <a class="play-pause"></a>
     <ol class="indicator"></ol>
 </div>
+
+
+  <div class="modal fade" id="deleteModel" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Images</h4>
+        </div>
+        <div class="modal-body">
+           <div class="ibox-content">
+                    <form method="post" class="form-horizontal" action="{{ route("addimages")}}" enctype="multipart/form-data">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="serviceid" value="{{ $id }}">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Add File</label>
+
+                                <div class="col-sm-10">
+                                    <input type="file" name="filename" class="form-control" required>
+                                </div>
+                            </div>
+                       
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <input class="btn btn-primary" name="submit" type="submit"></button>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 @endsection

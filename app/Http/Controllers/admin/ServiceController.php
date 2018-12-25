@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Response;
 class ServiceController extends Controller {
 
     public function addservice(Request $request) {
-
+    $id=Auth::guard('admin')->user()->id;
+    
         if ($request->isMethod('post')) {
            
             $validator = validator::make($request->all(), [
@@ -38,7 +39,7 @@ class ServiceController extends Controller {
 
             $serviceObj = new Service;
 
-            $insertService = $serviceObj->insertService($request);
+            $insertService = $serviceObj->insertService($request,$id);
 
             $data['insertService'] = $insertService;
 
@@ -140,17 +141,24 @@ class ServiceController extends Controller {
         $serviceData = new Service;
         $getServiceData = $serviceData->getServiceData($id);
         $data['getServiceData'] = $getServiceData[0];
+        $data['id']=$id;
         
         $objServicePhotoData = new ServicePhoto;
         $arrServicePhotoData = $objServicePhotoData->getServicePhotoData($id);
         $data['getServicePhotoDatas'] = $arrServicePhotoData;
         $data['css'] = array(
-            'plugins/blueimp/css/blueimp-gallery.min.css',            
+            'plugins/blueimp/css/blueimp-gallery.min.css',  
+            'plugins/sweetalert/sweetalert.css',
         );
          $data['js'] = array(                 
             'inspinia.js',
             'plugins/pace/pace.min.js',
-            'plugins/blueimp/jquery.blueimp-gallery.min.js'
+            'plugins/blueimp/jquery.blueimp-gallery.min.js',
+             'plugins/sweetalert/sweetalert.min.js',
+            'servicesdetails.js'
+        );
+        $data['funinit'] = array(
+            'Servicesdetails.init()',
         );
         
         return view('admin.pages.detailservice', $data);
@@ -189,6 +197,12 @@ class ServiceController extends Controller {
                     $serviceLists = $serviceObj->getDatatable($request);
                     echo json_encode($serviceLists);
                     break;
+                
+                case 'datatableHistory':
+                    $serviceObj = new Service;
+                    $serviceLists = $serviceObj->getHistoryDatatable($request);
+                    echo json_encode($serviceLists);
+                    break;
                   
                 case 'datatableUser':                      
                     $usersObj = new Users;
@@ -202,11 +216,37 @@ class ServiceController extends Controller {
                     echo json_encode($serviceLists);
                     break;
                 
+                 case 'datatableCompanyHistoryServices':                      
+                    $serviceObj = new Service;
+                    $serviceLists = $serviceObj->getDataCompanyHistoryServicestable($request);
+                    echo json_encode($serviceLists);
+                    break;
+                
                 case 'datatableMyCompanyServices':
                     $serviceObj = new Service;
                     $serviceLists = $serviceObj->getDataMyCompanyServicestable($request);
                     echo json_encode($serviceLists);
                     break;
             }
+    }
+    
+    public function deleteimages(Request $request){
+      $servicephotoObj = new ServicePhoto;  
+      $serviceLists = $servicephotoObj->deleteimages($request);
+      if($serviceLists == TRUE){
+           return redirect()->back()->with('message','Images Successfully deleted');
+      }else{
+           return redirect()->back()->with('message','Images not deleted');
+      }
+    }
+    
+    public function addimages(Request $request){
+         $servicephotoaddObj = new ServicePhoto;  
+         $servicesaddphoto = $servicephotoaddObj->addimages($request);
+         if($servicesaddphoto == TRUE){
+           return redirect()->back()->with('message','Images Successfully Added');
+      }else{
+           return redirect()->back()->with('message','Images not Added');
+      }
     }
 }

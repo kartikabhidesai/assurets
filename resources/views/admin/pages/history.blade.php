@@ -20,12 +20,8 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Service List</h5>
-                    <div class="ibox-tools">
-                       <a class="close-link" title="Add Service" data-toggle="tooltip" data-placement="left" href="{{ url('addservice') }}">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
+                    <h5>Complete Service List</h5>
+                    
                 </div>
                 <div class="ibox-content">
                     <div id="rickshaw_scatterplot" class="rickshaw_graph">

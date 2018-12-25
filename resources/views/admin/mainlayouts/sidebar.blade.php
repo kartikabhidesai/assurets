@@ -26,10 +26,14 @@ $details=Auth::guard('admin')->user();
                         </div>
                     </li>
                     <li class="{{ ($currRoute == 'userlist') || ($currRoute == 'userform') || ($currRoute == 'edituser')   ? 'active' : '' }} ">
-                        <a href="{{ url('userlist') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Users</span></a>
+                        <a href="{{ url('userlist') }}"><i class="fa fa-users"></i> <span class="nav-label">Users</span></a>
                     </li>
                     <li  class="{{ ($currRoute == 'detailservice') || ($currRoute == 'services') || ($currRoute == 'addservice') || ($currRoute == 'editservice')   ? 'active' : '' }} ">
                         <a href="{{ url('services') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Services</span></a>
+                    </li>
+                    
+                    <li  class="{{ ($currRoute == 'history')    ? 'active' : '' }} ">
+                        <a href="{{ url('history') }}"><i class="fa fa-history"></i> <span class="nav-label">History</span></a>
                     </li>
                     
                     

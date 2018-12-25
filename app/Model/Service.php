@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 
 class Service extends Model {
-
     protected $table = 'services';
 
-    public function insertService($request) {
+    public function insertService($request ,$id) {
 
         $serviceObj = new Service;
 
@@ -22,6 +21,8 @@ class Service extends Model {
         $serviceObj->insurer = $request->input('insurer');
         $serviceObj->address = $request->input('address');
         $serviceObj->user_id = $request->input('user_id');
+        $serviceObj->created_by = $id;
+        
 
         $serviceObj->save();
     }
@@ -258,6 +259,97 @@ class Service extends Model {
         return $json_data;
     }
     
+     public function getHistoryDatatable($request) {
+        $requestData = $_REQUEST;
+
+        $columns = array(
+            // datatable column index  => database column name
+             0 => 'services.id',
+            1 => 'services.service_no',
+            2 => 'services.vehicle_no',
+            3 => 'services.owner_name',
+            4 => 'services.owner_mobile',
+            5 => 'services.location',
+            6 => 'u2.firstname',
+            7 => 'services.address',
+            8 => 'u1.firstname',
+        );
+
+         $query = Service::leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
+                            ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
+                            ->where('services.status','=','compelete');
+        //->groupBy('services.id');
+        if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
+            $searchVal = $requestData['search']['value'];
+            $query->where(function($query) use ($columns, $searchVal, $requestData) {
+                $flag = 0;
+                foreach ($columns as $key => $value) {
+                    $searchVal = $requestData['search']['value'];
+                    if ($key == 3 && ($searchVal == 'Not Sent' || $searchVal == 'not sent')) {
+                        $searchVal = 0;
+                    } else if ($key == 3 && ($searchVal == 'sent' || $searchVal == 'Sent')) {
+                        $searchVal = 1;
+                    }
+
+                    if ($requestData['columns'][$key]['searchable'] == 'true') {
+                        if ($flag == 0) {
+                            $flag = $flag + 1;
+                            $query->where($value, 'like', '%' . $searchVal . '%');
+                        } else {
+//                                    $query->orWhere($value, 'like',"%$searchVal%");
+                            $query->orWhere($value, 'like', '%' . $searchVal . '%');
+                        }
+                    }
+                }
+            });
+        }
+
+        $temp = $query->orderBy($columns[$requestData['order'][0]['column']], $requestData['order'][0]['dir']);
+        $totalData = count($temp->get());
+        $totalFiltered = count($temp->get());
+        $resultArr = $query->skip($requestData['start'])
+                        ->take($requestData['length'])
+                        ->select(
+                                 'services.id', 'services.service_no', 'services.vehicle_no', 'services.owner_name', 'services.owner_mobile', 'services.location', 'services.insurer', 'services.address', 'u1.firstname as executivename', 'u2.firstname as insurername','services.status'
+                        )->get()->toArray();
+        $data = array();
+//        print_r($resultArr);exit;
+        foreach ($resultArr as $row) {
+            $actionHtml = '<a href="' . route("editservice", ["id" => $row["id"]]) . '"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a><a class="delete" data_value="' . $row["id"] . '"> <i  class=" fa fa-trash-o" aria-hidden="true"></i></a><a href="'. route("detailservice", ["id" => $row["id"]]) . '"> <i class="fa fa-eye" aria-hidden="true"></i></a>';
+            if($row['status']=='inprocess'){
+                $label='<span class="label label-info">Inprocess</span>';
+            }
+            if($row['status']=='inreport'){
+                $label='<span class="label label-danger">Inreport</span>';
+            }
+            if($row['status']=='compelete'){
+                $label='<span class="label label-success">Compelete</span>';
+            }
+//            print_r($row);exit;
+            $nestedData = array();
+            $nestedData[] = $row['id'];
+            $nestedData[] = $row['service_no'];
+            $nestedData[] = $row['vehicle_no'];
+            $nestedData[] = $row['owner_name'];
+            $nestedData[] = $row['owner_mobile'];
+            $nestedData[] = $row['location'];
+            $nestedData[] = $row['insurername'];
+            $nestedData[] = $row['address'];
+            $nestedData[] = $row['executivename'];
+            $nestedData[] = $label;
+            $nestedData[] = $actionHtml;
+            $data[] = $nestedData;
+        }
+
+        $json_data = array(
+            "draw" => intval($requestData['draw']), // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
+            "recordsTotal" => intval($totalData), // total number of records
+            "recordsFiltered" => intval($totalFiltered), // total number of records after searching, if there is no searching then totalFiltered = totalData
+            "data" => $data   // total data array
+        );
+        return $json_data;
+    }
+    
     public function getDataCompanyServicestable($request) {
         $userid=$request->input('data')['userId'];
          
@@ -278,7 +370,104 @@ class Service extends Model {
 
         $query = Service::leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
                             ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
-                            ->where('services.insurer','!=',$userid);
+                            ->where('services.created_by','!=',$userid)
+                            ->where('services.status','!=',"compelete");
+        //->groupBy('services.id');
+        if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
+            $searchVal = $requestData['search']['value'];
+            $query->where(function($query) use ($columns, $searchVal, $requestData) {
+                $flag = 0;
+                foreach ($columns as $key => $value) {
+                    $searchVal = $requestData['search']['value'];
+                    if ($key == 3 && ($searchVal == 'Not Sent' || $searchVal == 'not sent')) {
+                        $searchVal = 0;
+                    } else if ($key == 3 && ($searchVal == 'sent' || $searchVal == 'Sent')) {
+                        $searchVal = 1;
+                    }
+
+                    if ($requestData['columns'][$key]['searchable'] == 'true') {
+                        if ($flag == 0) {
+                            $flag = $flag + 1;
+                            $query->where($value, 'like', '%' . $searchVal . '%');
+                        } else {
+//                                    $query->orWhere($value, 'like',"%$searchVal%");
+                            $query->orWhere($value, 'like', '%' . $searchVal . '%');
+                        }
+                    }
+                }
+            });
+        }
+
+        $temp = $query->orderBy($columns[$requestData['order'][0]['column']], $requestData['order'][0]['dir']);
+        $totalData = count($temp->get());
+        $totalFiltered = count($temp->get());
+        $resultArr = $query->skip($requestData['start'])
+                        ->take($requestData['length'])
+                        ->select(
+                                'services.id', 'services.service_no', 'services.vehicle_no', 'services.owner_name', 'services.owner_mobile', 'services.location', 'services.insurer', 'services.address', 'u1.firstname as executivename', 'u2.firstname as insurername','services.status'
+                        )
+                        
+                        ->get()->toArray();
+        $data = array();
+//        print_r($resultArr);exit;
+        foreach ($resultArr as $row) {
+            $actionHtml = '<a href="'. route("customerdetailservice", ["id" => $row["id"]]) . '"> <i class="fa fa-eye" aria-hidden="true"></i></a>';
+            if($row['status']=='inprocess'){
+                $label='<span class="label label-info">Inprocess</span>';
+            }
+            if($row['status']=='inreport'){
+                $label='<span class="label label-danger">Inreport</span>';
+            }
+            if($row['status']=='compelete'){
+                $label='<span class="label label-success">Compelete</span>';
+            }
+//            print_r($row);exit;
+            $nestedData = array();
+            $nestedData[] = $row['id'];
+            $nestedData[] = $row['service_no'];
+            $nestedData[] = $row['vehicle_no'];
+            $nestedData[] = $row['owner_name'];
+            $nestedData[] = $row['owner_mobile'];
+            $nestedData[] = $row['location'];
+            $nestedData[] = $row['insurername'];
+            $nestedData[] = $row['address'];
+            $nestedData[] = $row['executivename'];
+            $nestedData[] = $label;
+            $nestedData[] = $actionHtml;
+            $data[] = $nestedData;
+        }
+
+        $json_data = array(
+            "draw" => intval($requestData['draw']), // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
+            "recordsTotal" => intval($totalData), // total number of records
+            "recordsFiltered" => intval($totalFiltered), // total number of records after searching, if there is no searching then totalFiltered = totalData
+            "data" => $data   // total data array
+        );
+        return $json_data;
+    }
+    
+    public function getDataCompanyHistoryServicestable($request) {
+        $userid=$request->input('data')['userId'];
+         
+        $requestData = $_REQUEST;
+
+        $columns = array(
+            // datatable column index  => database column name
+            0 => 'services.id',
+            1 => 'services.service_no',
+            2 => 'services.vehicle_no',
+            3 => 'services.owner_name',
+            4 => 'services.owner_mobile',
+            5 => 'services.location',
+            6 => 'u2.firstname',
+            7 => 'services.address',
+            8 => 'u1.firstname',
+        );
+
+        $query = Service::leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
+                            ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
+                            ->where('services.insurer','!=',$userid)
+                            ->where('services.status','=',"compelete");
         //->groupBy('services.id');
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
             $searchVal = $requestData['search']['value'];
@@ -374,7 +563,7 @@ class Service extends Model {
 
         $query = Service::leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
                    ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
-                   ->where('services.insurer','=',$userid);;
+                   ->where('services.created_by','=',$userid);;
         //->groupBy('services.id');
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
             $searchVal = $requestData['search']['value'];
@@ -447,6 +636,6 @@ class Service extends Model {
         );
         return $json_data;
     }
-
-
+    
+    
 }

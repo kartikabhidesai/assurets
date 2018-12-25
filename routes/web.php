@@ -37,10 +37,14 @@ Route::match(['get','post'],'/editservice/{id}',(['as'=>'editservice','uses'=>'a
 Route::match(['get','post'],'/detailservice/{id}',(['as'=>'detailservice','uses'=>'admin\ServiceController@detailservice']));
 Route::match(['get','post'],'/downloadzip/{id}',(['as'=>'downloadzip','uses'=>'admin\ServiceController@downloadzip']));
 Route::match(['get','post'],'/callsajaxAction',(['as'=>'callsajaxAction','uses'=>'admin\ServiceController@ajaxAction']));
-
+Route::match(['get','post'],'deleteimages',(['as'=>'deleteimages','uses'=>'admin\ServiceController@deleteimages']));
+Route::match(['get','post'],'/addimages',(['as'=>'addimages','uses'=>'admin\ServiceController@addimages']));
+Route::match(['get','post'],'/history',(['as'=>'history','uses'=>'admin\HistoryController@history']));
 
 Route::match(['get','post'],'/company-dashboard',(['as'=>'dashboard','uses'=>'admin\LoginController@companydashboard']));
 Route::match(['get','post'],'/company-list',(['as'=>'company-list','uses'=>'company\CompanyController@companylist']));
+Route::match(['get','post'],'/customerhistory',(['as'=>'customerhistory','uses'=>'company\CompanyController@customerhistory']));
+
 Route::match(['get','post'],'/company-serivces',(['as'=>'company-serivces','uses'=>'company\CompanyController@companyserivces']));
 Route::match(['get','post'],'/addservice-company',(['as'=>'addservice-company','uses'=>'company\CompanyController@addservicecompany']));
 Route::match(['get','post'],'/customermydetailservice/{id}',(['as'=>'customermydetailservice','uses'=>'company\CompanyController@customermydetailservice']));
