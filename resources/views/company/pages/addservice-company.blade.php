@@ -89,10 +89,8 @@ $details=Auth::guard('company')->user();
                         <div class="form-group"><label class="col-sm-2 control-label">Executive</label>
 
                             <div class="col-sm-10">
-                                <select class="form-control m-b" id="user_id" name="user_id">
-                                    @foreach($getUserId as $value)
-                                    <option value="{{ $value['id'] }}">{{ $value['firstname'] }} {{ $value['lastname'] }}</option>
-                                    @endforeach
+                                <select class="form-control m-b" id="user_id" name="user_id" disabled>
+                                    <option value="1">Admin Admin</option>
                                 </select> 
                                 
                             </div>

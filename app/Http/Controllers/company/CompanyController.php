@@ -100,7 +100,7 @@ class CompanyController extends Controller {
        $serviceData = new Service;
         $getServiceData = $serviceData->getServiceData($id);
         $data['getServiceData'] = $getServiceData['0'];
-        
+       
         $objServicePhotoData = new ServicePhoto;
         $arrServicePhotoData = $objServicePhotoData->getServicePhotoData($id);
         $data['getServicePhotoDatas'] = $arrServicePhotoData;

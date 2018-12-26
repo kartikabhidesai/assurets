@@ -78,7 +78,7 @@ $role_type=$getupdateData['role_type'];
 ?>
                             <div class="col-sm-10">
                             <select class="form-control m-b" name="role_type">
-                                <option value="">Select Role</option>
+                                
                                 <option value="company" <?php if($role_type=='company'){ echo("selected='selected'");}?>>Company</option>
                                 <option value="user" <?php if($role_type=='user'){ echo("selected='selected'");}?>>User</option>
                                 

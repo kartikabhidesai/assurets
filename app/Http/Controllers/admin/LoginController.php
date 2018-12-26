@@ -140,6 +140,7 @@ class LoginController extends Controller {
                         'email' => 'required|email',
                         'username' => 'required|min:5',
                         'mobile' => 'required|min:10',
+                        
             ]);
             if ($validator->fails()) {
                 return redirect('edituserform/' . $id)

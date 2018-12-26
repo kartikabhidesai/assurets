@@ -52,6 +52,7 @@
                         <div class="form-group col-md-6">
                             <label class="col-md-6 control-label">Insurer</label>
                             <div class="col-md-6">
+                                
                                 {{ $getServiceData['firstname'].' '.$getServiceData['lastname'] }}
                             </div>
                         </div>
@@ -74,6 +75,7 @@
                              <label class="col-md-6 control-label">Executive</label>
                             <div class="col-md-6">
                                 {{ $getServiceData['executivefirstname'].' '.$getServiceData['executivelastname'] }}
+                                
                             </div>
                         </div>
                         

@@ -40,6 +40,7 @@ Route::match(['get','post'],'/callsajaxAction',(['as'=>'callsajaxAction','uses'=
 Route::match(['get','post'],'deleteimages',(['as'=>'deleteimages','uses'=>'admin\ServiceController@deleteimages']));
 Route::match(['get','post'],'/addimages',(['as'=>'addimages','uses'=>'admin\ServiceController@addimages']));
 Route::match(['get','post'],'/history',(['as'=>'history','uses'=>'admin\HistoryController@history']));
+Route::match(['get','post'],'/puttime',(['as'=>'puttime','uses'=>'admin\HistoryController@puttime']));
 
 Route::match(['get','post'],'/company-dashboard',(['as'=>'dashboard','uses'=>'admin\LoginController@companydashboard']));
 Route::match(['get','post'],'/company-list',(['as'=>'company-list','uses'=>'company\CompanyController@companylist']));

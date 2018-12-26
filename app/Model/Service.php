@@ -5,6 +5,7 @@ namespace App\Model;
 use App\Model\ServicePhoto;
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use PHPImageWorkshop\ImageWorkshop;
 
 class Service extends Model {
     protected $table = 'services';
@@ -84,6 +85,17 @@ class Service extends Model {
     }
 
     public function getServiceData($id) {
+        
+       return Service::select('services.*','u2.firstname','u2.lastname','u1.firstname as executivefirstname','u1.lastname as executivelastname')
+                        ->leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
+                        ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
+                        ->where('services.id',$id)
+                        ->get()->toArray();
+       
+    }
+    
+    public function getServiceData1($id) {
+        
        return Service::select('services.*','u1.firstname','u1.lastname','u2.firstname as executivefirstname','u2.lastname as executivelastname')
                         ->leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
                         ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
@@ -123,7 +135,26 @@ class Service extends Model {
         return TRUE;
     }
 
-    public function addtimestamp($publicPath,$file_name1) {
+    public function addtimestamp($publicPath,$file_name1){
+        $gifPath = $publicPath; // Your animated GIF path
+        
+        $norwayLayer = ImageWorkshop::initFromPath($gifPath);
+
+        // This is the text layer
+        $textLayer = ImageWorkshop::initTextLayer(date('Y-m-d H:i:s'), public_path().'/fonts/American Desktop.ttf', 100, 'ffffff', 0);
+
+        // We add the text layer 12px from the Left and 12px from the Bottom ("LB") of the norway layer:
+        $norwayLayer->addLayerOnTop($textLayer, 12, 12, "LB");
+
+        $image = $norwayLayer->getResult();
+        
+//        file_put_contents($gifPath, $image);
+       // header('Content-type: image/jpeg');
+        imagejpeg($image, $gifPath, 95); // We chose to show a JPG with a quality of 95%
+        return true;
+    }
+    
+    public function addtimestamp1($publicPath,$file_name1) {
         $image = $publicPath;
 
         /*
@@ -173,7 +204,7 @@ class Service extends Model {
 
         $columns = array(
             // datatable column index  => database column name
-             0 => 'services.id',
+            0 => 'services.id',
             1 => 'services.service_no',
             2 => 'services.vehicle_no',
             3 => 'services.owner_name',
@@ -371,6 +402,7 @@ class Service extends Model {
         $query = Service::leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
                             ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
                             ->where('services.created_by','!=',$userid)
+                            ->where('services.insurer','=',$userid)
                             ->where('services.status','!=',"compelete");
         //->groupBy('services.id');
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
@@ -466,8 +498,9 @@ class Service extends Model {
 
         $query = Service::leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
                             ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
-                            ->where('services.insurer','!=',$userid)
-                            ->where('services.status','=',"compelete");
+                            ->where('services.status','=',"compelete")
+                            ->where('services.insurer','=',$userid);
+                            
         //->groupBy('services.id');
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
             $searchVal = $requestData['search']['value'];
@@ -563,7 +596,8 @@ class Service extends Model {
 
         $query = Service::leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
                    ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
-                   ->where('services.created_by','=',$userid);;
+                   ->where('services.created_by','=',$userid)
+                    ->where('services.status','!=','compelete');
         //->groupBy('services.id');
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
             $searchVal = $requestData['search']['value'];
@@ -621,8 +655,9 @@ class Service extends Model {
             $nestedData[] = $row['owner_mobile'];
             $nestedData[] = $row['location'];
             $nestedData[] = $row['insurername'];
+            
             $nestedData[] = $row['address'];
-            $nestedData[] = $row['executivename'];
+           $nestedData[] = $row['executivename'];
             $nestedData[] = $label;
             $nestedData[] = $actionHtml;
             $data[] = $nestedData;

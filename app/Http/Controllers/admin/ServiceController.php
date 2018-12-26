@@ -131,8 +131,11 @@ class ServiceController extends Controller {
         $serviceData = new Service;
         $getServiceData = $serviceData->getServiceData($id);
         $data['getServiceData'] = $getServiceData['0'];
+      
         $getUserId = $userid->getUser();
         $data['getUserId'] = $getUserId;
+        $getUserId = $userid->getCompany();
+        $data['getCompany'] = $getUserId;
         return view('admin.pages.editservice', $data);
     }
     

@@ -83,6 +83,7 @@ class Users extends Model{
                 'email' => $request['email'],
                 'username' => $request['username'],
                 'mobile' => $request['mobile'],
+                'role_type' => $request['role_type'],
             ]);
            return '0';
            }else{
@@ -105,6 +106,8 @@ class Users extends Model{
         $result = Users::where('role_type','user')->get();
         return $result;
     }
+    
+   
     
     public function getDatatable($request) {
         $requestData = $_REQUEST;          
