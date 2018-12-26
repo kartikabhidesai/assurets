@@ -116,7 +116,7 @@
                         @else
                         <div class="form-group col-md-3">
                             <div class="lightBoxGallery">                             
-                              <a href="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}" title="Image from Unsplash" data-gallery=""><img style="width: 150px;" src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}"></a>
+                              <a href="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}" title="Image from Unsplash" data-gallery=""><img style="width: 150px;height: 150px;" src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}"></a>
                             </div>
                         </div>
                         @endif

@@ -117,7 +117,8 @@ class Service extends Model {
         $destinationPath = public_path() . '/servicephoto/';
 
         $file1 = $request->file('servicephoto');
-
+        $width=getimagesize($file1)[0];
+        $height=getimagesize($file1)[1];
         $file_name1 = '';
         $file_name2 = '';
         if (!empty($file1)) {
@@ -125,7 +126,7 @@ class Service extends Model {
             $file_name1 = $time . '-' . $file1->getClientOriginalName();
             $file1->move($destinationPath, $file_name1);
             $publicPath = $destinationPath . $file_name1;
-            $this->addtimestamp($publicPath,$file_name1);
+            $this->addtimestamp($publicPath,$file_name1,$width);
         }
         $serviceId = $request->input('service_id');
         $objUser = new ServicePhoto;
@@ -135,13 +136,35 @@ class Service extends Model {
         return TRUE;
     }
 
-    public function addtimestamp($publicPath,$file_name1){
+    public function addtimestamp($publicPath,$file_name1,$width){
         $gifPath = $publicPath; // Your animated GIF path
         
         $norwayLayer = ImageWorkshop::initFromPath($gifPath);
-
+        if($width >= 0 || $width >= 200 ){
+            $fontsize=10;
+        }
+        
+        if($width > 200 || $width >= 400 ){
+            $fontsize=15;
+        }
+        
+        if($width > 400 || $width >= 600 ){
+            $fontsize=40;
+        }
+        
+        if($width > 600 || $width >= 800 ){
+            $fontsize=50;
+        }
+        
+        if($width > 800 || $width >= 1000 ){
+            $fontsize=60;
+        }
+        
+        if($width > 1000 ){
+            $fontsize=90;
+        }
         // This is the text layer
-        $textLayer = ImageWorkshop::initTextLayer(date('Y-m-d H:i:s'), public_path().'/fonts/American Desktop.ttf', 100, 'ffffff', 0);
+        $textLayer = ImageWorkshop::initTextLayer(date('Y-m-d H:i:s'), public_path().'/fonts/American Desktop.ttf', $fontsize, 'ffffff', 0);
 
         // We add the text layer 12px from the Left and 12px from the Bottom ("LB") of the norway layer:
         $norwayLayer->addLayerOnTop($textLayer, 12, 12, "LB");

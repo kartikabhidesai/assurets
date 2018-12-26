@@ -89,8 +89,8 @@ $details=Auth::guard('company')->user();
                         <div class="form-group"><label class="col-sm-2 control-label">Executive</label>
 
                             <div class="col-sm-10">
-                                <select class="form-control m-b" id="user_id" name="user_id" disabled>
-                                    <option value="1">Admin Admin</option>
+                                <select class="form-control m-b" id="user_id" name="user_id" >
+                                    <option value="1" >Admin Admin</option>
                                 </select> 
                                 
                             </div>
