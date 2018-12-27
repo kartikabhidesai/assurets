@@ -150,6 +150,7 @@ class Service extends Model {
         $gifPath = $publicPath; // Your animated GIF path
         
         $norwayLayer = ImageWorkshop::initFromPath($gifPath);
+        $fontsize = 100;
         if($width >= 0 || $width >= 200 ){
             $fontsize=10;
         }
