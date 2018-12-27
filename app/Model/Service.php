@@ -117,6 +117,14 @@ class Service extends Model {
         $destinationPath = public_path() . '/servicephoto/';
 
         $file1 = $request->file('servicephoto');
+        
+        $filetype=$_FILES['servicephoto']['type'];
+        
+        if(strstr($filetype, "video/")){
+            $filetype = "video";
+        }else if(strstr($filetype, "image/")){
+        $filetype = "image";}
+        
         $width=getimagesize($file1)[0];
         $height=getimagesize($file1)[1];
         $file_name1 = '';
@@ -126,7 +134,9 @@ class Service extends Model {
             $file_name1 = $time . '-' . $file1->getClientOriginalName();
             $file1->move($destinationPath, $file_name1);
             $publicPath = $destinationPath . $file_name1;
+            if($filetype == 'image'){
             $this->addtimestamp($publicPath,$file_name1,$width);
+            }
         }
         $serviceId = $request->input('service_id');
         $objUser = new ServicePhoto;

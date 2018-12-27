@@ -111,11 +111,12 @@
                             $data = explode(".",$getServicePhotoData['name']);
                             $lastdata = end($data);
                         @endphp
-                        @if($lastdata == 'mp4')
+                        @if($lastdata == 'mp4' || $lastdata == '3gp' || $lastdata == 'mkv' || $lastdata == 'flv' || $lastdata == 'gif')
                         <div class="form-group col-md-3">
-                            <video width="150" controls>
+                            <video width="150" height="150" controls>
                                 <source src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}" type="video/mp4">
                                 <source src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}" type="video/ogg">
+                                 <input type="checkbox" class="form-check image" name="image" value="{{ $getServicePhotoData['id']}}" >
                                 Your browser does not support HTML5 video.
                               </video>
                         </div>

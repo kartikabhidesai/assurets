@@ -103,7 +103,7 @@
                             $data = explode(".",$getServicePhotoData['name']);
                             $lastdata = end($data);
                         @endphp
-                        @if($lastdata == 'mp4')
+                        @if($lastdata == 'mp4' || $lastdata == '3gp' || $lastdata == 'mkv' || $lastdata == 'flv' || $lastdata == 'gif')
                         <div class="form-group col-md-3">
                             <video width="150" controls>
                                 <source src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}" type="video/mp4">
