@@ -117,6 +117,8 @@ class Service extends Model {
         $destinationPath = public_path() . '/servicephoto/';
 
         $file1 = $request->file('servicephoto');
+        $extension = $request->file('servicephoto')->extension();
+        
         
         $filetype=$_FILES['servicephoto']['type'];
         
@@ -134,13 +136,17 @@ class Service extends Model {
             $file_name1 = $time . '-' . $file1->getClientOriginalName();
             $file1->move($destinationPath, $file_name1);
             $publicPath = $destinationPath . $file_name1;
-            if($filetype == 'image'){
+            if($extension != 'mp4'){
             $this->addtimestamp($publicPath,$file_name1,$width);
             }
         }
         $serviceId = $request->input('service_id');
+        $latitude = $request->input('latitude');
+        $longitude = $request->input('longitude');
         $objUser = new ServicePhoto;
         $objUser->service_id = $serviceId;
+        $objUser->latitude  = $latitude;
+        $objUser->longitude = $longitude;
         $objUser->name = $file_name1;
         $objUser->save();
         return TRUE;
@@ -180,6 +186,11 @@ class Service extends Model {
         // We add the text layer 12px from the Left and 12px from the Bottom ("LB") of the norway layer:
         $norwayLayer->addLayerOnTop($textLayer, 12, 12, "LB");
 
+        $textLayer = ImageWorkshop::initTextLayer('www.assurets.com', public_path().'/fonts/American Desktop.ttf', $fontsize, 'ffffff', 0);
+
+        // We add the text layer 12px from the Left and 12px from the Bottom ("LB") of the norway layer:
+        $norwayLayer->addLayerOnTop($textLayer, 12, 12, "RB");
+        
         $image = $norwayLayer->getResult();
         
 //        file_put_contents($gifPath, $image);
