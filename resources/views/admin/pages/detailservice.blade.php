@@ -70,7 +70,6 @@
                                 {{ $getServiceData['address'] }}
                             </div>
                         </div>
-                        
                         <div class="form-group col-md-6">
                              <label class="col-md-6 control-label">Executive</label>
                             <div class="col-md-6">
@@ -78,6 +77,21 @@
                                 
                             </div>
                         </div>
+                        <div class="form-group col-md-6">
+                             <label class="col-md-6 control-label">Engine no </label>
+                            <div class="col-md-6">
+                                {{ $getServiceData['engine_no'] }}
+                                
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                             <label class="col-md-6 control-label">Chession No</label>
+                            <div class="col-md-6">
+                                {{ $getServiceData['chession_no'] }}
+                                
+                            </div>
+                        </div>
+                        
                         
                     </div>
                 </div>
@@ -127,8 +141,9 @@
                             <div class="lightBoxGallery">                             
                                 <a href="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}" title="Image from Unsplash" data-gallery=""><img style="width: 150px;height: 150px;" src="{{ url('/public/servicephoto/'.$getServicePhotoData['name']) }}"></a>                              
                                 <input type="checkbox" class="form-check image" name="image" value="{{ $getServicePhotoData['id']}}" >
+                                
                             </div>
-                            
+                            <div class="text-center"><a target="_blank" href="https://www.latlong.net/c/?lat={{ $getServicePhotoData['latitude']}}&long={{ $getServicePhotoData['longitude']}}">View Map</a></div>
                             
                         </div>
                         

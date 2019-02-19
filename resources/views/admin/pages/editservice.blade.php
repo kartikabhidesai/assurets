@@ -79,10 +79,10 @@
                         <div class="hr-line-dashed"></div>
                          <div class="form-group"><label class="col-sm-2 control-label">Executive</label>
                              <div class="col-sm-10">
-                                 <select class="form-control m-b" id="user" name="executive" disabled>
+                                 <select class="form-control m-b" id="user" name="executive">
                                        
                                         @foreach($getUserId as $value)
-                                        <option value="{{ $value['id'] }}" {{ ($value['id'] == $getServiceData['insurer'] ? 'selected="selected"' : '') }} >{{ $value['firstname'] }} {{ $value['lastname'] }}</option>
+                                        <option value="{{ $value['id'] }}" {{ ($value['id'] == $getServiceData['user_id'] ? 'selected="selected"' : '') }} >{{ $value['firstname'] }} {{ $value['lastname'] }}</option>
                                         @endforeach 
                                     </select>
                                 </div>

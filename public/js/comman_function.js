@@ -879,7 +879,7 @@ function hideShowDatatableColumn(dataTable) {
     });
 }
 
-setInterval(get_order, 5000);
+//setInterval(get_order, 5000);
 function get_order(){
     var currentCount =  $('#totalOrderNotification').val();
     // console.log(currentCount)

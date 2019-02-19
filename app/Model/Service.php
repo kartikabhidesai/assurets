@@ -54,7 +54,7 @@ class Service extends Model {
     public function getServices($perPage) {
 
         $result = Service::join('users', 'users.id', '=', 'services.user_id')
-                ->select('services.*', 'users.firstname', 'users.lastname')
+                ->select('services.*', 'users.firstname', 'users.lastname','users.role_type')
                 ->orderBy('id', 'DESC')
                 ->paginate($perPage);
         return $result;
@@ -79,14 +79,17 @@ class Service extends Model {
             'owner_mobile' => $request['owner_mobile'],
             'location' => $request['location'],
             'insurer' => $request['insurer'],
-            'address' => $request['address']
+            'address' => $request['address'],
+            'user_id' => $request['executive']
         ]);
         return $request;
     }
 
     public function getServiceData($id) {
         
-       return Service::select('services.*','u2.firstname','u2.lastname','u1.firstname as executivefirstname','u1.lastname as executivelastname')
+       return Service::select('services.*','u2.firstname','u2.lastname',
+               'u1.firstname as executivefirstname',
+               'u1.lastname as executivelastname')
                         ->leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
                         ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
                         ->where('services.id',$id)
@@ -295,7 +298,12 @@ class Service extends Model {
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
                         ->select(
-                                 'services.id', 'services.service_no', 'services.vehicle_no', 'services.owner_name', 'services.owner_mobile', 'services.location', 'services.insurer', 'services.address', 'u1.firstname as executivename', 'u2.firstname as insurername','services.status'
+                                 'services.id', 'services.service_no', 'services.vehicle_no', 
+                                'services.owner_name', 'services.owner_mobile', 'services.location', 
+                                'services.insurer', 'services.address', 'u1.firstname as executivename',
+                                'u1.role_type  as user_role_type', 
+                                'u2.firstname as insurername',
+                                'services.status'
                         )->get()->toArray();
         $data = array();
 //        print_r($resultArr);exit;
@@ -310,6 +318,12 @@ class Service extends Model {
             if($row['status']=='compelete'){
                 $label='<span class="label label-success">Compelete</span>';
             }
+            
+            if($row['user_role_type']=='admin' || $row['user_role_type']==''){
+                 $user_role_type='<span class="label label-danger">Executiv Not Assign</span>';
+            }else{
+                 $user_role_type=$row['executivename'];
+            }
 //            print_r($row);exit;
             $nestedData = array();
             $nestedData[] = $row['id'];
@@ -320,7 +334,7 @@ class Service extends Model {
             $nestedData[] = $row['location'];
             $nestedData[] = $row['insurername'];
             $nestedData[] = $row['address'];
-            $nestedData[] = $row['executivename'];
+            $nestedData[] = $user_role_type;
             $nestedData[] = $label;
             $nestedData[] = $actionHtml;
             $data[] = $nestedData;
