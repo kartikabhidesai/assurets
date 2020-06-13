@@ -70,6 +70,7 @@ Route::match(['get','post'],'/api/saveService',(['as'=>'api-save-service','uses'
 Route::match(['get','post'],'/api/postServicePhoto',(['as'=>'api-postservicephoto','uses'=>'api\APIController@postServicePhoto']));
 Route::match(['get','post'],'/api/inreportService',(['as'=>'api-inreportservice','uses'=>'api\APIController@inreportService']));
 
+Route::match(['get','post'],'/excelview',['as'=>'excel','uses'=>'ExcelController@createSheetview']);
 
 
 Route::get('/clear-cache', function() {

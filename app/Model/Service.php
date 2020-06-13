@@ -6,12 +6,17 @@ use App\Model\ServicePhoto;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use PHPImageWorkshop\ImageWorkshop;
-
+ini_set('memory_limit', '2048M');
 class Service extends Model {
     protected $table = 'services';
 
     public function insertService($request ,$id) {
-
+        $serviceId = DB::table('serviceno')->select('serviceid')->where('id', 1)->get();
+        $data['serviceId'] = $serviceId[0]->serviceid;
+        DB::table('serviceno')
+            ->where('id', 1)
+            ->update(['serviceid' => $data['serviceId'] + 1]);
+        
         $serviceObj = new Service;
 
         $serviceObj->service_no = $request->input('service_no');
@@ -22,22 +27,66 @@ class Service extends Model {
         $serviceObj->insurer = $request->input('insurer');
         $serviceObj->address = $request->input('address');
         $serviceObj->user_id = $request->input('user_id');
+        $serviceObj->created_at = date("Y-m-d h:i:s");
+        $serviceObj->updated_at = date("Y-m-d h:i:s");
         $serviceObj->created_by = $id;
         
 
         $serviceObj->save();
     }
 
-    public function saveService($request) {
-
+    public function saveService($request){
+    
         $id = $request->input('service_id');
-
-        $result = Service::where('id', $id)->update([
-//            'licence_no'=>$request['licence_no'],
+        $result = Service::where('id', $id)
+        ->update([
             'engine_no' => $request['engine_no'],
             'chession_no' => $request['chession_no'],
-//            'rc_book_no'=>$request['rc_book_no'],
+            'odo_meter' => $request['odo_meter'],
+            'status' => 'inreport',
         ]);
+        if($result){
+            $servicephoto =$request->file('servicephoto');
+          
+            for($i = 0; $i < count($request->file('servicephoto')) ; $i++){
+                $destinationPath = public_path() . '/servicephoto/';
+                $file1 = $servicephoto[$i];
+                $extension = $request->file('servicephoto')[$i]->extension();
+               
+
+                $filetype=$_FILES['servicephoto']['type'][$i];
+                 
+                if(strstr($filetype, "video/")){
+                    $filetype = "video";
+                }else if(strstr($filetype, "image/")){
+                $filetype = "image";}
+
+                $width=getimagesize($file1)[0];
+                $height=getimagesize($file1)[1];
+                $file_name1 = '';
+                $file_name2 = '';
+                if (!empty($file1)) {
+                    $time = time();
+                    $file_name1 = $time.$i. '-' . $file1->getClientOriginalName();
+                    $file1->move($destinationPath, $file_name1);
+                    $publicPath = $destinationPath . $file_name1;
+                    if($extension != 'mp4'){
+                        $this->addtimestamp($publicPath,$file_name1,$width);
+                    }
+                }
+                $serviceId = $request->input('service_id');
+                $latitude = $request->input('latitude');
+                $longitude = $request->input('longitude');
+                $objUser = new ServicePhoto;
+                $objUser->service_id = $serviceId;
+                $objUser->latitude  = $latitude;
+                $objUser->longitude = $longitude;
+                $objUser->name = $file_name1;
+                $objUser->created_at = date("Y-m-d h:i:s");
+                $objUser->updated_at = date("Y-m-d h:i:s");
+                $objUser->save();
+            }
+        }
         return $request;
     }
 
@@ -54,9 +103,9 @@ class Service extends Model {
     public function getServices($perPage) {
 
         $result = Service::join('users', 'users.id', '=', 'services.user_id')
-                ->select('services.*', 'users.firstname', 'users.lastname','users.role_type')
-                ->orderBy('id', 'DESC')
-                ->paginate($perPage);
+                    ->select('services.*', 'users.firstname', 'users.lastname','users.role_type')
+                    ->orderBy('id', 'DESC')
+                    ->paginate($perPage);
         return $result;
     }
 
@@ -80,16 +129,15 @@ class Service extends Model {
             'location' => $request['location'],
             'insurer' => $request['insurer'],
             'address' => $request['address'],
-            'user_id' => $request['executive']
+            'user_id' => $request['executive'],
+            'updated_at'=>date("Y-m-d h:i:s"),
         ]);
         return $request;
     }
 
     public function getServiceData($id) {
         
-       return Service::select('services.*','u2.firstname','u2.lastname',
-               'u1.firstname as executivefirstname',
-               'u1.lastname as executivelastname')
+       return Service::select('services.*','u2.firstname','u2.lastname','u1.firstname as executivefirstname','u1.lastname as executivelastname')
                         ->leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
                         ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
                         ->where('services.id',$id)
@@ -113,7 +161,10 @@ class Service extends Model {
     }
     
     public function getUserService($id) {
-        return Service::where('user_id', $id)->where('status', 'inprocess')->get()->toArray();
+        return Service::where('user_id', $id)
+                        ->where('status', 'inprocess')
+                        ->get()
+                        ->toArray();
     }
 
     public function uploadServicePic($request) {
@@ -140,7 +191,7 @@ class Service extends Model {
             $file1->move($destinationPath, $file_name1);
             $publicPath = $destinationPath . $file_name1;
             if($extension != 'mp4'){
-            $this->addtimestamp($publicPath,$file_name1,$width);
+                $this->addtimestamp($publicPath,$file_name1,$width);
             }
         }
         $serviceId = $request->input('service_id');
@@ -151,6 +202,8 @@ class Service extends Model {
         $objUser->latitude  = $latitude;
         $objUser->longitude = $longitude;
         $objUser->name = $file_name1;
+        $objUser->created_at = date("Y-m-d h:i:s");
+        $objUser->updated_at = date("Y-m-d h:i:s");
         $objUser->save();
         return TRUE;
     }
@@ -160,29 +213,27 @@ class Service extends Model {
         
         $norwayLayer = ImageWorkshop::initFromPath($gifPath);
         $fontsize = 100;
-        if($width >= 0 || $width >= 200 ){
-            $fontsize=10;
+        $fontsize =0;
+        if($width >= 0 && $width <= 200 ){
+            $fontsize=4;
         }
         
-        if($width > 200 || $width >= 400 ){
-            $fontsize=15;
+        if($width >= 200 && $width <= 300 ){
+            $fontsize=5;
+        }
+        if($width >= 300 && $width <= 400 ){
+            $fontsize=7;
         }
         
-        if($width > 400 || $width >= 600 ){
-            $fontsize=40;
-        }
         
-        if($width > 600 || $width >= 800 ){
-            $fontsize=50;
-        }
+        if($width > 400 && $width <= 600 ){
+            $fontsize=20;
+        } 
         
-        if($width > 800 || $width >= 1000 ){
-            $fontsize=60;
+        if($width > 600 ){
+            $fontsize=25;
         }
-        
-        if($width > 1000 ){
-            $fontsize=90;
-        }
+       
         // This is the text layer
         $textLayer = ImageWorkshop::initTextLayer(date('Y-m-d H:i:s'), public_path().'/fonts/American Desktop.ttf', $fontsize, 'ffffff', 0);
 

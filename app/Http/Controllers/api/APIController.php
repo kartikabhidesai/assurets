@@ -21,7 +21,7 @@ class APIController extends Controller {
    
 
     public function login(Request $request) {
-
+        
         if ($request->isMethod('post')) {
 
             $validator = validator::make($request->all(), [
@@ -31,7 +31,7 @@ class APIController extends Controller {
             if ($validator->fails()) {
                 $result['status'] = 'fail';
                 $result['message'] = 'Username and password is required.';
-                $result['data'] = array();
+                $result['data'] = json_decode("{}");
                 echo json_encode($result);
                 exit;
             }
@@ -48,7 +48,7 @@ class APIController extends Controller {
             } else {
                 $result['status'] = 'fail';
                 $result['message'] = 'Login not Successfully.';
-                $result['data'] = array();
+                $result['data'] = json_decode("{}");
                 echo json_encode($result);
                 exit;
             }
@@ -65,7 +65,7 @@ class APIController extends Controller {
             if ($validator->fails()) {
                 $result['status'] = 'fail';
                 $result['message'] = 'Userid is required.';
-                $result['data'] = array();
+                $result['data'] = json_decode("{}");
                 echo json_encode($result);
                 exit;
             }
@@ -103,17 +103,34 @@ class APIController extends Controller {
     }
 
     public function saveService(Request $request){
+       
         if ($request->isMethod('post')) {
-              $serviceObj = new Service;
-              $usersaved = $serviceObj->saveService($request);
-              if($usersaved)
-                {
-                    $return['status'] = 'success';
-                    $return['message'] = 'Service successfully.';
-                   // $return['redirect'] = 'login';
-                    echo json_encode($return);
-                    exit;
-                }
+            $validator = validator::make($request->all(), [
+                        'engine_no' => 'required',
+                        'chession_no' => 'required',
+                        'latitude' => 'required',
+                        'longitude' => 'required',
+                        'service_id' => 'required',
+                        'odo_meter' => 'required',
+            ]);
+            
+            if ($validator->fails()) {
+                $result['status'] = 'fail';
+                $result['message'] = 'Provider required all details.';
+                $result['data'] = json_decode("{}");
+                echo json_encode($result);
+                exit;
+            }
+
+            $serviceObj = new Service;
+            $usersaved = $serviceObj->saveService($request);
+            if($usersaved)
+            {
+                $return['status'] = 'success';
+                $return['message'] = 'Service successfully.';
+                echo json_encode($return);
+                exit;
+            }
           }
     }
     

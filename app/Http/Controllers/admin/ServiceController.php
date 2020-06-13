@@ -18,8 +18,10 @@ use Illuminate\Support\Facades\Response;
 class ServiceController extends Controller {
 
     public function addservice(Request $request) {
-    $id=Auth::guard('admin')->user()->id;
-    
+        $id=Auth::guard('admin')->user()->id;
+        $serviceId = DB::table('serviceno')->select('serviceid')->where('id', 1)->get();
+        $data['serviceId'] = $serviceId[0]->serviceid;
+       
         if ($request->isMethod('post')) {
            
             $validator = validator::make($request->all(), [
@@ -140,7 +142,7 @@ class ServiceController extends Controller {
     }
     
     public function detailservice(Request $request, $id) {
-
+       
         $serviceData = new Service;
         $getServiceData = $serviceData->getServiceData($id);
         $data['getServiceData'] = $getServiceData[0];
@@ -170,8 +172,11 @@ class ServiceController extends Controller {
     public function downloadzip(Request $request,$serviceId){
         
         $objServicePhotoData = new ServicePhoto;
-       $serviceData = new Service;
+        $serviceData = new Service;
+        $arrServicePhotoData = [];
         $arrServicePhotoData = $objServicePhotoData->getServicePhotoData($serviceId);
+        
+        
         $vehicle_no = $serviceData->getVihicleNo($serviceId);
         $servicearry=[];
         $vehicleNo=$vehicle_no[0]->vehicle_no;
@@ -182,7 +187,11 @@ class ServiceController extends Controller {
         if(count($arrServicePhotoData)!='0'){
         $zipper = new Zipper();
         $files = $servicearry;
-       // print_r($files);exit;
+        
+        if (file_exists('public/servicephoto/'.$vehicleNo.'.zip')) {
+             unlink('public/servicephoto/'.$vehicleNo.'.zip'); 
+        }
+        
         $zipper->make('public/servicephoto/'.$vehicleNo.'.zip')->add($files)->close();
         return Response::download('public/servicephoto/'.$vehicleNo.'.zip');        
         }else{

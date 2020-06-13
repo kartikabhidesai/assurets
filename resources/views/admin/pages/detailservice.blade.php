@@ -92,6 +92,14 @@
                             </div>
                         </div>
                         
+                        <div class="form-group col-md-6">
+                             <label class="col-md-6 control-label">Odometer</label>
+                            <div class="col-md-6">
+                                {{ $getServiceData['odo_meter'] }}
+                                
+                            </div>
+                        </div>
+                        
                         
                     </div>
                 </div>
