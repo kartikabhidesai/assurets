@@ -4,8 +4,70 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5bca48e56bbf3a25645858fcab9c285",
+    "content-hash": "292a6bca13588306f73c6c8913c2d94b",
     "packages": [
+        {
+            "name": "chumper/zipper",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Chumper/Zipper.git",
+                "reference": "d15207e010f8fe1bdd341376bd86d599c4166423"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Chumper/Zipper/zipball/d15207e010f8fe1bdd341376bd86d599c4166423",
+                "reference": "d15207e010f8fe1bdd341376bd86d599c4166423",
+                "shasum": ""
+            },
+            "require": {
+                "ext-zip": "*",
+                "illuminate/filesystem": "^5.0",
+                "illuminate/support": "^5.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Chumper\\Zipper\\ZipperServiceProvider"
+                    ],
+                    "aliases": {
+                        "Zipper": "Chumper\\Zipper\\Zipper"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Chumper\\Zipper\\": "src/Chumper/Zipper"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "authors": [
+                {
+                    "name": "Nils Plaschke",
+                    "email": "github@nilsplaschke.de",
+                    "homepage": "http://nilsplaschke.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This is a little neat helper for the ZipArchive methods with handy functions",
+            "homepage": "http://github.com/Chumper/zipper",
+            "keywords": [
+                "archive",
+                "laravel",
+                "zip"
+            ],
+            "abandoned": true,
+            "time": "2020-02-25T11:57:40+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -407,6 +469,7 @@
                     "homepage": "http://www.acci.cz"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-color",
             "time": "2014-04-08T15:00:19+00:00"
         },
         {
@@ -451,7 +514,67 @@
                     "homepage": "http://www.acci.cz/"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "jeremeamia/superclosure",
+            "version": "2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeremeamia/super_closure.git",
+                "reference": "5707d5821b30b9a07acfb4d76949784aaa0e9ce9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/5707d5821b30b9a07acfb4d76949784aaa0e9ce9",
+                "reference": "5707d5821b30b9a07acfb4d76949784aaa0e9ce9",
+                "shasum": ""
+            },
+            "require": {
+                "nikic/php-parser": "^1.2|^2.0|^3.0|^4.0",
+                "php": ">=5.4",
+                "symfony/polyfill-php56": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SuperClosure\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Lindblom",
+                    "email": "jeremeamia@gmail.com",
+                    "homepage": "https://github.com/jeremeamia",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Serialize Closure objects, including their context and binding",
+            "homepage": "https://github.com/jeremeamia/super_closure",
+            "keywords": [
+                "closure",
+                "function",
+                "lambda",
+                "parser",
+                "serializable",
+                "serialize",
+                "tokenizer"
+            ],
+            "abandoned": "opis/closure",
+            "time": "2018-03-21T22:21:57+00:00"
         },
         {
             "name": "laravel/framework",
@@ -740,6 +863,84 @@
             "time": "2018-05-07T08:44:23+00:00"
         },
         {
+            "name": "maatwebsite/excel",
+            "version": "2.1.30",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maatwebsite/Laravel-Excel.git",
+                "reference": "f5540c4ba3ac50cebd98b09ca42e61f926ef299f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/f5540c4ba3ac50cebd98b09ca42e61f926ef299f",
+                "reference": "f5540c4ba3ac50cebd98b09ca42e61f926ef299f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "^5.0",
+                "illuminate/config": "^5.0",
+                "illuminate/filesystem": "^5.0",
+                "illuminate/support": "^5.0",
+                "jeremeamia/superclosure": "^2.3",
+                "nesbot/carbon": "~1.0",
+                "php": ">=5.5",
+                "phpoffice/phpexcel": "^1.8.1",
+                "tijsverkoyen/css-to-inline-styles": "~2.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.0",
+                "orchestra/testbench": "3.1.*|3.2.*|3.3.*|3.4.*|3.5.*|3.6.*",
+                "phpseclib/phpseclib": "~1.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "illuminate/http": "^5.0",
+                "illuminate/queue": "^5.0",
+                "illuminate/routing": "^5.0",
+                "illuminate/view": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Maatwebsite\\Excel\\ExcelServiceProvider"
+                    ],
+                    "aliases": {
+                        "Excel": "Maatwebsite\\Excel\\Facades\\Excel"
+                    }
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/Maatwebsite/Excel"
+                ],
+                "psr-0": {
+                    "Maatwebsite\\Excel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maatwebsite.nl",
+                    "email": "patrick@maatwebsite.nl"
+                }
+            ],
+            "description": "Supercharged Excel exports in Laravel",
+            "keywords": [
+                "PHPExcel",
+                "batch",
+                "csv",
+                "excel",
+                "export",
+                "import",
+                "laravel"
+            ],
+            "time": "2018-09-04T19:00:09+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.23.0",
             "source": {
@@ -965,6 +1166,69 @@
                 "random"
             ],
             "time": "2018-07-02T15:55:56+00:00"
+        },
+        {
+            "name": "phpoffice/phpexcel",
+            "version": "1.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PHPExcel.git",
+                "reference": "1441011fb7ecdd8cc689878f54f8b58a6805f870"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/1441011fb7ecdd8cc689878f54f8b58a6805f870",
+                "reference": "1441011fb7ecdd8cc689878f54f8b58a6805f870",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "ext-xml": "*",
+                "ext-xmlwriter": "*",
+                "php": "^5.2|^7.0"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPExcel": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "http://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Erik Tilt"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "http://rootslabs.net"
+                },
+                {
+                    "name": "Mark Baker",
+                    "homepage": "http://markbakeruk.net"
+                }
+            ],
+            "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+            "homepage": "https://github.com/PHPOffice/PHPExcel",
+            "keywords": [
+                "OpenXML",
+                "excel",
+                "php",
+                "spreadsheet",
+                "xls",
+                "xlsx"
+            ],
+            "abandoned": "phpoffice/phpspreadsheet",
+            "time": "2018-11-22T23:07:24+00:00"
         },
         {
             "name": "psr/container",
@@ -1242,17 +1506,17 @@
             ],
             "authors": [
                 {
+                    "name": "Ben Ramsey",
+                    "email": "ben@benramsey.com",
+                    "homepage": "https://benramsey.com"
+                },
+                {
                     "name": "Marijn Huizendveld",
                     "email": "marijn.huizendveld@gmail.com"
                 },
                 {
                     "name": "Thibaud Fabre",
                     "email": "thibaud@aztech.io"
-                },
-                {
-                    "name": "Ben Ramsey",
-                    "email": "ben@benramsey.com",
-                    "homepage": "https://benramsey.com"
                 }
             ],
             "description": "Formerly rhumsaa/uuid. A PHP 5.4+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
@@ -1322,6 +1586,68 @@
                 "mailer"
             ],
             "time": "2018-07-13T07:04:35+00:00"
+        },
+        {
+            "name": "sybio/image-workshop",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Sybio/ImageWorkshop.git",
+                "reference": "1237b7302f201be70e29a58fb347696eb2212d1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Sybio/ImageWorkshop/zipball/1237b7302f201be70e29a58fb347696eb2212d1e",
+                "reference": "1237b7302f201be70e29a58fb347696eb2212d1e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "ext-gd": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpunit/phpunit": "~4.5"
+            },
+            "suggest": {
+                "ext-exif": "Allows to read and keep images EXIF data"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPImageWorkshop": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Clément Guillemain",
+                    "homepage": "http://clementguillemain.fr",
+                    "role": "Developer / Freelancer"
+                },
+                {
+                    "name": "ImageWorkshop Community",
+                    "homepage": "https://github.com/Sybio/ImageWorkshop/graphs/contributors"
+                }
+            ],
+            "description": "Powerful PHP class using GD library to work easily with images including layer notion (like Photoshop or GIMP)",
+            "homepage": "http://phpimageworkshop.com",
+            "keywords": [
+                "class",
+                "crop",
+                "gd",
+                "image",
+                "library",
+                "resize",
+                "rotate",
+                "thumbnail",
+                "watermark"
+            ],
+            "time": "2019-10-20T11:57:00+00:00"
         },
         {
             "name": "symfony/console",
@@ -1614,16 +1940,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v4.1.1",
+            "version": "v4.2.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "4f9c7cf962e635b0b26b14500ac046e07dbef7f3"
+                "reference": "2ae778ff4a1f8baba7724db1ca977ada3b796749"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/4f9c7cf962e635b0b26b14500ac046e07dbef7f3",
-                "reference": "4f9c7cf962e635b0b26b14500ac046e07dbef7f3",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/2ae778ff4a1f8baba7724db1ca977ada3b796749",
+                "reference": "2ae778ff4a1f8baba7724db1ca977ada3b796749",
                 "shasum": ""
             },
             "require": {
@@ -1637,7 +1963,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -1664,7 +1990,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-06-19T21:38:16+00:00"
+            "time": "2019-11-11T12:54:47+00:00"
         },
         {
             "name": "symfony/http-kernel",
@@ -1810,16 +2136,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.8.0",
+            "version": "v1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "3296adf6a6454a050679cde90f95350ad604b171"
+                "reference": "fa79b11539418b02fc5e1897267673ba2c19419c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/3296adf6a6454a050679cde90f95350ad604b171",
-                "reference": "3296adf6a6454a050679cde90f95350ad604b171",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fa79b11539418b02fc5e1897267673ba2c19419c",
+                "reference": "fa79b11539418b02fc5e1897267673ba2c19419c",
                 "shasum": ""
             },
             "require": {
@@ -1831,7 +2157,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.17-dev"
                 }
             },
             "autoload": {
@@ -1865,7 +2191,63 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-04-26T10:06:28+00:00"
+            "time": "2020-05-12T16:47:27+00:00"
+        },
+        {
+            "name": "symfony/polyfill-php56",
+            "version": "v1.17.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php56.git",
+                "reference": "e3c8c138280cdfe4b81488441555583aa1984e23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/e3c8c138280cdfe4b81488441555583aa1984e23",
+                "reference": "e3c8c138280cdfe4b81488441555583aa1984e23",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/polyfill-util": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.17-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php56\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 5.6+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2020-05-12T16:47:27+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
@@ -1921,6 +2303,58 @@
                 "shim"
             ],
             "time": "2018-04-26T10:06:28+00:00"
+        },
+        {
+            "name": "symfony/polyfill-util",
+            "version": "v1.17.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-util.git",
+                "reference": "4afb4110fc037752cf0ce9869f9ab8162c4e20d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/4afb4110fc037752cf0ce9869f9ab8162c4e20d7",
+                "reference": "4afb4110fc037752cf0ce9869f9ab8162c4e20d7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.17-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Util\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony utilities for portability of PHP codes",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compat",
+                "compatibility",
+                "polyfill",
+                "shim"
+            ],
+            "time": "2020-05-12T16:14:59+00:00"
         },
         {
             "name": "symfony/process",
