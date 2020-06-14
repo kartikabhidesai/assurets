@@ -394,6 +394,560 @@
         <td colspan="3">Sound</td>
         <td></td>
     </tr>
+    <tr>
+        <td colspan="1"></td>
+        <td colspan="5"></td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"><b>Tipper</b></td>
+        <td colspan="5"></td>
+        <td colspan="3"><b>Cabin /Body Shell</b></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"><b>Fr. Bumper</b></td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Cabin Lhs Structure</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"><b>Cowl/Show/FES</b></td>
+        <td colspan="5"></td>
+        <td colspan="3">Cabin Rhs Structure</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Cowl Assy/FES Assy </td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Cabin Top </td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Cowl Panel Lh </td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Exhaust System</td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Cowl Panel Lh </td>
+        <td colspan="5">Sound</td>
+        <td colspan="3"><b>Exhaust System</b></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Cowl Panel Rh </td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Silencer</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">W/S Glasses</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Manifold</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Dash Board</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3"><b>Cooling System</b></td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Bonnet/Center Grill</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Radiator/Inter Cooler</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"><b>Chassis Frame</b></td>
+        <td colspan="5"></td>
+        <td colspan="3">Hoses</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Chassis Frame</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Fuel Supply System</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"><b>Engine</b></td>
+        <td colspan="5"></td>
+        <td colspan="3">Fuel Tank</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Engine Assy</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">All Pipe Lines</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">FIP</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3"><b>Electrical System</b></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Air Cleaner</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Rhs Head Lamp</td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"><b>Axle System</b></td>
+        <td colspan="5"></td>
+        <td colspan="3">Lhs Head Lamp</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Fr Axle</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Tail /Cluster Lamp</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Rr Axle</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Battery Make</td>
+        <td colspan="3">Exide</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"><b>Transmission System </b></td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Battery Condition</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Gear Box</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3"><b>Brake System</b></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>	
+    <tr>
+        <td colspan="1">Propeller Shft</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Brake Pedal</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>	
+    <tr>
+        <td colspan="1">Rear Housing</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Brake Booster</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>	
+    <tr>
+        <td colspan="1"><b>Steering System</b> </td>
+        <td colspan="5"></td>
+        <td colspan="3">Brake Pipes</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Steering Wheel </td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Air Cyl</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Steering Box</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Governer</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Stg. Column</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3"><b>Others</b></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Stg. Linkages</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Wheel Discs</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"><b>Suspension System </b></td>
+        <td colspan="5"></td>
+        <td colspan="3">Fr.Rhs Tyre Make</td>
+        <td colspan="3">MRF</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Fr.Suspension</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Fr.Lhs.Tyre Make</td>
+        <td colspan="3">MRF</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Rr.Suspension</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Rr.Rhs.Tyre Make</td>
+        <td colspan="3">MRF</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"><b>Load Body  - Tipper</b></td>
+        <td colspan="5"></td>
+        <td colspan="3">Rr.Lhs.Tyre Make</td>
+        <td colspan="3">MRF</td>
+        <td></td>
+    </tr>									
+    <tr>
+        <td colspan="1">Lhs Wing</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Stepney</td>
+        <td colspan="3">MRF</td>
+        <td></td>
+    </tr>									
+    <tr>
+        <td colspan="1">Rhs Wing</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>									
+    <tr>
+        <td colspan="1">Tail Gate</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>									
+    <tr>
+        <td colspan="1">Floor</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>									
+    <tr>
+        <td colspan="1"></td>
+        <td colspan="5"></td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>									
+    <tr>
+        <td colspan="4"><b>Original Records Verified(Y/N)</b></td>
+        <td colspan="2">No</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"></td>
+        <td colspan="5"></td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3"></td>
+        <td style="color: #c48ee8;" colspan="6"><h3>ACCESSORIES FOUND AT THE TIME OF INSECTION</h3></td>
+        <td colspan="2"></td>
+        <td colspan="1"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Audio</td>
+        <td colspan="5">N.A.</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Air conditioner</td>
+        <td colspan="5">N.A.</td>
+        <td colspan="3">Horn</td>
+        <td colspan="3">Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Upholstery</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Mist Lamp</td>
+        <td colspan="3">N.A.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Power Steering</td>
+        <td colspan="5">Sound</td>
+        <td colspan="3">Rear Wiper</td>
+        <td colspan="3">N.A.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Power Window</td>
+        <td colspan="5">N.A.</td>
+        <td colspan="3">Sun C/Film</td>
+        <td colspan="3">N.A.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">Central Locking</td>
+        <td colspan="5">N.A.</td>
+        <td colspan="3">Spoiler</td>
+        <td colspan="3">-</td>
+        <td></td>
+    </tr>									
+    <tr>
+        <td colspan="1">Demister</td>
+        <td colspan="5">N.A.</td>
+        <td colspan="3">Gas kit</td>
+        <td colspan="3">N.A.</td>
+        <td></td>
+    </tr>									
+    <tr>
+        <td colspan="1">Alloy Wheel</td>
+        <td colspan="5">N.A.</td>
+        <td colspan="3">Carrier</td>
+        <td colspan="3">-</td>
+        <td></td>
+    </tr>									
+    <tr>
+        <td colspan="1">Crash Guard</td>
+        <td colspan="5">N.A.</td>
+        <td colspan="3">Any other</td>
+        <td colspan="3">Jack Unit - Sound</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"></td>
+        <td colspan="5"></td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3"></td>
+        <td style="color: #c48ee8;" colspan="6"><h3>Others</h3></td>
+        <td colspan="2"></td>
+        <td colspan="1"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"></td>
+        <td colspan="5"></td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">Dedupe from Valuaer data Bsase</td>
+        <td colspan="2">Positive</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">if dedupe is Neagative, reason for:</td>
+        <td colspan="2">-</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">If this vehcile is recently inspected by Valuer, reason for valuation:</td>
+        <td colspan="2">-</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">is this vehcile migrated from other area:</td>
+        <td colspan="2">-</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"></td>
+        <td colspan="5"></td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3"></td>
+        <td style="color: #c48ee8;" colspan="6"><h3>Overall condition of the vehicle</h3></td>
+        <td colspan="2"></td>
+        <td colspan="1"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"></td>
+        <td colspan="5"></td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3">Working condition - Ok</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"></td>
+        <td colspan="5"></td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3"></td>
+        <td style="color: #c48ee8;" colspan="6"><h3>REMARKS</h3></td>
+        <td colspan="2"></td>
+        <td colspan="1"></td>
+        <td></td>
+    </tr>
+     <tr>
+        <td colspan="1"></td>
+        <td colspan="5"></td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">Insurance Details</td>
+        <td colspan="2">Detail not available</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">Policy NO</td>
+        <td colspan="2">-</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">Up to</td>
+        <td colspan="2">-</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">IDV</td>
+        <td colspan="2">-</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">Accidents (if any)</td>
+        <td colspan="2">No</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">Any major repairs undertaken</td>
+        <td colspan="2">No</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">Estimated further life of the vehicle…..years</td>
+        <td colspan="2">6</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">Estimated expenses involved to take the vehicle to road</td>
+        <td colspan="2">-</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">MARKET VALUE AS ON DATE OF INSPECTION</td>
+        <td colspan="2">Rs.8,75,000/- (Rupees Eight lac seventy five thousand only)</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"></td>
+        <td colspan="5"></td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="4">Pencil imprint of Chassis Number</td>
+        <td colspan="2">-</td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1"></td>
+        <td colspan="5"></td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td colspan="1">Enclosures attached</td>
+        <td colspan="5"></td>
+        <td colspan="3">TARAK MEHTA</td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">1 Photos ( Front and Rear)</td>
+        <td colspan="5"></td>
+        <td colspan="3">Valuer / Surveyor</td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="1">2 Other enclosures - NIL</td>
+        <td colspan="5"></td>
+        <td colspan="3"></td>
+        <td colspan="3"></td>
+        <td></td>
+    </tr>
 </table>
     <style>
     tr td {
