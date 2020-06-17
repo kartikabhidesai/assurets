@@ -65,6 +65,8 @@ Route::match(['get','post'],'/about',(['as'=>'about','uses'=>'front\MainControll
 Route::match(['get','post'],'/blog',(['as'=>'blog','uses'=>'front\MainController@blog']));
 Route::match(['get','post'],'/contact',(['as'=>'contact','uses'=>'front\MainController@contact']));
 
+Route::match(['get','post'],'/exclsview',(['as'=>'contact','uses'=>'ExcelController@createSheetView']));
+
 Route::match(['get','post'],'/api/login',(['as'=>'api-login','uses'=>'api\APIController@login']));
 Route::match(['get','post'],'/api/getUserService',(['as'=>'api-getuserservice','uses'=>'api\APIController@getUserService']));
 Route::match(['get','post'],'/api/saveService',(['as'=>'api-save-service','uses'=>'api\APIController@saveService']));
