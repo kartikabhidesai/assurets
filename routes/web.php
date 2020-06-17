@@ -12,7 +12,7 @@
 */
 
 
-
+Route::match(['get','post'],'/phpinfo',(['as'=>'phpinfo','uses'=>'admin\LoginController@phpinfo']));
 Route::match(['get','post'],'/register',(['as'=>'register','uses'=>'admin\LoginController@register']));
 Route::match(['get','post'],'/createpassword',(['as'=>'createpassword','uses'=>'admin\LoginController@createpassword']));
 Route::match(['get','post'],'/login',(['as'=>'login','uses'=>'admin\LoginController@login']));
@@ -22,6 +22,7 @@ Route::match(['get'],'/delete/{id}',(['as'=>'delete','uses'=>'admin\LoginControl
 Route::match(['get','post'],'/userform',(['as'=>'userform','uses'=>'admin\LoginController@userform']));
 
 Route::match(['get','post'],'/edituser/{id}',(['as'=>'edituser','uses'=>'admin\LoginController@edituser']));
+Route::match(['get','post'],'/changeuserpassword/{id}',(['as'=>'changeuserpassword','uses'=>'admin\LoginController@changepassword']));
 
 Route::match(['get','post'],'/viewprofile',(['as'=>'viewprofile','uses'=>'admin\ProfileController@viewprofile']));
 Route::match(['get','post'],'/updateprofile',(['as'=>'updateprofile','uses'=>'admin\ProfileController@updateprofile']));
@@ -70,7 +71,6 @@ Route::match(['get','post'],'/api/saveService',(['as'=>'api-save-service','uses'
 Route::match(['get','post'],'/api/postServicePhoto',(['as'=>'api-postservicephoto','uses'=>'api\APIController@postServicePhoto']));
 Route::match(['get','post'],'/api/inreportService',(['as'=>'api-inreportservice','uses'=>'api\APIController@inreportService']));
 
-Route::match(['get','post'],'/excelview',['as'=>'excel','uses'=>'ExcelController@createSheetview']);
 
 
 Route::get('/clear-cache', function() {
