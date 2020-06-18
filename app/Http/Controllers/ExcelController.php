@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\User;
 use Excel;
-
+use Illuminate\Http\Request;
+use Session;
 class ExcelController extends Controller
 {
     /**
@@ -41,10 +42,16 @@ class ExcelController extends Controller
             });
         })->export('xlsx');
     }
-    public function createSheetView()
+    public function createSheetView(Request $request)
     {
-        Excel::create('test', function($excel) {
+        
 
+          Session::push('reportdata', $request->input());
+
+                
+                // print_r($sessiondata);die;
+          Excel::create('test', function($excel) {
+            
             // Set the title
             $excel->setTitle('Our new awesome title');
 
@@ -56,9 +63,13 @@ class ExcelController extends Controller
             $excel->setDescription('A demonstration to change the file properties');
             
             $excel->sheet('Sheetname', function($sheet) {
-                 $sheet->loadView('report');
+             
+              $sessiondata=session()->all();
+               $data['reportdata']=$sessiondata['reportdata'][0];
+                 $sheet->loadView('report')->with($data);
                  $sheet->setAllBorders('thin');
             });
         })->export('xlsx');
+          Session::forget('reportdata');
     }
 }

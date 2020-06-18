@@ -36,6 +36,9 @@ $details=Auth::guard('admin')->user();
                         <a href="{{ url('history') }}"><i class="fa fa-history"></i> <span class="nav-label">History</span></a>
                     </li>
                     
+                    <li  class="{{ ($currRoute == 'report')    ? 'active' : '' }} ">
+                        <a href="{{ url('report') }}"><i class="fa fa-list-alt"></i> <span class="nav-label">Report</span></a>
+                    </li>                    
                     
                 </ul>
             </div>

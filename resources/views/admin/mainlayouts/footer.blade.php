@@ -34,14 +34,23 @@
 
     <!-- ChartJS-->
     <script src="{{ url('public/admin/js/plugins/chartJs/Chart.min.js') }}"></script>
-
-   
+<script src="{!! url('public/js/plugins/dataTables/datatables.min.js') !!}" type="text/javascript"></script>
+    <script src="{!! url('public/js/comman_function.js') !!}" type="text/javascript"></script>
+        @if (!empty($pluginjs)) 
+            @foreach ($pluginjs as $value) 
+                <script src="{{ asset('public/js/'.$value) }}" type="text/javascript">
+                </script>
+            @endforeach
+        @endif
+        
         @if (!empty($js)) 
             @foreach ($js as $value) 
                 <script src="{{ asset('public/js/'.$value) }}" type="text/javascript">
                 </script>
             @endforeach
         @endif
+
+
         
         
         <script>
@@ -54,5 +63,4 @@
                 @endif
             });
         </script>
-        <script src="{!! url('public/js/plugins/dataTables/datatables.min.js') !!}" type="text/javascript"></script>
-    <script src="{!! url('public/js/comman_function.js') !!}" type="text/javascript"></script>
+        

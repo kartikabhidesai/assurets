@@ -17,6 +17,11 @@
 
     <link href="{{ url('public/admin/css/animate.css') }}" rel="stylesheet">
     <link href="{{ url('public/admin/css/style.css') }}" rel="stylesheet">
+    <style type="text/css">
+        .has-error{
+            border: 1px solid red;
+        }
+    </style>
 @if (!empty($css)) 
         @foreach ($css as $value) 
         <link rel="stylesheet" href="{{ url('public/css/'.$value) }}">
