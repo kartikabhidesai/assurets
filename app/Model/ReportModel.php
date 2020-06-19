@@ -13,11 +13,11 @@ class ReportModel extends Model
         
         $reportObj = new ReportModel;
 
-        $reportObj->full_name = $postdata['fullname'];
-        $reportObj->city = $postdata['city'];
-        $reportObj->email = $postdata['email'];
-        $reportObj->refrence_no = $postdata['reference_no'];
-        $reportObj->phone = $postdata['phone_fax'];
+        $reportObj->reference_no = $postdata['reference_no'];
+        $reportObj->report_date = $postdata['report_date'];
+        $reportObj->report_to = $postdata['report_to'];
+        $reportObj->registration_no = $postdata['registration_no'];
+        $reportObj->registred_owner_name_add = $postdata['registred_owner_name_add'];
         $reportObj->report_data = json_encode($postdata);
         $reportObj->created_at = date("Y-m-d h:i:s");
         $reportObj->updated_at = date("Y-m-d h:i:s");
@@ -71,7 +71,7 @@ class ReportModel extends Model
         $totalFiltered = count($temp->get());
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
-                        ->select('id', 'full_name', 'city', 'email', 'refrence_no', 'phone', 'created_at')
+                        ->select('id', 'reference_no', 'report_date', 'report_to', 'registration_no', 'registred_owner_name_add', 'created_at')
                         ->get()->toArray();
         $data = array();
 //        print_r($resultArr);exit;
@@ -79,11 +79,11 @@ class ReportModel extends Model
         foreach ($resultArr as $row) {
             $nestedData = array();
             $nestedData[] = $num;
-            $nestedData[] = $row['full_name'];
-            $nestedData[] = $row['email'];
-            $nestedData[] = $row['phone'];
-            $nestedData[] = $row['city'];
-            $nestedData[] = $row['refrence_no'];
+            $nestedData[] = $row['reference_no'];
+            $nestedData[] = $row['report_date'];
+            $nestedData[] = $row['report_to'];
+            $nestedData[] = $row['registration_no'];
+            $nestedData[] = $row['registred_owner_name_add'];
             $nestedData[] = date('d M, Y',strtotime($row['created_at']));
             $nestedData[] = '<a href="'. route("detailreport", ["id" => $row["id"]]) . '"> <i class="fa fa-eye" aria-hidden="true"></i></a><a href="' . route("editreport", ["id" => $row["id"]]) . '"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a><a class="delete" data_value="' . $row["id"] . '"> <i  class=" fa fa-trash-o" aria-hidden="true"></i></a>';
             $data[] = $nestedData;
@@ -106,20 +106,20 @@ class ReportModel extends Model
                         ->get()->toArray();
 	}
 
-	public function editReportData($postdata,$id){
-		$result = ReportModel::where('id', $id)->update([
-            'full_name' => $postdata['fullname'],
-            'city' => $postdata['city'],
-            'email' => $postdata['email'],
-            'refrence_no' => $postdata['reference_no'],
-            'phone' => $postdata['phone_fax'],
-            'report_data' => json_encode($postdata),
-            'updated_at'=>date("Y-m-d h:i:s"),
-        ]);
-        return $result;
+    public function editReportData($postdata,$id){
+            $result = ReportModel::where('id', $id)->update([
+                'full_name' => $postdata['fullname'],
+                'city' => $postdata['city'],
+                'email' => $postdata['email'],
+                'refrence_no' => $postdata['reference_no'],
+                'phone' => $postdata['phone_fax'],
+                'report_data' => json_encode($postdata),
+                'updated_at'=>date("Y-m-d h:i:s"),
+            ]);
+            return $result;
 	}
 
-	public function deleteReport($id){
+    public function deleteReport($id){
 		return ReportModel::where('id', $id)->delete();
 	}
 }
