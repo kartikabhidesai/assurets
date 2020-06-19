@@ -1,5 +1,46 @@
 var Report = function(){
 	var reportlist = function(){
+		var dataArr = {};
+        var columnWidth = {};
+        var columnWidth = {"width": "20%"};               
+        var arrList = {
+            'tableID': '#datatableServices',
+            'ajaxURL': baseurl + "reportajaxAction",
+            'ajaxAction': 'getReportList',
+            'postData': dataArr,
+            'hideColumnList': [],
+            'noSearchApply': [0],
+            'noSortingApply': [0],
+            'defaultSortColumn': 0,
+            'defaultSortOrder': 'desc',
+            'setColumnWidth': columnWidth
+        };
+		getDataTable(arrList);
+
+		$(document).on('click','.delete',function(){
+            var id=$(this).attr('data_value');
+
+            swal({
+                  title: "Are you sure you want to delete service ?",                
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: "Yes, delete it!",
+                  cancelButtonText: "No, cancel it!",
+                  closeOnConfirm: false,
+                   },
+                  function (isConfirm) {
+                      if (isConfirm) {
+                          
+                           window.location=baseurl+"deletereport/"+id;
+
+                      } 
+                  });
+        }); 
+		
+	}
+
+	var validateReport = function(){
 		var form = $('#reportform');
         var rules = {
             fullname: {required: true},
@@ -142,6 +183,12 @@ var Report = function(){
 	return{
 		init:function(){
 			reportlist();
+		},
+		addreport:function(){
+			validateReport();
+		},
+		editreport:function(){
+			validateReport();
 		}
 	}
 }();
