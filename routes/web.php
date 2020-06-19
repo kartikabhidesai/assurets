@@ -66,6 +66,11 @@ Route::match(['get','post'],'/blog',(['as'=>'blog','uses'=>'front\MainController
 Route::match(['get','post'],'/contact',(['as'=>'contact','uses'=>'front\MainController@contact']));
 
 Route::match(['get','post'],'/report',(['as'=>'report','uses'=>'admin\ReportController@report']));
+Route::match(['get','post'],'/addreport',(['as'=>'addreport','uses'=>'admin\ReportController@addreport']));
+Route::match(['get','post'],'/editreport/{id}',(['as'=>'editreport','uses'=>'admin\ReportController@editreport']));
+Route::match(['get','post'],'/deletereport/{id}',(['as'=>'deletereport','uses'=>'admin\ReportController@deletereport']));
+Route::match(['get','post'],'/detailreport/{id}',(['as'=>'detailreport','uses'=>'admin\ReportController@detailreport']));
+Route::match(['get','post'],'/reportajaxAction',(['as'=>'reportajaxAction','uses'=>'admin\ReportController@ajaxAction']));
 
 Route::match(['get','post'],'exclsview',(['as'=>'exclsview','uses'=>'ExcelController@createSheetView']));
 

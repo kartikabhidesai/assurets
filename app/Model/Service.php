@@ -400,7 +400,7 @@ class Service extends Model {
         return $json_data;
     }
     
-     public function getHistoryDatatable($request) {
+    public function getHistoryDatatable($request) {
         $requestData = $_REQUEST;
 
         $columns = array(

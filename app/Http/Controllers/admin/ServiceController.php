@@ -125,7 +125,7 @@ class ServiceController extends Controller {
 
             $data['editService'] = $editService;
             
-//            print_r($editService);exit;
+            //            print_r($editService);exit;
             
             return redirect('services');
         }
