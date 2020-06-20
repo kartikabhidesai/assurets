@@ -541,10 +541,10 @@
                         	<label class="col-sm-2 control-label">Bonnet/Center Grill</label>
                         	<div class="col-sm-4">
                         	     <select class="form-control" name="con_bonnet_centere">
-                                            @foreach($dropdownvalues as $key => $value )
-                                                <option value="{{ $key }}">{{ $value }}</option>
-                                            @endforeach
-                                        </select>
+                                        @foreach($dropdownvalues as $key => $value )
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
@@ -555,21 +555,36 @@
                         <div class="form-group">
                         	<label class="col-sm-2 control-label">Cabin Lhs Structure</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_cabin_lhs" class="form-control">
+                        		<!--<input type="text" name="con_cabin_lhs" class="form-control">-->
+                                        <select class="form-control" name="con_cabin_lhs">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Cabin Rhs Structure</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_cabin_rhs" class="form-control">
+                        		<!--<input type="text" name="con_cabin_rhs" class="form-control">-->
+                                        <select class="form-control" name="con_cabin_rhs">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Cabin Top</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_cabin_top" class="form-control">
+                        		<!--<input type="text" name="con_cabin_top" class="form-control">-->
+                                        <select class="form-control" name="con_cabin_top">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
-						<div class="hr-line-dashed"></div>
+                        <div class="hr-line-dashed"></div>
                         <div class="form-group">
                         	<label class="col-sm-12 control-label" style="text-align: center;">Chassis Frame  </label>
                         </div>
@@ -577,10 +592,14 @@
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Chassis Frame</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_chassis_frame" class="form-control">
+                                    <select class="form-control" name="con_chassis_frame">
+                                        @foreach($dropdownvalues as $key => $value )
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
                     		</div>
                     	</div>
-						<div class="hr-line-dashed"></div>
+                        <div class="hr-line-dashed"></div>
                         <div class="form-group">
                         	<label class="col-sm-12 control-label" style="text-align: center;">Exhaust System</label>
                         </div>
@@ -588,14 +607,23 @@
                         <div class="form-group">
                         	<label class="col-sm-2 control-label">Silencer</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_silencer" class="form-control">
+                                    <select class="form-control" name="con_silencer">
+                                        @foreach($dropdownvalues as $key => $value )
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                        		<!--<input type="text" name="con_silencer" class="form-control">-->
                     		</div>
                     		<label class="col-sm-2 control-label">Manifold</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_manifold" class="form-control">
+                                    <select class="form-control" name="con_manifold">
+                                        @foreach($dropdownvalues as $key => $value )
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
                     		</div>
                     	</div>
-						<div class="hr-line-dashed"></div>
+                        <div class="hr-line-dashed"></div>
                         <div class="form-group">
                         	<label class="col-sm-12 control-label" style="text-align: center;">Engine </label>
                         </div>
@@ -603,21 +631,36 @@
                         <div class="form-group">
                         	<label class="col-sm-2 control-label">Engine Assy</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_engine_assy" class="form-control">
+                        		<!--<input type="text" name="con_engine_assy" class="form-control">-->
+                                        <select class="form-control" name="con_engine_assy">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">FIP</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_fip" class="form-control">
+                        		<!--<input type="text" name="con_fip" class="form-control">-->
+                                        <select class="form-control" name="con_fip">
+                                                @foreach($dropdownvalues as $key => $value )
+                                                        <option value="{{ $key }}">{{ $value }}</option>
+                                                @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Air Cleaner</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_air_cleaner" class="form-control">
+                                    <select class="form-control" name="con_air_cleaner">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                    </select>
+                        		<!--<input type="text" name="con_air_cleaner" class="form-control">-->
                     		</div>
                     	</div>
-						<div class="hr-line-dashed"></div>
+                        <div class="hr-line-dashed"></div>
                         <div class="form-group">
                         	<label class="col-sm-12 control-label" style="text-align: center;">Cooling System </label>
                         </div>
@@ -625,32 +668,57 @@
                         <div class="form-group">
                         	<label class="col-sm-2 control-label">Radiator/Inter Cooler</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_radioter" class="form-control">
+                                    <select class="form-control" name="con_radioter">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                    </select>
+                        		<!--<input type="text" name="con_radioter" class="form-control">-->
                     		</div>
                     		<label class="col-sm-2 control-label">Hoses</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_hoses" class="form-control">
+                                    <select class="form-control" name="con_hoses">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                    </select>
+                        		<!--<input type="text" name="con_hoses" class="form-control">-->
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Fuel Supply System</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_fuel_supply" class="form-control">
+                        		<!--<input type="text" name="con_fuel_supply" class="form-control">-->
+                                        <select class="form-control" name="con_fuel_supply">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Fuel Tank</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_fuel_tank" class="form-control">
+                        		<!--<input type="text" name="con_fuel_tank" class="form-control">-->
+                                        <select class="form-control" name="con_fuel_tank">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">All Pipe Lines</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_pipe_lines" class="form-control">
+                        		<!--<input type="text" name="con_pipe_lines" class="form-control">-->
+                                        <select class="form-control" name="con_pipe_lines">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
-						<div class="hr-line-dashed"></div>
+                        <div class="hr-line-dashed"></div>
                         <div class="form-group">
                         	<label class="col-sm-12 control-label" style="text-align: center;">Axle System </label>
                         </div>
@@ -658,14 +726,24 @@
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Fr Axle</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_fr_axle" class="form-control">
+                                        <select class="form-control" name="con_fr_axle">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
+                        		<!--<input type="text" name="con_fr_axle" class="form-control">-->
                     		</div>
                     		<label class="col-sm-2 control-label">Rr Axle</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_rr_axle" class="form-control">
+                                        <select class="form-control" name="con_rr_axle">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
+                        		<!--<input type="text" name="con_rr_axle" class="form-control">-->
                     		</div>
                     	</div>
-						<div class="hr-line-dashed"></div>
+                        <div class="hr-line-dashed"></div>
                         <div class="form-group">
                         	<label class="col-sm-12 control-label" style="text-align: center;">Electrical System </label>
                         </div>
@@ -673,32 +751,57 @@
                         <div class="form-group">
                         	<label class="col-sm-2 control-label">Rhs Head Lamp</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_rhs_head_lamp" class="form-control">
+                        		<!--<input type="text" name="con_rhs_head_lamp" class="form-control">-->
+                                        <select class="form-control" name="con_rhs_head_lamp">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Lhs Head Lamp</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_lhs_head_lamp" class="form-control">
+                        		<!--<input type="text" name="con_lhs_head_lamp" class="form-control">-->
+                                        <select class="form-control" name="con_lhs_head_lamp">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Tail /Cluster Lamp</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_tail_cluster" class="form-control">
+                        		<!--<input type="text" name="con_tail_cluster" class="form-control">-->
+                                        <select class="form-control" name="con_tail_cluster">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Battery Make</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_battery_make" class="form-control">
+                        		<!--<input type="text" name="con_battery_make" class="form-control">-->
+                                        <select class="form-control" name="con_battery_make">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Battery Condition</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_battery_condition" class="form-control">
+                        		<!--<input type="text" name="con_battery_condition" class="form-control">-->
+                                        <select class="form-control" name="con_battery_condition">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
-						<div class="hr-line-dashed"></div>
+                        <div class="hr-line-dashed"></div>
                         <div class="form-group">
                         	<label class="col-sm-12 control-label" style="text-align: center;">Transmission System </label>
                         </div>
@@ -706,22 +809,42 @@
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Transmission System</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_transmission" class="form-control">
+                        		<!--<input type="text" name="con_transmission" class="form-control">-->
+                                        <select class="form-control" name="con_transmission">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Gear Box</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_gear_box" class="form-control">
+                        		<!--<input type="text" name="con_gear_box" class="form-control">-->
+                                        <select class="form-control" name="con_gear_box">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Propeller Shft</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_propeller_shft" class="form-control">
+                        		<!--<input type="text" name="con_propeller_shft" class="form-control">-->
+                                        <select class="form-control" name="con_propeller_shft">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Rear Housing</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_rear_housing" class="form-control">
+                        		<!--<input type="text" name="con_rear_housing" class="form-control">-->
+                                        <select class="form-control" name="con_rear_housing">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
 						<div class="hr-line-dashed"></div>
@@ -732,29 +855,54 @@
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Brake Pedal</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_brake_padel" class="form-control">
+                        		<!--<input type="text" name="con_brake_padel" class="form-control">-->
+                                        <select class="form-control" name="con_brake_padel">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Brake Booster</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_brake_booster" class="form-control">
+<!--                        		<input type="text" name="con_brake_booster" class="form-control">-->
+                                        <select class="form-control" name="con_brake_booster">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Brake Pipes</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_brake_pipes" class="form-control">
+                        		<!--<input type="text" name="con_brake_pipes" class="form-control">-->
+                                        <select class="form-control" name="con_brake_pipes">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Air Cyl</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_air_cyl" class="form-control">
+                        		<!--<input type="text" name="con_air_cyl" class="form-control">-->
+                                        <select class="form-control" name="con_air_cyl">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Governer</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_governer" class="form-control">
+                        		<!--<input type="text" name="con_governer" class="form-control">-->
+                                        <select class="form-control" name="con_governer">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
@@ -765,22 +913,42 @@
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Steering Wheel</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_steering_wheel" class="form-control">
+                                    <select class="form-control" name="con_steering_wheel">
+                                        @foreach($dropdownvalues as $key => $value )
+                                                <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                        		<!--<input type="text" name="con_steering_wheel" class="form-control">-->
                     		</div>
                     		<label class="col-sm-2 control-label">Steering Box</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_steering_box" class="form-control">
+                        		<!--<input type="text" name="con_steering_box" class="form-control">-->
+                                        <select class="form-control" name="con_steering_box">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Stg. Column</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_stg_column" class="form-control">
+                        		<!--<input type="text" name="con_stg_column" class="form-control">-->
+                                        <select class="form-control" name="con_stg_column">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Stg. Linkages</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_stg_linkages" class="form-control">
+                        		<!--<input type="text" name="con_stg_linkages" class="form-control">-->
+                                        <select class="form-control" name="con_stg_linkages">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
@@ -791,11 +959,21 @@
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Fr.Suspension</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_fr_suspension" class="form-control">
+                        		<!--<input type="text" name="con_fr_suspension" class="form-control">-->
+                                        <select class="form-control" name="con_fr_suspension">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Rr.Suspension</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_rr_suspension" class="form-control">
+                        		<!--<input type="text" name="con_rr_suspension" class="form-control">-->
+                                        <select class="form-control" name="con_rr_suspension">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
@@ -806,22 +984,42 @@
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Lhs Wing</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_lhs_wing" class="form-control">
+                        		<!--<input type="text" name="con_lhs_wing" class="form-control">-->
+                                        <select class="form-control" name="con_lhs_wing">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Rhs Wing</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_rhs_wing" class="form-control">
+                        		<!--<input type="text" name="con_rhs_wing" class="form-control">-->
+                                        <select class="form-control" name="con_rhs_wing">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Tail Gate</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_tail_gate" class="form-control">
+                        		<!--<input type="text" name="con_tail_gate" class="form-control">-->
+                                        <select class="form-control" name="con_tail_gate">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Floor</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_floor" class="form-control">
+                        		<!--<input type="text" name="con_floor" class="form-control">-->
+                                        <select class="form-control" name="con_floor">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
@@ -832,33 +1030,63 @@
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Wheel Discs</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_wheel_discs" class="form-control">
+                        		<!--<input type="text" name="con_wheel_discs" class="form-control">-->
+                                        <select class="form-control" name="con_wheel_discs">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Fr.Rhs Tyre Make</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_fr_rhs_tyre_make" class="form-control">
+                        		<!--<input type="text" name="con_fr_rhs_tyre_make" class="form-control">-->
+                                        <select class="form-control" name="con_fr_rhs_tyre_make">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Fr.Lhs.Tyre Make</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_fr_lhs_tyre_make" class="form-control">
+                        		<!--<input type="text" name="con_fr_lhs_tyre_make" class="form-control">-->
+                                        <select class="form-control" name="con_fr_lhs_tyre_make">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Rr.Rhs.Tyre Make</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_rr_rhs_tyre_make" class="form-control">
+                        		<!--<input type="text" name="con_rr_rhs_tyre_make" class="form-control">-->
+                                        <select class="form-control" name="con_rr_rhs_tyre_make">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
                     	<div class="form-group">
                         	<label class="col-sm-2 control-label">Rr.Lhs.Tyre Make</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_rr_lhs_tyre_take" class="form-control">
+                        		<!--<input type="text" name="con_rr_lhs_tyre_take" class="form-control">-->
+                                        <select class="form-control" name="con_rr_lhs_tyre_take">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     		<label class="col-sm-2 control-label">Stepney</label>
                         	<div class="col-sm-4">
-                        		<input type="text" name="con_stepney" class="form-control">
+                        		<!--<input type="text" name="con_stepney" class="form-control">-->
+                                        <select class="form-control" name="con_stepney">
+                                            @foreach($dropdownvalues as $key => $value )
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                     		</div>
                     	</div>
                     	<div class="hr-line-dashed"></div>
