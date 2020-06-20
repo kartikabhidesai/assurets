@@ -26,11 +26,11 @@
                                 <thead>
                                     <tr>
                                         <th>NO</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phonr/FAX</th>
-                                        <th>City</th>
-                                        <th>Refrence No</th>
+                                        <th>Reference No</th>
+                                        <th>Report Date</th>
+                                        <th>Report To</th>
+                                        <th>Registration No</th>
+                                        <th>Owner Name</th>
                                         <th>Date</th>
                                         <th>Action</th>
                                     </tr>
