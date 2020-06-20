@@ -31,11 +31,11 @@ class ReportModel extends Model
         $columns = array(
             // datatable column index  => database column name
             0 => 'id',
-            1 => 'full_name',
-            2 => 'city',
-            3 => 'email',
-            4 => 'refrence_no',
-            5 => 'phone',
+            1 => 'reference_no',
+            2 => 'report_date',
+            3 => 'report_to',
+            4 => 'registration_no',
+            5 => 'registred_owner_name_add',
             6 => 'created_at',
         );
 
@@ -85,7 +85,7 @@ class ReportModel extends Model
             $nestedData[] = $row['registration_no'];
             $nestedData[] = $row['registred_owner_name_add'];
             $nestedData[] = date('d M, Y',strtotime($row['created_at']));
-            $nestedData[] = '<a href="'. route("generatereport", ["id" => $row["id"]]) . '"> <i class="fa fa-eye" aria-hidden="true"></i></a><a href="'. route("detailreport", ["id" => $row["id"]]) . '"> <i class="fa fa-eye" aria-hidden="true"></i></a><a href="' . route("editreport", ["id" => $row["id"]]) . '"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a><a class="delete" data_value="' . $row["id"] . '"> <i  class=" fa fa-trash-o" aria-hidden="true"></i></a>';
+            $nestedData[] = '<a href="'. route("generatereport", ["id" => $row["id"]]) . '"> <i class="fa fa-file-excel-o" aria-hidden="true" title="Generate Report"></i></a><a href="'. route("detailreport", ["id" => $row["id"]]) . '"> <i class="fa fa-eye" aria-hidden="true" title="View Report"></i></a><a href="' . route("editreport", ["id" => $row["id"]]) . '"> <i class="fa fa-pencil-square-o" title="Edit Report" aria-hidden="true"></i></a><a class="delete" data_value="' . $row["id"] . '"> <i  class=" fa fa-trash-o" title="Delete Report" aria-hidden="true"></i></a>';
             $data[] = $nestedData;
             $num++;
         }
@@ -108,11 +108,11 @@ class ReportModel extends Model
 
     public function editReportData($postdata,$id){
             $result = ReportModel::where('id', $id)->update([
-                'full_name' => $postdata['fullname'],
-                'city' => $postdata['city'],
-                'email' => $postdata['email'],
-                'refrence_no' => $postdata['reference_no'],
-                'phone' => $postdata['phone_fax'],
+                'reference_no' => $postdata['reference_no'],
+                'report_to' => $postdata['report_to'],
+                'registration_no' => $postdata['registration_no'],
+                'registred_owner_name_add' => $postdata['registred_owner_name_add'],
+                'report_date' => $postdata['report_date'],
                 'report_data' => json_encode($postdata),
                 'updated_at'=>date("Y-m-d h:i:s"),
             ]);
@@ -122,4 +122,5 @@ class ReportModel extends Model
     public function deleteReport($id){
 		return ReportModel::where('id', $id)->delete();
 	}
+
 }

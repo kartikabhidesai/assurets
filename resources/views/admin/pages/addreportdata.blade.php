@@ -15,7 +15,7 @@
                     <form method="post" class="form-horizontal" id="reportform" action="">
                         @csrf
                         
-<!--                        <div class="hr-line-dashed"></div>
+                        <!-- <div class="hr-line-dashed"></div>
                         <div class="form-group">
                         	<label class="col-sm-2 control-label">Full Name</label>
                         	<div class="col-sm-10">
@@ -455,7 +455,7 @@
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-<!--                        	<label class="col-sm-2 control-label">Tipper</label>
+                                <!--<label class="col-sm-2 control-label">Tipper</label>
                         	<div class="col-sm-4">
                         		<input type="text" name="con_tipper" class="form-control">
                     		</div>-->
@@ -864,7 +864,7 @@
                     		</div>
                     		<label class="col-sm-2 control-label">Brake Booster</label>
                         	<div class="col-sm-4">
-<!--                        		<input type="text" name="con_brake_booster" class="form-control">-->
+                                <!--<input type="text" name="con_brake_booster" class="form-control">-->
                                         <select class="form-control" name="con_brake_booster">
                                             @foreach($dropdownvalues as $key => $value )
                                                     <option value="{{ $key }}">{{ $value }}</option>
