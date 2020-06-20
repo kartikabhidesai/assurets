@@ -146,6 +146,11 @@ class ReportController extends Controller
             'jquery.form.min.js',
             "report.js",
         );
+        $data['dropdownvalues'] = array(
+            'sound'=> 'Sound',
+            'average'=> 'Average',
+            'bad'=> 'Bad',
+        );
         $data['pluginjs'] = array(
             "validate/jquery.validate.min.js",
             "toastr/toastr.min.js",
