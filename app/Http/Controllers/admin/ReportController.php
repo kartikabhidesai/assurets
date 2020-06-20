@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\ReportModel;
+use Excel;
 
 class ReportController extends Controller
 {
@@ -167,6 +168,44 @@ class ReportController extends Controller
         $data['deleteService'] = $deleteService;
 
         return redirect()->back()->with('message', 'Service Deleted Successfully');
+    }
+    
+    public function generatereport(Request $request , $id)
+    {
+        
+
+        // Session::push('reportdata', $request->input());
+
+       //   $id = 1;
+          
+            $reportData = new ReportModel;
+            $getReportData = $reportData->getReportData($id);
+            // echo "<pre>";print_r($getReportData[0]['report_data']);die;
+            // echo "<pre>";print_r();die;
+            $data['id'] = $id;
+            $data['reportdata'] = json_decode($getReportData[0]['report_data'],true);
+        
+                // print_r($data);die;
+          Excel::create('test', function($excel) use ($data) {
+            
+            // Set the title
+            $excel->setTitle('Our new awesome title');
+
+            // Chain the setters
+            $excel->setCreator('Maatwebsite')
+                  ->setCompany('Maatwebsite');
+
+            // Call them separately
+            $excel->setDescription('A demonstration to change the file properties');
+            
+            $excel->sheet('Sheetname', function($sheet) use ($data) {
+            
+               $data['reportdata']=$data['reportdata'];
+                 $sheet->loadView('report')->with($data);
+                 $sheet->setAllBorders('thin');
+            });
+        })->export('xlsx');
+          Session::forget('reportdata');
     }
 
 

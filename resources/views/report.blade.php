@@ -6,50 +6,50 @@
 <table>
     <!-- Headings -->
     <tr>
-        <td colspan="3" width="20" ><h1>{{ $reportdata['fullname'] }}</h1></td>
+        <td colspan="3" width="20" ><h1>Tarak Mehta</h1></td>
         <td colspan="3"></td>
         <td colspan="3"></td>
-        <td colspan="3">{{ $reportdata['address_1'] }}</td>
+        <td colspan="3">3, Yagna Krupa,</td>
         <td></td>
     </tr>
     <tr>
-        <td colspan="3">{{ $reportdata['detail_line_1'] }}</td>
+        <td colspan="3">F.I.I.I.S.L.F.I.I.V</td>
         <td colspan="3"></td>
         <td colspan="3"></td>
-        <td colspan="3">{{ $reportdata['address_2'] }}</td>
+        <td colspan="3">Takhteshwar Plot No. 42/C,</td>
         <td></td>
     </tr>
     <tr>
-        <td colspan="3">{{ $reportdata['detail_line_2'] }}</td>
+        <td colspan="3">Surveyor/Loss Assessor/Approved Valuer</td>
         <td colspan="3"></td>
         <td colspan="3"></td>
-        <td colspan="3">{{ $reportdata['city'] }}</td>
+        <td colspan="3">Bhavnagar – 364 001 (Gujarat)</td>
         <td></td>
     </tr>
     <tr>
-        <td colspan="3">Lic No:{{ $reportdata['city'] }}, Exp. Dt.{{ $reportdata['expriry_date'] }}</td>
+        <td colspan="3">Lic No:6246, Exp. Dt. 06/09/2020</td>
         <td colspan="3"></td>
         <td colspan="3"></td>
-        <td colspan="3">Phone / Fax  : {{ $reportdata['phone_fax'] }}.</td>
+        <td colspan="3">Phone / Fax  : 0278 2515630.</td>
         <td></td>
     </tr>
     <tr>
-        <td colspan="3">IIISLA  Membership no. {{ $reportdata['iiisla_no'] }}</td>
+        <td colspan="3">IIISLA  Membership no. F/W/00219</td>
         <td colspan="3"></td>
         <td colspan="3"></td>
-        <td colspan="4">E-mail : {{ $reportdata['email'] }}</td>
+        <td colspan="4">E-mail : tarak.mehta@yahoo.co.in</td>
         
     </tr>
     
     <tr>
-        <td colspan="3">IIV Membership no.  {{ $reportdata['iiv_no'] }} </td>
+        <td colspan="3">IIV Membership no.   LM F-1561   Cat:XII   </td>
         <td colspan="3"></td>
         <td colspan="3"></td>
         <td colspan="3"></td>
         <td></td>
     </tr>
     <tr>
-        <td colspan="3">CE & A  Membership no. {{ $reportdata['ce_a_no'] }}</td>
+        <td colspan="3">CE & A  Membership no. LM-CAT XII-M-0103</td>
         <td colspan="3"></td>
         <td colspan="3"></td>
         <td colspan="3"></td>
@@ -72,7 +72,7 @@
     <tr>
         <td colspan="3"></td>
         <td colspan="3">Date :</td>
-        <td colspan="3">{{ $reportdata['date'] }}</td>
+        <td colspan="3">{{ $reportdata['report_date'] }}</td>
         <td colspan="3"></td>
         <td></td>
     </tr>
@@ -85,8 +85,8 @@
     </tr>
     <tr>
         <td colspan="1"><b>To : </b></td>
-        <td colspan="5">{{ $reportdata['to'] }}</td>
-        <td colspan="3">{{ $reportdata['date'] }}</td>
+        <td colspan="5">{{ $reportdata['report_to'] }}</td>
+        <td colspan="3">{{ $reportdata['report_date'] }}</td>
         <td colspan="3"></td>
         <td></td>
     </tr>
@@ -407,7 +407,7 @@
     </tr>
     <tr>
         <td colspan="1"><b>Tipper</b></td>
-        <td colspan="5">{{ $reportdata['con_tipper'] }}</td>
+        <td colspan="5"></td>
         <td colspan="3"><b>Cabin /Body Shell</b></td>
         <td colspan="3"></td>
         <td></td>
@@ -687,7 +687,7 @@
     </tr>
     <tr>
         <td colspan="1">Audio</td>
-        <td colspan="5">{{ $reportdata['acc_audio'] }}/td>
+        <td colspan="5">{{ $reportdata['acc_audio'] }}</td>
         <td colspan="3"></td>
         <td colspan="3"></td>
         <td></td>
@@ -855,7 +855,7 @@
     </tr>
     <tr>
         <td colspan="4">Policy NO</td>
-        <td colspan="2">{{ $reportdata['rem_Policy_NO:'] }}</td>
+        <td colspan="2">{{ $reportdata['rem_Policy_NO'] }}</td>
         <td colspan="3"></td>
         <td colspan="3"></td>
         <td></td>

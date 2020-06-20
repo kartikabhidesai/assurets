@@ -85,7 +85,7 @@ class ReportModel extends Model
             $nestedData[] = $row['registration_no'];
             $nestedData[] = $row['registred_owner_name_add'];
             $nestedData[] = date('d M, Y',strtotime($row['created_at']));
-            $nestedData[] = '<a href="'. route("detailreport", ["id" => $row["id"]]) . '"> <i class="fa fa-eye" aria-hidden="true"></i></a><a href="' . route("editreport", ["id" => $row["id"]]) . '"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a><a class="delete" data_value="' . $row["id"] . '"> <i  class=" fa fa-trash-o" aria-hidden="true"></i></a>';
+            $nestedData[] = '<a href="'. route("generatereport", ["id" => $row["id"]]) . '"> <i class="fa fa-eye" aria-hidden="true"></i></a><a href="'. route("detailreport", ["id" => $row["id"]]) . '"> <i class="fa fa-eye" aria-hidden="true"></i></a><a href="' . route("editreport", ["id" => $row["id"]]) . '"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a><a class="delete" data_value="' . $row["id"] . '"> <i  class=" fa fa-trash-o" aria-hidden="true"></i></a>';
             $data[] = $nestedData;
             $num++;
         }

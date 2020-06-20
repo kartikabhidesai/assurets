@@ -71,6 +71,7 @@ Route::match(['get','post'],'/editreport/{id}',(['as'=>'editreport','uses'=>'adm
 Route::match(['get','post'],'/deletereport/{id}',(['as'=>'deletereport','uses'=>'admin\ReportController@deletereport']));
 Route::match(['get','post'],'/detailreport/{id}',(['as'=>'detailreport','uses'=>'admin\ReportController@detailreport']));
 Route::match(['get','post'],'/reportajaxAction',(['as'=>'reportajaxAction','uses'=>'admin\ReportController@ajaxAction']));
+Route::match(['get','post'],'/generatereport/{id}',(['as'=>'generatereport','uses'=>'admin\ReportController@generatereport']));
 
 Route::match(['get','post'],'exclsview',(['as'=>'exclsview','uses'=>'ExcelController@createSheetView']));
 

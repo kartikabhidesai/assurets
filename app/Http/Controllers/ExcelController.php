@@ -48,9 +48,9 @@ class ExcelController extends Controller
 
           Session::push('reportdata', $request->input());
 
-                
+          $id = 1;
                 // print_r($sessiondata);die;
-          Excel::create('test', function($excel) {
+          Excel::create('test', function($excel) use ($id) {
             
             // Set the title
             $excel->setTitle('Our new awesome title');
@@ -62,8 +62,8 @@ class ExcelController extends Controller
             // Call them separately
             $excel->setDescription('A demonstration to change the file properties');
             
-            $excel->sheet('Sheetname', function($sheet) {
-             
+            $excel->sheet('Sheetname', function($sheet) use ($id) {
+             echo $id;exit;
               $sessiondata=session()->all();
                $data['reportdata']=$sessiondata['reportdata'][0];
                  $sheet->loadView('report')->with($data);
